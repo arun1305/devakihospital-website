@@ -30,20 +30,23 @@ export function Navbar() {
         scrolled ? "glass-panel shadow-brand-soft" : "bg-white/40"
       )}
     >
-      <Container className="flex items-center justify-between gap-4 py-3">
+      <Container className="flex items-center justify-between gap-3 py-3">
         <Link href="/" aria-label={siteConfig.name} className="shrink-0">
           <Logo compact />
         </Link>
 
+        {/* shrink-0 (not min-w-0): the links inside don't shrink, so letting
+            this box collapse below its content makes them overflow into the
+            CTA group and overlap it. */}
         <nav
-          className="hidden min-w-0 items-center gap-0.5 xl:flex"
+          className="hidden shrink-0 items-center gap-0.5 xl:flex"
           onMouseLeave={() => setOpenMenu(null)}
         >
           {mainNav.map((item) => (
             <div key={item.label} className="relative shrink-0" onMouseEnter={() => setOpenMenu(item.label)}>
               <Link
                 href={item.href}
-                className="flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-semibold text-brand-teal-900 transition-colors hover:bg-brand-teal-50 hover:text-brand-teal-700"
+                className="flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-2 text-sm font-semibold text-brand-teal-900 transition-colors hover:bg-brand-teal-50 hover:text-brand-teal-700"
               >
                 {item.label}
                 {item.children && <ChevronDown className="h-3.5 w-3.5 shrink-0" />}

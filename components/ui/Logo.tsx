@@ -40,7 +40,7 @@ export function Logo({ className, markOnly = false, tone = "dark", compact = fal
           <p
             className={cn(
               "whitespace-nowrap font-bold tracking-tight",
-              compact ? "text-sm sm:text-base" : "text-lg",
+              compact ? "text-sm" : "text-lg",
               textColor
             )}
           >
