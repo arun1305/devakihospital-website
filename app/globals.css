@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #10302e;
+
+  /* Devaki brand palette — derived from the hospital logo */
+  --color-teal-50: #eef6f5;
+  --color-teal-100: #d3e9e6;
+  --color-teal-200: #a7d3cd;
+  --color-teal-300: #74b6ad;
+  --color-teal-400: #47978c;
+  --color-teal-500: #2c7c70;
+  --color-teal-600: #1c6459;
+  --color-teal-700: #17504a;
+  --color-teal-800: #0f3934;
+  --color-teal-900: #0a2624;
+
+  --color-orange-50: #fff4ea;
+  --color-orange-100: #ffe3c7;
+  --color-orange-200: #ffc78c;
+  --color-orange-300: #ffa652;
+  --color-orange-400: #fa8b2c;
+  --color-orange-500: #f2791b;
+  --color-orange-600: #d96412;
+  --color-orange-700: #b34f0f;
+  --color-orange-800: #833b0e;
+  --color-orange-900: #5c2a0c;
+
+  --color-grey-50: #f8fafa;
+  --color-grey-100: #f1f4f4;
+  --color-grey-200: #e4e9e8;
+  --color-grey-300: #ccd6d4;
+  --color-grey-400: #9fb0ad;
+  --color-grey-500: #708885;
+
+  --shadow-soft: 0 10px 40px -12px rgba(15, 57, 52, 0.18);
+  --shadow-glow: 0 0 0 1px rgba(255, 255, 255, 0.4) inset, 0 20px 60px -20px rgba(15, 57, 52, 0.35);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-brand-teal-50: var(--color-teal-50);
+  --color-brand-teal-100: var(--color-teal-100);
+  --color-brand-teal-200: var(--color-teal-200);
+  --color-brand-teal-300: var(--color-teal-300);
+  --color-brand-teal-400: var(--color-teal-400);
+  --color-brand-teal-500: var(--color-teal-500);
+  --color-brand-teal-600: var(--color-teal-600);
+  --color-brand-teal-700: var(--color-teal-700);
+  --color-brand-teal-800: var(--color-teal-800);
+  --color-brand-teal-900: var(--color-teal-900);
+
+  --color-brand-orange-50: var(--color-orange-50);
+  --color-brand-orange-100: var(--color-orange-100);
+  --color-brand-orange-200: var(--color-orange-200);
+  --color-brand-orange-300: var(--color-orange-300);
+  --color-brand-orange-400: var(--color-orange-400);
+  --color-brand-orange-500: var(--color-orange-500);
+  --color-brand-orange-600: var(--color-orange-600);
+  --color-brand-orange-700: var(--color-orange-700);
+  --color-brand-orange-800: var(--color-orange-800);
+  --color-brand-orange-900: var(--color-orange-900);
+
+  --color-brand-grey-50: var(--color-grey-50);
+  --color-brand-grey-100: var(--color-grey-100);
+  --color-brand-grey-200: var(--color-grey-200);
+  --color-brand-grey-300: var(--color-grey-300);
+  --color-brand-grey-400: var(--color-grey-400);
+  --color-brand-grey-500: var(--color-grey-500);
+
+  --font-display: var(--font-plus-jakarta);
+  --font-sans: var(--font-inter);
+
+  --shadow-brand-soft: var(--shadow-soft);
+  --shadow-brand-glow: var(--shadow-glow);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-blob: blob 14s ease-in-out infinite;
+  --animate-marquee: marquee 32s linear infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(3deg);
+  }
+}
+
+@keyframes blob {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(4%, -6%) scale(1.08);
+  }
+  66% {
+    transform: translate(-3%, 4%) scale(0.94);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+}
+
+::selection {
+  background: var(--color-teal-200);
+  color: var(--color-teal-900);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 57, 52, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.text-gradient-brand {
+  background: linear-gradient(100deg, var(--color-teal-600), var(--color-orange-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
