@@ -30,20 +30,23 @@ export function Navbar() {
         scrolled ? "glass-panel shadow-brand-soft" : "bg-white/40"
       )}
     >
-      <Container className="flex items-center justify-between py-3">
-        <Link href="/" aria-label={siteConfig.name}>
-          <Logo />
+      <Container className="flex items-center justify-between gap-4 py-3">
+        <Link href="/" aria-label={siteConfig.name} className="shrink-0">
+          <Logo compact />
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" onMouseLeave={() => setOpenMenu(null)}>
+        <nav
+          className="hidden min-w-0 items-center gap-0.5 xl:flex"
+          onMouseLeave={() => setOpenMenu(null)}
+        >
           {mainNav.map((item) => (
-            <div key={item.label} className="relative" onMouseEnter={() => setOpenMenu(item.label)}>
+            <div key={item.label} className="relative shrink-0" onMouseEnter={() => setOpenMenu(item.label)}>
               <Link
                 href={item.href}
-                className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-semibold text-brand-teal-900 transition-colors hover:bg-brand-teal-50 hover:text-brand-teal-700"
+                className="flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-semibold text-brand-teal-900 transition-colors hover:bg-brand-teal-50 hover:text-brand-teal-700"
               >
                 {item.label}
-                {item.children && <ChevronDown className="h-3.5 w-3.5" />}
+                {item.children && <ChevronDown className="h-3.5 w-3.5 shrink-0" />}
               </Link>
 
               <AnimatePresence>
@@ -74,21 +77,23 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden shrink-0 items-center gap-2 xl:flex">
           <a
             href={`tel:${siteConfig.emergencyNumber}`}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange-600"
+            aria-label={`Call emergency: ${siteConfig.emergencyNumber}`}
+            title={`Emergency: ${siteConfig.emergencyNumber}`}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-orange-50 text-brand-orange-600 transition-colors hover:bg-brand-orange-100"
           >
-            <Phone className="h-4 w-4" /> Emergency
+            <Phone className="h-4 w-4" />
           </a>
-          <Button href="/appointment" size="sm" icon={<CalendarCheck className="h-4 w-4" />}>
+          <Button href="/appointment" size="sm" icon={<CalendarCheck className="h-4 w-4" />} className="whitespace-nowrap">
             Book Appointment
           </Button>
         </div>
 
         <button
           type="button"
-          className="rounded-full p-2 text-brand-teal-900 lg:hidden"
+          className="rounded-full p-2 text-brand-teal-900 xl:hidden"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle navigation menu"
         >
@@ -102,9 +107,9 @@ export function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden border-t border-brand-grey-200 bg-white lg:hidden"
+            className="overflow-hidden border-t border-brand-grey-200 bg-white xl:hidden"
           >
-            <Container className="flex flex-col gap-1 py-4">
+            <Container className="flex max-h-[70vh] flex-col gap-1 overflow-y-auto py-4">
               {mainNav.map((item) => (
                 <div key={item.label}>
                   <Link

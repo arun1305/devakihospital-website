@@ -30,7 +30,10 @@ export function TestimonialsCarousel({ testimonials }: { testimonials: Testimoni
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           breakpoints={{ 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
-          className="!pb-14"
+          observer
+          observeParents
+          resizeObserver
+          className="!w-full !pb-14"
         >
           {testimonials.map((testimonial) => (
             <SwiperSlide key={testimonial._id}>
