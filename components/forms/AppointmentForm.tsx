@@ -104,21 +104,30 @@ export function AppointmentForm({ departments }: { departments: Department[] }) 
       className="relative"
     >
       <motion.div
-        className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-brand-teal-400/40 via-brand-orange-300/25 to-brand-orange-400/35 blur-3xl"
+        className="absolute -inset-8 -z-10 rounded-[2.75rem] bg-gradient-to-br from-brand-teal-400/45 via-brand-orange-300/30 to-brand-orange-400/40 blur-3xl"
         animate={{ opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden
       />
+      <div className="rounded-[2rem] bg-gradient-to-br from-brand-teal-400/80 via-white/60 to-brand-orange-400/80 p-[1.5px] shadow-brand-glow dark:from-brand-teal-400/40 dark:via-white/10 dark:to-brand-orange-400/40">
       <motion.form
         onSubmit={handleSubmit((values) => mutation.mutate(values))}
-        className="relative grid gap-5 overflow-hidden rounded-3xl border border-white/80 bg-white/80 p-8 shadow-brand-glow ring-1 ring-brand-teal-900/5 backdrop-blur-xl dark:border-white/10 dark:bg-brand-teal-950/80 dark:ring-white/10 sm:grid-cols-2"
+        className="relative grid gap-5 overflow-hidden rounded-[calc(2rem-1.5px)] bg-white/95 p-8 backdrop-blur-xl dark:bg-brand-teal-950/90 sm:grid-cols-2"
         noValidate
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent dark:via-white/20" />
+        <motion.div variants={fieldVariants} className="mb-1 flex items-center gap-3 sm:col-span-2">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-teal-500 to-brand-teal-700 text-white shadow-brand-soft">
+            <CalendarCheck className="h-5 w-5" />
+          </span>
+          <div>
+            <h3 className="text-lg font-bold text-brand-teal-900 dark:text-white">Appointment details</h3>
+            <p className="text-xs text-brand-grey-500 dark:text-brand-grey-400">Takes less than a minute to fill out.</p>
+          </div>
+        </motion.div>
 
         <motion.div variants={fieldVariants} className="flex flex-col gap-1.5">
           <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Full Name</label>
@@ -221,6 +230,7 @@ export function AppointmentForm({ departments }: { departments: Department[] }) 
           </Button>
         </motion.div>
       </motion.form>
+      </div>
     </motion.div>
   );
 }
