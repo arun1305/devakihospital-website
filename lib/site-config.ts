@@ -81,10 +81,8 @@ export const mainNav: NavItem[] = [
 ];
 
 export const quickAccessLinks = [
-  { label: "Find a Doctor", href: "/doctors", icon: "stethoscope" },
   { label: "Departments", href: "/departments", icon: "layout-grid" },
   { label: "Book Appointment", href: "/appointment", icon: "calendar-check" },
   { label: "Health Packages", href: "/health-packages", icon: "heart-pulse" },
-  { label: "Lab Reports", href: "/services/lab", icon: "flask-conical" },
   { label: "Contact Us", href: "/contact", icon: "phone-call" },
 ] as const;

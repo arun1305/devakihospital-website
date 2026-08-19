@@ -1,26 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Stethoscope,
-  LayoutGrid,
-  CalendarCheck,
-  HeartPulse,
-  FlaskConical,
-  PhoneCall,
-  type LucideIcon,
-} from "lucide-react";
+import { LayoutGrid, CalendarCheck, HeartPulse, PhoneCall, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { StaggerGroup, RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { quickAccessLinks } from "@/lib/site-config";
 import { motion } from "framer-motion";
 
 const iconMap: Record<string, LucideIcon> = {
-  stethoscope: Stethoscope,
   "layout-grid": LayoutGrid,
   "calendar-check": CalendarCheck,
   "heart-pulse": HeartPulse,
-  "flask-conical": FlaskConical,
   "phone-call": PhoneCall,
 };
 
@@ -28,7 +18,7 @@ export function QuickAccess() {
   return (
     <section className="relative -mt-16 z-10">
       <Container>
-        <StaggerGroup className="grid grid-cols-2 gap-4 rounded-3xl bg-white p-5 shadow-brand-soft ring-1 ring-brand-grey-200/60 sm:grid-cols-3 lg:grid-cols-6 lg:p-6 dark:bg-brand-teal-900 dark:ring-white/10">
+        <StaggerGroup className="grid grid-cols-2 gap-4 rounded-3xl bg-white p-5 shadow-brand-soft ring-1 ring-brand-grey-200/60 sm:grid-cols-4 lg:p-6 dark:bg-brand-teal-900 dark:ring-white/10">
           {quickAccessLinks.map((item) => {
             const Icon = iconMap[item.icon];
             return (
