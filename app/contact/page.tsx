@@ -18,8 +18,9 @@ export const metadata: Metadata = buildMetadata({
 
 const contactDetails = [
   { icon: MapPin, label: "Address", value: `${siteConfig.address.line1}, ${siteConfig.address.line2}, ${siteConfig.address.city} – ${siteConfig.address.postalCode}` },
-  { icon: Phone, label: "Appointments", value: siteConfig.appointmentNumber },
-  { icon: Phone, label: "Emergency (24×7)", value: siteConfig.emergencyNumber },
+  { icon: Phone, label: "Appointments / Enquiry", value: siteConfig.appointmentNumber },
+  { icon: Phone, label: "Emergency Casualty (24×7)", value: siteConfig.emergencyNumber },
+  { icon: Phone, label: "Landline", value: siteConfig.landlineNumber },
   { icon: Mail, label: "Email", value: siteConfig.email },
   { icon: Clock, label: "OPD Hours", value: "Mon–Sat, 8:00 AM – 8:00 PM" },
 ];

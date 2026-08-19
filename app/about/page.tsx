@@ -23,7 +23,7 @@ const coreValues = [
 ];
 
 const journey = [
-  { year: "1998", milestone: "Devaki Speciality Hospital opens as a 50-bed multi-speciality facility in Chennai." },
+  { year: "1998", milestone: "Devaki Speciality Hospital opens as a 50-bed multi-speciality facility in Madurai." },
   { year: "2006", milestone: "Cardiology and Orthopaedics centres of excellence established with dedicated cath lab and OTs." },
   { year: "2013", milestone: "NABH accreditation achieved; hospital expands to 300 beds." },
   { year: "2019", milestone: "Oncology and advanced Neurology units launched with a dedicated stroke unit." },
