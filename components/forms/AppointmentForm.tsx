@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
-import { CalendarCheck, Loader2, CheckCircle2 } from "lucide-react";
+import { motion, type Variants } from "framer-motion";
+import { CalendarCheck, Loader2, CheckCircle2, User, Phone, Mail, Building2, CalendarDays, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { submitAppointment } from "@/lib/api-client";
 import { cn } from "@/lib/utils";
@@ -25,8 +26,30 @@ const appointmentSchema = z.object({
 
 type AppointmentFormValues = z.infer<typeof appointmentSchema>;
 
-const inputClasses =
-  "w-full rounded-xl border border-brand-grey-200 bg-white px-4 py-3 text-sm text-brand-teal-900 outline-none transition-colors placeholder:text-brand-grey-400 focus:border-brand-teal-500 focus:ring-2 focus:ring-brand-teal-100 dark:border-white/15 dark:bg-brand-teal-900 dark:text-white dark:placeholder:text-brand-grey-500 dark:focus:border-brand-teal-400 dark:focus:ring-brand-teal-400/20";
+const fieldVariants: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
+};
+
+const containerVariants: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.06, delayChildren: 0.05 } },
+};
+
+function glassInputClasses(hasIcon = true) {
+  return cn(
+    "w-full rounded-xl border border-brand-grey-200/80 bg-white/70 py-3 text-sm text-brand-teal-900 outline-none backdrop-blur-sm transition-all duration-300",
+    "placeholder:text-brand-grey-400 focus:border-brand-teal-500 focus:bg-white focus:shadow-[0_0_0_4px_rgba(28,100,89,0.1)]",
+    "dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-brand-grey-500 dark:focus:border-brand-teal-400 dark:focus:bg-white/10 dark:focus:shadow-[0_0_0_4px_rgba(71,151,140,0.15)]",
+    hasIcon ? "pl-11 pr-4" : "px-4"
+  );
+}
+
+function FieldIcon({ icon: Icon }: { icon: typeof User }) {
+  return (
+    <Icon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-grey-400 transition-colors duration-300 peer-focus:text-brand-teal-600 dark:text-brand-grey-500 dark:peer-focus:text-brand-teal-300" />
+  );
+}
 
 export function AppointmentForm({ departments }: { departments: Department[] }) {
   const [submitted, setSubmitted] = useState(false);
@@ -47,8 +70,19 @@ export function AppointmentForm({ departments }: { departments: Department[] }) 
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-3xl bg-brand-teal-50 p-10 text-center dark:bg-brand-teal-900">
-        <CheckCircle2 className="h-12 w-12 text-brand-teal-600 dark:text-brand-teal-300" />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col items-center gap-4 rounded-3xl bg-brand-teal-50 p-10 text-center dark:bg-brand-teal-900"
+      >
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.15, type: "spring", stiffness: 260, damping: 18 }}
+        >
+          <CheckCircle2 className="h-12 w-12 text-brand-teal-600 dark:text-brand-teal-300" />
+        </motion.div>
         <h3 className="text-xl font-bold text-brand-teal-900 dark:text-white">Appointment request received</h3>
         <p className="max-w-sm text-sm text-brand-grey-500 dark:text-brand-grey-400">
           Our patient care team will call you shortly to confirm your slot. For urgent needs, please call our
@@ -57,93 +91,136 @@ export function AppointmentForm({ departments }: { departments: Department[] }) 
         <Button variant="outline" onClick={() => setSubmitted(false)}>
           Book Another Appointment
         </Button>
-      </div>
+      </motion.div>
     );
   }
 
   return (
-    <form
-      onSubmit={handleSubmit((values) => mutation.mutate(values))}
-      className="grid gap-5 rounded-3xl bg-white p-8 shadow-brand-soft ring-1 ring-brand-grey-200/70 dark:bg-brand-teal-900 dark:ring-white/10 sm:grid-cols-2"
-      noValidate
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className="relative"
     >
-      <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Full Name</label>
-        <input className={inputClasses} placeholder="Your full name" {...register("patientName")} />
-        {errors.patientName && <p className="text-xs text-red-600 dark:text-red-400">{errors.patientName.message}</p>}
-      </div>
+      <motion.div
+        className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-brand-teal-400/25 via-brand-orange-300/10 to-brand-orange-400/20 blur-2xl"
+        animate={{ opacity: [0.5, 0.9, 0.5] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden
+      />
+      <motion.form
+        onSubmit={handleSubmit((values) => mutation.mutate(values))}
+        className="relative grid gap-5 overflow-hidden rounded-3xl bg-white/90 p-8 shadow-brand-glow ring-1 ring-white/60 backdrop-blur-xl dark:bg-brand-teal-950/85 dark:ring-white/10 sm:grid-cols-2"
+        noValidate
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent dark:via-white/20" />
 
-      <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Phone Number</label>
-        <input className={inputClasses} placeholder="+91 98765 43210" {...register("phone")} />
-        {errors.phone && <p className="text-xs text-red-600 dark:text-red-400">{errors.phone.message}</p>}
-      </div>
+        <motion.div variants={fieldVariants} className="flex flex-col gap-1.5">
+          <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Full Name</label>
+          <div className="relative">
+            <FieldIcon icon={User} />
+            <input className={cn(glassInputClasses(), "peer")} placeholder="Your full name" {...register("patientName")} />
+          </div>
+          {errors.patientName && <p className="text-xs text-red-600 dark:text-red-400">{errors.patientName.message}</p>}
+        </motion.div>
 
-      <div className="flex flex-col gap-1.5 sm:col-span-2">
-        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Email Address</label>
-        <input className={inputClasses} type="email" placeholder="you@example.com" {...register("email")} />
-        {errors.email && <p className="text-xs text-red-600 dark:text-red-400">{errors.email.message}</p>}
-      </div>
+        <motion.div variants={fieldVariants} className="flex flex-col gap-1.5">
+          <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Phone Number</label>
+          <div className="relative">
+            <FieldIcon icon={Phone} />
+            <input className={cn(glassInputClasses(), "peer")} placeholder="+91 98765 43210" {...register("phone")} />
+          </div>
+          {errors.phone && <p className="text-xs text-red-600 dark:text-red-400">{errors.phone.message}</p>}
+        </motion.div>
 
-      <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Department</label>
-        <select className={inputClasses} defaultValue="" {...register("department")}>
-          <option value="" disabled>
-            Select a department
-          </option>
-          {departments.map((department) => (
-            <option key={department._id} value={department._id}>
-              {department.name}
-            </option>
-          ))}
-        </select>
-        {errors.department && <p className="text-xs text-red-600 dark:text-red-400">{errors.department.message}</p>}
-      </div>
+        <motion.div variants={fieldVariants} className="flex flex-col gap-1.5 sm:col-span-2">
+          <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Email Address</label>
+          <div className="relative">
+            <FieldIcon icon={Mail} />
+            <input className={cn(glassInputClasses(), "peer")} type="email" placeholder="you@example.com" {...register("email")} />
+          </div>
+          {errors.email && <p className="text-xs text-red-600 dark:text-red-400">{errors.email.message}</p>}
+        </motion.div>
 
-      <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Preferred Date</label>
-        <input
-          className={cn(inputClasses, "dark:[color-scheme:dark]")}
-          type="date"
-          min={new Date().toISOString().split("T")[0]}
-          {...register("preferredDate")}
-        />
-        {errors.preferredDate && <p className="text-xs text-red-600 dark:text-red-400">{errors.preferredDate.message}</p>}
-      </div>
+        <motion.div variants={fieldVariants} className="flex flex-col gap-1.5">
+          <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Department</label>
+          <div className="relative">
+            <FieldIcon icon={Building2} />
+            <select className={cn(glassInputClasses(), "peer appearance-none")} defaultValue="" {...register("department")}>
+              <option value="" disabled>
+                Select a department
+              </option>
+              {departments.map((department) => (
+                <option key={department._id} value={department._id}>
+                  {department.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          {errors.department && <p className="text-xs text-red-600 dark:text-red-400">{errors.department.message}</p>}
+        </motion.div>
 
-      <div className="flex flex-col gap-1.5 sm:col-span-2">
-        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Preferred Time</label>
-        <div className="flex flex-wrap gap-2">
-          {timeSlots.map((slot) => (
-            <label
-              key={slot}
-              className="cursor-pointer rounded-full border border-brand-grey-200 px-4 py-2 text-sm has-[:checked]:border-brand-teal-600 has-[:checked]:bg-brand-teal-50 has-[:checked]:text-brand-teal-700 dark:border-white/15 dark:text-white dark:has-[:checked]:border-brand-teal-400 dark:has-[:checked]:bg-brand-teal-800 dark:has-[:checked]:text-brand-teal-100"
-            >
-              <input type="radio" value={slot} className="sr-only" {...register("preferredTimeSlot")} />
-              {slot}
-            </label>
-          ))}
-        </div>
-        {errors.preferredTimeSlot && <p className="text-xs text-red-600 dark:text-red-400">{errors.preferredTimeSlot.message}</p>}
-      </div>
+        <motion.div variants={fieldVariants} className="flex flex-col gap-1.5">
+          <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Preferred Date</label>
+          <div className="relative">
+            <FieldIcon icon={CalendarDays} />
+            <input
+              className={cn(glassInputClasses(), "peer dark:[color-scheme:dark]")}
+              type="date"
+              min={new Date().toISOString().split("T")[0]}
+              {...register("preferredDate")}
+            />
+          </div>
+          {errors.preferredDate && <p className="text-xs text-red-600 dark:text-red-400">{errors.preferredDate.message}</p>}
+        </motion.div>
 
-      <div className="flex flex-col gap-1.5 sm:col-span-2">
-        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Additional Notes (optional)</label>
-        <textarea className={inputClasses} rows={3} placeholder="Briefly describe your symptoms or concern" {...register("message")} />
-      </div>
+        <motion.div variants={fieldVariants} className="flex flex-col gap-1.5 sm:col-span-2">
+          <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Preferred Time</label>
+          <div className="flex flex-wrap gap-2">
+            {timeSlots.map((slot) => (
+              <label
+                key={slot}
+                className="cursor-pointer rounded-full border border-brand-grey-200/80 bg-white/60 px-4 py-2 text-sm backdrop-blur-sm transition-all duration-200 has-[:checked]:border-brand-teal-600 has-[:checked]:bg-brand-teal-50 has-[:checked]:text-brand-teal-700 has-[:checked]:shadow-[0_0_0_4px_rgba(28,100,89,0.1)] dark:border-white/10 dark:bg-white/5 dark:text-white dark:has-[:checked]:border-brand-teal-400 dark:has-[:checked]:bg-brand-teal-800 dark:has-[:checked]:text-brand-teal-100"
+              >
+                <input type="radio" value={slot} className="sr-only" {...register("preferredTimeSlot")} />
+                {slot}
+              </label>
+            ))}
+          </div>
+          {errors.preferredTimeSlot && <p className="text-xs text-red-600 dark:text-red-400">{errors.preferredTimeSlot.message}</p>}
+        </motion.div>
 
-      {mutation.isError && (
-        <p className="text-sm text-red-600 dark:text-red-400 sm:col-span-2">
-          Something went wrong submitting your request. Please try again or call us directly.
-        </p>
-      )}
+        <motion.div variants={fieldVariants} className="flex flex-col gap-1.5 sm:col-span-2">
+          <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Additional Notes (optional)</label>
+          <div className="relative">
+            <MessageSquare className="pointer-events-none absolute left-4 top-4 h-4 w-4 text-brand-grey-400 transition-colors duration-300 peer-focus:text-brand-teal-600 dark:text-brand-grey-500 dark:peer-focus:text-brand-teal-300" />
+            <textarea
+              className={cn(glassInputClasses(), "peer resize-none pt-3.5")}
+              rows={3}
+              placeholder="Briefly describe your symptoms or concern"
+              {...register("message")}
+            />
+          </div>
+        </motion.div>
 
-      <div className="sm:col-span-2">
-        <Button type="submit" size="lg" className="w-full justify-center" disabled={mutation.isPending}>
-          {mutation.isPending ? <Loader2 className="h-5 w-5 animate-spin" /> : <CalendarCheck className="h-5 w-5" />}
-          {mutation.isPending ? "Submitting..." : "Request Appointment"}
-        </Button>
-      </div>
-    </form>
+        {mutation.isError && (
+          <motion.p variants={fieldVariants} className="text-sm text-red-600 dark:text-red-400 sm:col-span-2">
+            Something went wrong submitting your request. Please try again or call us directly.
+          </motion.p>
+        )}
+
+        <motion.div variants={fieldVariants} className="sm:col-span-2">
+          <Button type="submit" size="lg" className="btn-shine w-full justify-center" disabled={mutation.isPending}>
+            {mutation.isPending ? <Loader2 className="h-5 w-5 animate-spin" /> : <CalendarCheck className="h-5 w-5" />}
+            {mutation.isPending ? "Submitting..." : "Request Appointment"}
+          </Button>
+        </motion.div>
+      </motion.form>
+    </motion.div>
   );
 }
