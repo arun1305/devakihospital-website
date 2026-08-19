@@ -32,7 +32,11 @@ export default async function ContactPage() {
 
   return (
     <>
-      <section className="bg-brand-grey-50 py-20 lg:py-28 dark:bg-brand-grey-900">
+      <section className="relative isolate overflow-hidden bg-brand-grey-50 py-20 lg:py-28 dark:bg-brand-grey-900">
+        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+          <div className="absolute right-0 top-0 h-[28rem] w-[28rem] rounded-full bg-brand-teal-300/40 blur-3xl dark:bg-brand-teal-500/10" />
+          <div className="absolute -bottom-24 left-1/4 h-96 w-96 rounded-full bg-brand-orange-300/30 blur-3xl dark:bg-brand-orange-500/10" />
+        </div>
         <Container className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="flex flex-col gap-8">
             <SectionHeading

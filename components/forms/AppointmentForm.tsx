@@ -47,7 +47,7 @@ function glassInputClasses(hasIcon = true) {
 
 function FieldIcon({ icon: Icon }: { icon: typeof User }) {
   return (
-    <Icon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-grey-400 transition-colors duration-300 peer-focus:text-brand-teal-600 dark:text-brand-grey-500 dark:peer-focus:text-brand-teal-300" />
+    <Icon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-teal-500/70 transition-colors duration-300 peer-focus:text-brand-teal-600 dark:text-brand-grey-400 dark:peer-focus:text-brand-teal-300" />
   );
 }
 
@@ -104,14 +104,14 @@ export function AppointmentForm({ departments }: { departments: Department[] }) 
       className="relative"
     >
       <motion.div
-        className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-brand-teal-400/25 via-brand-orange-300/10 to-brand-orange-400/20 blur-2xl"
-        animate={{ opacity: [0.5, 0.9, 0.5] }}
+        className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-brand-teal-400/40 via-brand-orange-300/25 to-brand-orange-400/35 blur-3xl"
+        animate={{ opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden
       />
       <motion.form
         onSubmit={handleSubmit((values) => mutation.mutate(values))}
-        className="relative grid gap-5 overflow-hidden rounded-3xl bg-white/90 p-8 shadow-brand-glow ring-1 ring-white/60 backdrop-blur-xl dark:bg-brand-teal-950/85 dark:ring-white/10 sm:grid-cols-2"
+        className="relative grid gap-5 overflow-hidden rounded-3xl border border-white/80 bg-white/80 p-8 shadow-brand-glow ring-1 ring-brand-teal-900/5 backdrop-blur-xl dark:border-white/10 dark:bg-brand-teal-950/80 dark:ring-white/10 sm:grid-cols-2"
         noValidate
         variants={containerVariants}
         initial="hidden"
@@ -198,7 +198,7 @@ export function AppointmentForm({ departments }: { departments: Department[] }) 
         <motion.div variants={fieldVariants} className="flex flex-col gap-1.5 sm:col-span-2">
           <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Additional Notes (optional)</label>
           <div className="relative">
-            <MessageSquare className="pointer-events-none absolute left-4 top-4 h-4 w-4 text-brand-grey-400 transition-colors duration-300 peer-focus:text-brand-teal-600 dark:text-brand-grey-500 dark:peer-focus:text-brand-teal-300" />
+              <MessageSquare className="pointer-events-none absolute left-4 top-4 h-4 w-4 text-brand-teal-500/70 transition-colors duration-300 peer-focus:text-brand-teal-600 dark:text-brand-grey-400 dark:peer-focus:text-brand-teal-300" />
             <textarea
               className={cn(glassInputClasses(), "peer resize-none pt-3.5")}
               rows={3}
