@@ -22,7 +22,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 const inputClasses =
   "w-full rounded-xl border border-brand-grey-200 bg-white px-4 py-3 text-sm text-brand-teal-900 outline-none transition-colors focus:border-brand-teal-500 focus:ring-2 focus:ring-brand-teal-100";
 
-export function ContactForm() {
+export function ContactForm({ embedded = false }: { embedded?: boolean } = {}) {
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
@@ -41,9 +41,15 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-3xl bg-brand-teal-50 p-10 text-center">
-        <CheckCircle2 className="h-12 w-12 text-brand-teal-600" />
-        <h3 className="text-xl font-bold text-brand-teal-900">Message sent</h3>
+      <div
+        className={
+          embedded
+            ? "flex flex-col items-center gap-3 rounded-2xl bg-brand-teal-50 p-6 text-center"
+            : "flex flex-col items-center gap-4 rounded-3xl bg-brand-teal-50 p-10 text-center"
+        }
+      >
+        <CheckCircle2 className="h-10 w-10 text-brand-teal-600" />
+        <h3 className="text-lg font-bold text-brand-teal-900">Message sent</h3>
         <p className="max-w-sm text-sm text-brand-grey-500">
           Thanks for reaching out — our team typically responds within one business day.
         </p>
@@ -57,7 +63,11 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit((values) => mutation.mutate(values))}
-      className="grid gap-5 rounded-3xl bg-white p-8 shadow-brand-soft ring-1 ring-brand-grey-200/70 sm:grid-cols-2"
+      className={
+        embedded
+          ? "grid gap-4 sm:grid-cols-2"
+          : "grid gap-5 rounded-3xl bg-white p-8 shadow-brand-soft ring-1 ring-brand-grey-200/70 sm:grid-cols-2"
+      }
       noValidate
     >
       <div className="flex flex-col gap-1.5">
