@@ -113,12 +113,24 @@ export interface HealthPackage {
   name: string;
   slug: string;
   category: string;
+  categoryOrder: number;
+  localName?: string;
+  tier?: string;
+  tierOrder: number;
+  popular: boolean;
   price: number;
   discountedPrice?: number;
   description: string;
   inclusions: string[];
   idealFor: string[];
   image?: string;
+}
+
+export interface PackageCategoryGroup {
+  category: string;
+  categoryOrder: number;
+  localName?: string;
+  packages: HealthPackage[];
 }
 
 export interface InsurancePartner {
