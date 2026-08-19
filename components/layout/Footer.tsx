@@ -3,6 +3,7 @@ import { MapPin, Mail, Phone } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { FacebookIcon, InstagramIcon, LinkedInIcon, YoutubeIcon } from "@/components/ui/SocialIcons";
 import { Container } from "@/components/ui/Container";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { siteConfig, departmentNavLinks } from "@/lib/site-config";
 
 const footerColumns = [
@@ -105,10 +106,11 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
-          <div className="flex gap-5">
+          <div className="flex items-center gap-5">
             <Link href="/patient-resources/privacy">Privacy Policy</Link>
             <Link href="/patient-resources/patient-rights">Patient Rights</Link>
             <Link href="/contact">Sitemap</Link>
+            <ThemeToggle className="border-white/15 bg-white/10 text-white hover:bg-white/20 dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/20" />
           </div>
         </Container>
       </div>
