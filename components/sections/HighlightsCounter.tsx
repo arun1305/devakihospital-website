@@ -3,10 +3,10 @@ import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 const highlights = [
-  { value: 28, suffix: "+", label: "Years of Trusted Care" },
-  { value: 200, suffix: "+", label: "Specialist Doctors" },
-  { value: 500, suffix: "+", label: "Beds Across Facilities" },
-  { value: 1200000, suffix: "+", label: "Patients Treated" },
+  { value: 25, suffix: "+", label: "Years of Trusted Care" },
+  { value: 30, suffix: "+", label: "Medical Specialities" },
+  { value: 150, suffix: "+", label: "Beds Across Facilities" },
+  { value: 10, suffix: "M+", label: "Patients Treated" },
 ];
 
 export function HighlightsCounter() {

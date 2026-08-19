@@ -1,4 +1,4 @@
-import { Phone, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/ui/Container";
 
