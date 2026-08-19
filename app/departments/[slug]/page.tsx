@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { AnimatedIconBadge } from "@/components/ui/AnimatedIconBadge";
 import { Accordion } from "@/components/ui/Accordion";
 import { RevealOnScroll, StaggerGroup } from "@/components/ui/RevealOnScroll";
 import { DoctorCard } from "@/components/doctors/DoctorCard";
@@ -14,6 +15,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata, departmentJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { getDepartmentBySlug, getDepartments } from "@/lib/api-server";
 import { fallbackDepartments } from "@/lib/fallback-content";
+import { getDepartmentIcon } from "@/lib/department-icons";
 import type { Department } from "@/types";
 
 interface PageProps {
@@ -56,6 +58,8 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
   const department = await resolveDepartment(slug);
   if (!department) notFound();
 
+  const DeptIcon = getDepartmentIcon(department.slug);
+
   const breadcrumb = [
     { name: "Home", path: "/" },
     { name: "Departments", path: "/departments" },
@@ -85,9 +89,14 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
               </span>
             ))}
           </nav>
-          <RevealOnScroll className="max-w-3xl">
-            <h1 className="text-4xl font-bold text-white sm:text-5xl">{department.name}</h1>
-            <p className="mt-4 text-lg text-white/75">{department.shortDescription}</p>
+          <RevealOnScroll className="flex max-w-3xl items-start gap-5">
+            <AnimatedIconBadge className="mt-1 h-16 w-16 shadow-brand-glow">
+              <DeptIcon className="h-7 w-7" />
+            </AnimatedIconBadge>
+            <div>
+              <h1 className="text-4xl font-bold text-white sm:text-5xl">{department.name}</h1>
+              <p className="mt-4 text-lg text-white/75">{department.shortDescription}</p>
+            </div>
           </RevealOnScroll>
           <RevealOnScroll delay={0.1}>
             <Button href="/appointment" variant="secondary" size="lg">

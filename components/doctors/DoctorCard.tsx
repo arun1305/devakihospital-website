@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { GraduationCap, Languages, Stethoscope } from "lucide-react";
+import { GraduationCap, Languages } from "lucide-react";
 import { Card } from "@/components/ui/Card";
+import { getDepartmentIcon } from "@/lib/department-icons";
 import type { Doctor } from "@/types";
 
 function initials(name: string) {
@@ -15,9 +16,11 @@ function initials(name: string) {
 
 export function DoctorCard({ doctor }: { doctor: Doctor }) {
   const department = Array.isArray(doctor.departments)
-    ? (doctor.departments[0] as { name?: string } | string)
+    ? (doctor.departments[0] as { name?: string; slug?: string } | string)
     : undefined;
   const departmentName = typeof department === "string" ? undefined : department?.name;
+  const departmentSlug = typeof department === "string" ? undefined : department?.slug;
+  const DepartmentIcon = getDepartmentIcon(departmentSlug ?? "");
 
   return (
     <Card className="group flex h-full flex-col overflow-hidden">
@@ -38,7 +41,7 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
         </div>
         {departmentName && (
           <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-teal-50 px-3 py-1 text-xs font-semibold text-brand-teal-700 dark:bg-brand-teal-800 dark:text-brand-teal-100">
-            <Stethoscope className="h-3.5 w-3.5" />
+            <DepartmentIcon className="h-3.5 w-3.5" />
             {departmentName}
           </span>
         )}

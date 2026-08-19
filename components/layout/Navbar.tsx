@@ -10,6 +10,7 @@ import { Container } from "@/components/ui/Container";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { mainNav } from "@/lib/site-config";
 import { siteConfig } from "@/lib/site-config";
+import { getDepartmentIcon } from "@/lib/department-icons";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -62,18 +63,28 @@ export function Navbar() {
                     transition={{ duration: 0.18 }}
                     className="absolute left-0 top-full grid w-72 gap-1 rounded-2xl border border-brand-grey-200 bg-white p-3 shadow-brand-soft dark:border-white/10 dark:bg-brand-teal-900"
                   >
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        href={child.href}
-                        className="rounded-xl px-3 py-2.5 text-sm transition-colors hover:bg-brand-teal-50 dark:hover:bg-brand-teal-800"
-                      >
-                        <span className="block font-semibold text-brand-teal-900 dark:text-brand-teal-50">{child.label}</span>
-                        {child.description && (
-                          <span className="block text-xs text-brand-grey-500 dark:text-brand-grey-400">{child.description}</span>
-                        )}
-                      </Link>
-                    ))}
+                    {item.children.map((child) => {
+                      const ChildIcon = item.label === "Departments" ? getDepartmentIcon(child.href.split("/").pop() ?? "") : null;
+                      return (
+                        <Link
+                          key={child.label}
+                          href={child.href}
+                          className="flex items-start gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors hover:bg-brand-teal-50 dark:hover:bg-brand-teal-800"
+                        >
+                          {ChildIcon && (
+                            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-teal-50 text-brand-teal-600 dark:bg-brand-teal-800 dark:text-brand-teal-200">
+                              <ChildIcon className="h-4 w-4" />
+                            </span>
+                          )}
+                          <span>
+                            <span className="block font-semibold text-brand-teal-900 dark:text-brand-teal-50">{child.label}</span>
+                            {child.description && (
+                              <span className="block text-xs text-brand-grey-500 dark:text-brand-grey-400">{child.description}</span>
+                            )}
+                          </span>
+                        </Link>
+                      );
+                    })}
                   </motion.div>
                 )}
               </AnimatePresence>
