@@ -8,6 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { CalendarCheck, Loader2, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { submitAppointment } from "@/lib/api-client";
+import { cn } from "@/lib/utils";
 import type { Department } from "@/types";
 
 const timeSlots = ["09:00 AM", "10:30 AM", "12:00 PM", "02:00 PM", "04:00 PM", "06:00 PM"];
@@ -25,7 +26,7 @@ const appointmentSchema = z.object({
 type AppointmentFormValues = z.infer<typeof appointmentSchema>;
 
 const inputClasses =
-  "w-full rounded-xl border border-brand-grey-200 bg-white px-4 py-3 text-sm text-brand-teal-900 outline-none transition-colors focus:border-brand-teal-500 focus:ring-2 focus:ring-brand-teal-100";
+  "w-full rounded-xl border border-brand-grey-200 bg-white px-4 py-3 text-sm text-brand-teal-900 outline-none transition-colors placeholder:text-brand-grey-400 focus:border-brand-teal-500 focus:ring-2 focus:ring-brand-teal-100 dark:border-white/15 dark:bg-brand-teal-900 dark:text-white dark:placeholder:text-brand-grey-500 dark:focus:border-brand-teal-400 dark:focus:ring-brand-teal-400/20";
 
 export function AppointmentForm({ departments }: { departments: Department[] }) {
   const [submitted, setSubmitted] = useState(false);
@@ -46,10 +47,10 @@ export function AppointmentForm({ departments }: { departments: Department[] }) 
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-3xl bg-brand-teal-50 p-10 text-center">
-        <CheckCircle2 className="h-12 w-12 text-brand-teal-600" />
-        <h3 className="text-xl font-bold text-brand-teal-900">Appointment request received</h3>
-        <p className="max-w-sm text-sm text-brand-grey-500">
+      <div className="flex flex-col items-center gap-4 rounded-3xl bg-brand-teal-50 p-10 text-center dark:bg-brand-teal-900">
+        <CheckCircle2 className="h-12 w-12 text-brand-teal-600 dark:text-brand-teal-300" />
+        <h3 className="text-xl font-bold text-brand-teal-900 dark:text-white">Appointment request received</h3>
+        <p className="max-w-sm text-sm text-brand-grey-500 dark:text-brand-grey-400">
           Our patient care team will call you shortly to confirm your slot. For urgent needs, please call our
           emergency line directly.
         </p>
@@ -63,29 +64,29 @@ export function AppointmentForm({ departments }: { departments: Department[] }) 
   return (
     <form
       onSubmit={handleSubmit((values) => mutation.mutate(values))}
-      className="grid gap-5 rounded-3xl bg-white p-8 shadow-brand-soft ring-1 ring-brand-grey-200/70 sm:grid-cols-2"
+      className="grid gap-5 rounded-3xl bg-white p-8 shadow-brand-soft ring-1 ring-brand-grey-200/70 dark:bg-brand-teal-900 dark:ring-white/10 sm:grid-cols-2"
       noValidate
     >
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-semibold text-brand-teal-900">Full Name</label>
+        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Full Name</label>
         <input className={inputClasses} placeholder="Your full name" {...register("patientName")} />
-        {errors.patientName && <p className="text-xs text-red-600">{errors.patientName.message}</p>}
+        {errors.patientName && <p className="text-xs text-red-600 dark:text-red-400">{errors.patientName.message}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-semibold text-brand-teal-900">Phone Number</label>
+        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Phone Number</label>
         <input className={inputClasses} placeholder="+91 98765 43210" {...register("phone")} />
-        {errors.phone && <p className="text-xs text-red-600">{errors.phone.message}</p>}
+        {errors.phone && <p className="text-xs text-red-600 dark:text-red-400">{errors.phone.message}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5 sm:col-span-2">
-        <label className="text-sm font-semibold text-brand-teal-900">Email Address</label>
+        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Email Address</label>
         <input className={inputClasses} type="email" placeholder="you@example.com" {...register("email")} />
-        {errors.email && <p className="text-xs text-red-600">{errors.email.message}</p>}
+        {errors.email && <p className="text-xs text-red-600 dark:text-red-400">{errors.email.message}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-semibold text-brand-teal-900">Department</label>
+        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Department</label>
         <select className={inputClasses} defaultValue="" {...register("department")}>
           <option value="" disabled>
             Select a department
@@ -96,43 +97,43 @@ export function AppointmentForm({ departments }: { departments: Department[] }) 
             </option>
           ))}
         </select>
-        {errors.department && <p className="text-xs text-red-600">{errors.department.message}</p>}
+        {errors.department && <p className="text-xs text-red-600 dark:text-red-400">{errors.department.message}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-semibold text-brand-teal-900">Preferred Date</label>
+        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Preferred Date</label>
         <input
-          className={inputClasses}
+          className={cn(inputClasses, "dark:[color-scheme:dark]")}
           type="date"
           min={new Date().toISOString().split("T")[0]}
           {...register("preferredDate")}
         />
-        {errors.preferredDate && <p className="text-xs text-red-600">{errors.preferredDate.message}</p>}
+        {errors.preferredDate && <p className="text-xs text-red-600 dark:text-red-400">{errors.preferredDate.message}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5 sm:col-span-2">
-        <label className="text-sm font-semibold text-brand-teal-900">Preferred Time</label>
+        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Preferred Time</label>
         <div className="flex flex-wrap gap-2">
           {timeSlots.map((slot) => (
             <label
               key={slot}
-              className="cursor-pointer rounded-full border border-brand-grey-200 px-4 py-2 text-sm has-[:checked]:border-brand-teal-600 has-[:checked]:bg-brand-teal-50 has-[:checked]:text-brand-teal-700"
+              className="cursor-pointer rounded-full border border-brand-grey-200 px-4 py-2 text-sm has-[:checked]:border-brand-teal-600 has-[:checked]:bg-brand-teal-50 has-[:checked]:text-brand-teal-700 dark:border-white/15 dark:text-white dark:has-[:checked]:border-brand-teal-400 dark:has-[:checked]:bg-brand-teal-800 dark:has-[:checked]:text-brand-teal-100"
             >
               <input type="radio" value={slot} className="sr-only" {...register("preferredTimeSlot")} />
               {slot}
             </label>
           ))}
         </div>
-        {errors.preferredTimeSlot && <p className="text-xs text-red-600">{errors.preferredTimeSlot.message}</p>}
+        {errors.preferredTimeSlot && <p className="text-xs text-red-600 dark:text-red-400">{errors.preferredTimeSlot.message}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5 sm:col-span-2">
-        <label className="text-sm font-semibold text-brand-teal-900">Additional Notes (optional)</label>
+        <label className="text-sm font-semibold text-brand-teal-900 dark:text-white">Additional Notes (optional)</label>
         <textarea className={inputClasses} rows={3} placeholder="Briefly describe your symptoms or concern" {...register("message")} />
       </div>
 
       {mutation.isError && (
-        <p className="text-sm text-red-600 sm:col-span-2">
+        <p className="text-sm text-red-600 dark:text-red-400 sm:col-span-2">
           Something went wrong submitting your request. Please try again or call us directly.
         </p>
       )}

@@ -5,6 +5,7 @@ import { TopBar } from "@/components/layout/TopBar";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { QueryProvider } from "@/components/providers/QueryProvider";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { siteConfig } from "@/lib/site-config";
 import { organizationJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -53,15 +54,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${plusJakarta.variable} bg-white antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${inter.variable} ${plusJakarta.variable} bg-white antialiased dark:bg-brand-teal-950`}
+      >
         <JsonLd data={organizationJsonLd()} />
-        <QueryProvider>
-          <TopBar />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </QueryProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <QueryProvider>
+            <TopBar />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

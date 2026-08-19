@@ -19,7 +19,7 @@ export default async function GalleryPage() {
   const list = albums.length ? albums : fallbackGalleryAlbums;
 
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-20 lg:py-28 dark:bg-brand-teal-950">
       <Container className="flex flex-col gap-14">
         <SectionHeading align="left" eyebrow="Gallery" title="A look inside Devaki Speciality Hospital" className="mx-0" />
         <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

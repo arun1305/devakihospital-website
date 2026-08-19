@@ -50,17 +50,17 @@ export default function AdmissionBillingPage() {
         title="Admission, discharge & billing"
         description="A transparent, guided process from the moment you're admitted to the moment you head home."
       />
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container>
           <StaggerGroup className="grid gap-6 lg:grid-cols-3">
             {sections.map(({ icon: Icon, title, points }, index) => (
               <RevealOnScroll as="li" key={title} delay={index * 0.06} className="list-none">
                 <Card className="flex h-full flex-col gap-4 p-7">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-700">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-700 dark:bg-brand-teal-800 dark:text-brand-teal-100">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <h2 className="font-bold text-brand-teal-900">{title}</h2>
-                  <ul className="flex flex-col gap-2 text-sm leading-relaxed text-brand-grey-500">
+                  <h2 className="font-bold text-brand-teal-900 dark:text-white">{title}</h2>
+                  <ul className="flex flex-col gap-2 text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">
                     {points.map((point) => (
                       <li key={point}>• {point}</li>
                     ))}

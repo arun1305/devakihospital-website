@@ -9,7 +9,7 @@ export function DoctorsPreview({ doctors }: { doctors: Doctor[] }) {
   if (!doctors.length) return null;
 
   return (
-    <section className="bg-brand-grey-50 py-20 lg:py-28">
+    <section className="bg-brand-grey-50 py-20 lg:py-28 dark:bg-brand-grey-900">
       <Container className="flex flex-col gap-14">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading

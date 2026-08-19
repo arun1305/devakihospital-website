@@ -20,7 +20,7 @@ export function Accordion({ items, className }: { items: AccordionItemData[]; cl
         return (
           <div
             key={item.question}
-            className="overflow-hidden rounded-2xl border border-brand-grey-200 bg-white"
+            className="overflow-hidden rounded-2xl border border-brand-grey-200 bg-white dark:border-white/10 dark:bg-brand-teal-900"
           >
             <button
               type="button"
@@ -28,10 +28,10 @@ export function Accordion({ items, className }: { items: AccordionItemData[]; cl
               aria-expanded={isOpen}
               className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
             >
-              <span className="font-semibold text-brand-teal-900">{item.question}</span>
+              <span className="font-semibold text-brand-teal-900 dark:text-white">{item.question}</span>
               <ChevronDown
                 className={cn(
-                  "h-5 w-5 shrink-0 text-brand-teal-600 transition-transform duration-300",
+                  "h-5 w-5 shrink-0 text-brand-teal-600 transition-transform duration-300 dark:text-brand-teal-200",
                   isOpen && "rotate-180"
                 )}
               />
@@ -44,7 +44,7 @@ export function Accordion({ items, className }: { items: AccordionItemData[]; cl
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <p className="px-5 pb-5 text-sm leading-relaxed text-brand-grey-500">{item.answer}</p>
+                  <p className="px-5 pb-5 text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{item.answer}</p>
                 </motion.div>
               )}
             </AnimatePresence>

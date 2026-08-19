@@ -19,7 +19,7 @@ export default async function AppointmentPage() {
   const list = departments.length ? departments : fallbackDepartments;
 
   return (
-    <section className="bg-brand-grey-50 py-20 lg:py-28">
+    <section className="bg-brand-grey-50 py-20 lg:py-28 dark:bg-brand-grey-900">
       <Container className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div className="flex flex-col gap-6 lg:sticky lg:top-28">
           <SectionHeading
@@ -31,7 +31,7 @@ export default async function AppointmentPage() {
           />
           <a
             href={`tel:${siteConfig.emergencyNumber}`}
-            className="inline-flex w-fit items-center gap-2 rounded-2xl bg-brand-orange-50 px-5 py-3 text-sm font-semibold text-brand-orange-700"
+            className="inline-flex w-fit items-center gap-2 rounded-2xl bg-brand-orange-50 px-5 py-3 text-sm font-semibold text-brand-orange-700 dark:bg-brand-orange-900/40 dark:text-brand-orange-300"
           >
             <PhoneCall className="h-4 w-4" />
             Medical emergency? Call {siteConfig.emergencyNumber} now

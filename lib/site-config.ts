@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     "Devaki Speciality Hospital delivers advanced, multi-speciality healthcare across cardiology, neurology, orthopaedics and more — combining internationally benchmarked clinical technology with compassionate patient care.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  emergencyNumber: "+91 81900 34500",
+  emergencyNumber: "+91 96006 00888",
   appointmentNumber: "+91 96006 00888",
   landlineNumber: "0452-2288800",
   email: "mail@devakihospital.com",

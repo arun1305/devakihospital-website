@@ -26,7 +26,7 @@ const homeFaqs = [
 
 export function FaqSection() {
   return (
-    <section className="bg-brand-grey-50 py-20 lg:py-28">
+    <section className="bg-brand-grey-50 py-20 lg:py-28 dark:bg-brand-grey-900">
       <Container className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <SectionHeading
           align="left"

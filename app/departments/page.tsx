@@ -20,7 +20,7 @@ export default async function DepartmentsPage() {
 
   return (
     <>
-      <section className="bg-brand-teal-900 py-20">
+      <section className="bg-brand-teal-900 py-20 dark:bg-brand-teal-950">
         <Container>
           <SectionHeading
             tone="dark"

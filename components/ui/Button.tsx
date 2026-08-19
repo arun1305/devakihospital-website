@@ -11,10 +11,10 @@ const variantClasses: Record<Variant, string> = {
   secondary:
     "bg-gradient-to-r from-brand-orange-500 to-brand-orange-600 text-white shadow-brand-soft hover:from-brand-orange-600 hover:to-brand-orange-700 focus-visible:outline-brand-orange-500",
   outline:
-    "border-2 border-brand-teal-600 text-brand-teal-700 hover:bg-brand-teal-50 focus-visible:outline-brand-teal-600",
-  ghost: "text-brand-teal-700 hover:bg-brand-teal-50 focus-visible:outline-brand-teal-600",
+    "border-2 border-brand-teal-600 text-brand-teal-700 hover:bg-brand-teal-50 focus-visible:outline-brand-teal-600 dark:border-brand-teal-200 dark:text-brand-teal-100 dark:hover:bg-brand-teal-800",
+  ghost: "text-brand-teal-700 hover:bg-brand-teal-50 focus-visible:outline-brand-teal-600 dark:text-brand-teal-100 dark:hover:bg-brand-teal-800",
   glass:
-    "glass-panel text-brand-teal-800 hover:bg-white/80 shadow-brand-glow focus-visible:outline-white",
+    "glass-panel text-brand-teal-800 hover:bg-white/80 shadow-brand-glow focus-visible:outline-white dark:text-white dark:hover:bg-white/10",
 };
 
 const sizeClasses: Record<Size, string> = {

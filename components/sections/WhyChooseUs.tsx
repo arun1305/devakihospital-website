@@ -41,7 +41,7 @@ const reasons: Reason[] = [
 
 export function WhyChooseUs() {
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-20 lg:py-28 dark:bg-brand-teal-950">
       <Container className="flex flex-col gap-14">
         <SectionHeading
           eyebrow="Why Devaki"
@@ -52,15 +52,15 @@ export function WhyChooseUs() {
         <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {reasons.map(({ icon: Icon, title, description }, index) => (
             <RevealOnScroll as="li" key={title} delay={index * 0.05} className="list-none">
-              <Card className="group h-full p-7">
+              <Card className="group h-full p-7 dark:bg-brand-teal-900 dark:ring-1 dark:ring-white/10">
                 <motion.span
                   whileHover={{ rotate: 8, scale: 1.08 }}
                   className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-teal-500 to-brand-teal-700 text-white shadow-brand-soft"
                 >
                   <Icon className="h-6 w-6" />
                 </motion.span>
-                <h3 className="mb-2 text-lg font-bold text-brand-teal-900">{title}</h3>
-                <p className="text-sm leading-relaxed text-brand-grey-500">{description}</p>
+                <h3 className="mb-2 text-lg font-bold text-brand-teal-900 dark:text-white">{title}</h3>
+                <p className="text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{description}</p>
               </Card>
             </RevealOnScroll>
           ))}

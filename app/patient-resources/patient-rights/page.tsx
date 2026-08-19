@@ -36,25 +36,25 @@ export default function PatientRightsPage() {
         title="Patient rights & responsibilities"
         description="A shared understanding between you and our care team helps us deliver the safest, most respectful care possible."
       />
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="grid gap-12 lg:grid-cols-2">
           <RevealOnScroll>
-            <h2 className="mb-5 text-xl font-bold text-brand-teal-900">Your Rights</h2>
+            <h2 className="mb-5 text-xl font-bold text-brand-teal-900 dark:text-white">Your Rights</h2>
             <ul className="flex flex-col gap-3">
               {rights.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm leading-relaxed text-brand-grey-500">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600" />
+                <li key={item} className="flex items-start gap-2 text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600 dark:text-brand-teal-300" />
                   {item}
                 </li>
               ))}
             </ul>
           </RevealOnScroll>
           <RevealOnScroll delay={0.1}>
-            <h2 className="mb-5 text-xl font-bold text-brand-teal-900">Your Responsibilities</h2>
+            <h2 className="mb-5 text-xl font-bold text-brand-teal-900 dark:text-white">Your Responsibilities</h2>
             <ul className="flex flex-col gap-3">
               {responsibilities.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm leading-relaxed text-brand-grey-500">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange-500" />
+                <li key={item} className="flex items-start gap-2 text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange-500 dark:text-brand-orange-400" />
                   {item}
                 </li>
               ))}

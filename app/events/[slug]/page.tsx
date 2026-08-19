@@ -69,10 +69,10 @@ export default async function EventDetailPage({ params }: PageProps) {
         </Container>
       </section>
 
-      <section className="bg-white py-16">
+      <section className="bg-white py-16 dark:bg-brand-teal-950">
         <Container className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <RevealOnScroll>
-            <p className="whitespace-pre-line leading-relaxed text-brand-grey-600">{event.description}</p>
+            <p className="whitespace-pre-line leading-relaxed text-brand-grey-600 dark:text-brand-grey-300">{event.description}</p>
           </RevealOnScroll>
           {event.registrationEnabled && (
             <RevealOnScroll delay={0.1}>

@@ -68,7 +68,7 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
       <JsonLd data={breadcrumbJsonLd(breadcrumb)} />
       {department.faqs.length > 0 && <JsonLd data={faqJsonLd(department.faqs)} />}
 
-      <section className="relative overflow-hidden bg-brand-teal-900 py-20">
+      <section className="relative overflow-hidden bg-brand-teal-900 py-20 dark:bg-brand-teal-950">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(242,121,27,0.2),transparent_45%)]" />
         <Container className="relative flex flex-col gap-6">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-white/60">
@@ -97,21 +97,21 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
         </Container>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr]">
           <RevealOnScroll className="flex flex-col gap-6">
-            <h2 className="text-2xl font-bold text-brand-teal-900">Overview</h2>
-            <p className="leading-relaxed text-brand-grey-500">{department.overview}</p>
+            <h2 className="text-2xl font-bold text-brand-teal-900 dark:text-white">Overview</h2>
+            <p className="leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{department.overview}</p>
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.1}>
             <Card className="flex flex-col gap-4 p-7">
-              <h3 className="text-lg font-bold text-brand-teal-900">Why choose our {department.name} team</h3>
-              <ul className="flex flex-col gap-3 text-sm text-brand-grey-500">
+              <h3 className="text-lg font-bold text-brand-teal-900 dark:text-white">Why choose our {department.name} team</h3>
+              <ul className="flex flex-col gap-3 text-sm text-brand-grey-500 dark:text-brand-grey-400">
                 {["Board-certified specialists", "24/7 clinical support", "Shared patient records across departments", "Structured recovery & follow-up plans"].map(
                   (point) => (
                     <li key={point} className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600" />
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600 dark:text-brand-teal-300" />
                       {point}
                     </li>
                   )
@@ -122,7 +122,7 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
         </Container>
       </section>
 
-      <section className="bg-brand-grey-50 py-20">
+      <section className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
         <Container className="flex flex-col gap-10">
           <StaggerGroup className="grid gap-6 lg:grid-cols-3">
             {infoBlocks.map(({ key, title, icon: Icon }, index) => {
@@ -134,11 +134,11 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-teal-500 to-brand-teal-700 text-white">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <h3 className="text-lg font-bold text-brand-teal-900">{title}</h3>
-                    <ul className="flex flex-col gap-2 text-sm text-brand-grey-500">
+                    <h3 className="text-lg font-bold text-brand-teal-900 dark:text-white">{title}</h3>
+                    <ul className="flex flex-col gap-2 text-sm text-brand-grey-500 dark:text-brand-grey-400">
                       {list.map((item) => (
                         <li key={item} className="flex items-start gap-2">
-                          <ArrowRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-orange-500" />
+                          <ArrowRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-orange-500 dark:text-brand-orange-300" />
                           {item}
                         </li>
                       ))}
@@ -152,7 +152,7 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
       </section>
 
       {department.doctors.length > 0 && (
-        <section className="bg-white py-20">
+        <section className="bg-white py-20 dark:bg-brand-teal-950">
           <Container className="flex flex-col gap-12">
             <SectionHeading
               align="left"
@@ -172,7 +172,7 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
       )}
 
       {department.faqs.length > 0 && (
-        <section className="bg-brand-grey-50 py-20">
+        <section className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
           <Container className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <SectionHeading
               align="left"

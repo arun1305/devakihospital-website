@@ -43,17 +43,17 @@ export default function VisitorGuidelinesPage() {
         title="Visitor guidelines"
         description="A few simple guidelines that help us keep every patient's recovery environment calm, safe, and hygienic."
       />
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container>
           <StaggerGroup className="grid gap-6 sm:grid-cols-2">
             {guidelines.map(({ icon: Icon, title, description }, index) => (
               <RevealOnScroll as="li" key={title} delay={index * 0.06} className="list-none">
                 <Card className="flex h-full flex-col gap-3 p-7">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-700">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-700 dark:bg-brand-teal-800 dark:text-brand-teal-100">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <h2 className="font-bold text-brand-teal-900">{title}</h2>
-                  <p className="text-sm leading-relaxed text-brand-grey-500">{description}</p>
+                  <h2 className="font-bold text-brand-teal-900 dark:text-white">{title}</h2>
+                  <p className="text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{description}</p>
                 </Card>
               </RevealOnScroll>
             ))}

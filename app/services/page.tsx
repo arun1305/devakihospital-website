@@ -22,7 +22,7 @@ export default function ServicesHubPage() {
         title="Services designed around your care journey"
         description="From emergency response to at-home recovery support, every service is coordinated by one care team."
       />
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container>
           <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {servicesDirectory.map((service, index) => (
@@ -30,10 +30,10 @@ export default function ServicesHubPage() {
                 <Link href={`/services/${service.slug}`} className="group block h-full">
                   <Card className="flex h-full flex-col gap-3 p-7">
                     <div className="flex items-center justify-between">
-                      <h2 className="text-lg font-bold text-brand-teal-900">{service.title}</h2>
-                      <ArrowUpRight className="h-4 w-4 shrink-0 text-brand-grey-400 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-brand-orange-500" />
+                      <h2 className="text-lg font-bold text-brand-teal-900 dark:text-white">{service.title}</h2>
+                      <ArrowUpRight className="h-4 w-4 shrink-0 text-brand-grey-400 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-brand-orange-500 dark:group-hover:text-brand-orange-300" />
                     </div>
-                    <p className="text-sm leading-relaxed text-brand-grey-500">{service.description}</p>
+                    <p className="text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{service.description}</p>
                   </Card>
                 </Link>
               </RevealOnScroll>

@@ -95,16 +95,16 @@ export default async function BlogDetailPage({ params }: PageProps) {
           </Container>
         </section>
 
-        <section className="bg-white py-16">
+        <section className="bg-white py-16 dark:bg-brand-teal-950">
           <Container className="max-w-3xl">
             <RichContent
               content={post.content}
-              className="prose prose-teal max-w-none flex flex-col gap-4 text-brand-grey-600 [&_p]:leading-relaxed"
+              className="prose prose-teal max-w-none flex flex-col gap-4 text-brand-grey-600 dark:text-brand-grey-300 dark:prose-invert [&_p]:leading-relaxed"
             />
             {post.tags.length > 0 && (
               <div className="mt-10 flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
-                  <span key={tag} className="rounded-full bg-brand-teal-50 px-3 py-1 text-xs font-semibold text-brand-teal-700">
+                  <span key={tag} className="rounded-full bg-brand-teal-50 px-3 py-1 text-xs font-semibold text-brand-teal-700 dark:bg-brand-teal-900 dark:text-brand-teal-200">
                     #{tag}
                   </span>
                 ))}

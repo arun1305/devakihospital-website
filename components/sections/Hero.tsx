@@ -113,14 +113,14 @@ export function Hero() {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             aria-hidden
           />
-          <div className="rounded-3xl bg-white/95 p-6 shadow-brand-soft backdrop-blur-xl sm:p-8">
+          <div className="rounded-3xl bg-white/95 p-6 shadow-brand-soft backdrop-blur-xl dark:bg-brand-teal-950/90 dark:ring-1 dark:ring-white/10 sm:p-8">
             <div className="mb-5 flex items-center gap-3">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-orange-50 text-brand-orange-600">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-orange-50 text-brand-orange-600 dark:bg-brand-orange-900/40 dark:text-brand-orange-300">
                 <CalendarCheck className="h-5 w-5" />
               </span>
               <div>
-                <h2 className="text-lg font-bold text-brand-teal-900">Request a Call Back</h2>
-                <p className="text-xs text-brand-grey-500">Share a few details — our care team will reach out shortly.</p>
+                <h2 className="text-lg font-bold text-brand-teal-900 dark:text-white">Request a Call Back</h2>
+                <p className="text-xs text-brand-grey-500 dark:text-brand-grey-400">Share a few details — our care team will reach out shortly.</p>
               </div>
             </div>
             <ContactForm embedded />
@@ -128,7 +128,7 @@ export function Hero() {
         </motion.div>
       </Container>
 
-      <div className="h-16 w-full bg-gradient-to-b from-transparent to-white" />
+      <div className="h-16 w-full bg-gradient-to-b from-transparent to-white dark:to-brand-teal-950" />
     </section>
   );
 }

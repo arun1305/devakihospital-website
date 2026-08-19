@@ -28,12 +28,12 @@ export function AnimatedChecklist({
             hidden: { opacity: 0, x: -10 },
             visible: { opacity: 1, x: 0, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } },
           }}
-          className="flex items-start gap-2 text-sm text-brand-grey-600"
+          className="flex items-start gap-2 text-sm text-brand-grey-600 dark:text-brand-grey-400"
         >
-          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600" />
+          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600 dark:text-brand-teal-300" />
           <span>
             {item}
-            {itemsLocal?.[index] && <span className="block text-xs text-brand-grey-400">{itemsLocal[index]}</span>}
+            {itemsLocal?.[index] && <span className="block text-xs text-brand-grey-400 dark:text-brand-grey-500">{itemsLocal[index]}</span>}
           </span>
         </motion.li>
       ))}

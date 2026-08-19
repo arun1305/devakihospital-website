@@ -20,7 +20,7 @@ export default async function CareersPage() {
   const list = jobs.length ? jobs : fallbackJobListings;
 
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-20 lg:py-28 dark:bg-brand-teal-950">
       <Container className="flex flex-col gap-14">
         <SectionHeading
           align="left"
@@ -35,8 +35,8 @@ export default async function CareersPage() {
               <Link href={`/careers/${job.slug}`} className="group block">
                 <Card className="flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <h2 className="text-lg font-bold text-brand-teal-900">{job.title}</h2>
-                    <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-brand-grey-500">
+                    <h2 className="text-lg font-bold text-brand-teal-900 dark:text-white">{job.title}</h2>
+                    <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-brand-grey-500 dark:text-brand-grey-400">
                       <span className="inline-flex items-center gap-1.5">
                         <Briefcase className="h-4 w-4" /> {job.department} · {job.employmentType}
                       </span>
@@ -45,7 +45,7 @@ export default async function CareersPage() {
                       </span>
                     </div>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-teal-700 transition-transform duration-300 group-hover:translate-x-1">
+                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-teal-700 transition-transform duration-300 group-hover:translate-x-1 dark:text-brand-teal-200">
                     View & Apply <ArrowUpRight className="h-4 w-4" />
                   </span>
                 </Card>
@@ -53,7 +53,7 @@ export default async function CareersPage() {
             </RevealOnScroll>
           ))}
           {list.length === 0 && (
-            <p className="text-sm text-brand-grey-400">No open roles right now — check back soon.</p>
+            <p className="text-sm text-brand-grey-400 dark:text-brand-grey-400">No open roles right now — check back soon.</p>
           )}
         </StaggerGroup>
       </Container>

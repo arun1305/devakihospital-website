@@ -28,7 +28,7 @@ export function QuickAccess() {
   return (
     <section className="relative -mt-16 z-10">
       <Container>
-        <StaggerGroup className="grid grid-cols-2 gap-4 rounded-3xl bg-white p-5 shadow-brand-soft ring-1 ring-brand-grey-200/60 sm:grid-cols-3 lg:grid-cols-6 lg:p-6">
+        <StaggerGroup className="grid grid-cols-2 gap-4 rounded-3xl bg-white p-5 shadow-brand-soft ring-1 ring-brand-grey-200/60 sm:grid-cols-3 lg:grid-cols-6 lg:p-6 dark:bg-brand-teal-900 dark:ring-white/10">
           {quickAccessLinks.map((item) => {
             const Icon = iconMap[item.icon];
             return (
@@ -36,12 +36,12 @@ export function QuickAccess() {
                 <Link href={item.href}>
                   <motion.div
                     whileHover={{ y: -6 }}
-                    className="flex flex-col items-center gap-3 rounded-2xl border border-transparent p-4 text-center transition-colors hover:border-brand-teal-100 hover:bg-brand-teal-50"
+                    className="flex flex-col items-center gap-3 rounded-2xl border border-transparent p-4 text-center transition-colors hover:border-brand-teal-100 hover:bg-brand-teal-50 dark:hover:border-brand-teal-800 dark:hover:bg-brand-teal-800/40"
                   >
                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-teal-500 to-brand-teal-700 text-white shadow-brand-soft">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <span className="text-xs font-semibold text-brand-teal-900 sm:text-sm">{item.label}</span>
+                    <span className="text-xs font-semibold text-brand-teal-900 sm:text-sm dark:text-white">{item.label}</span>
                   </motion.div>
                 </Link>
               </RevealOnScroll>

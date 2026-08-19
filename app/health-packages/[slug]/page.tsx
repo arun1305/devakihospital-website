@@ -85,22 +85,22 @@ export default async function PackageDetailPage({ params }: PageProps) {
         </Container>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <RevealOnScroll className="flex flex-col gap-8">
             <div>
-              <h2 className="mb-1 text-xl font-bold text-brand-teal-900">
+              <h2 className="mb-1 text-xl font-bold text-brand-teal-900 dark:text-white">
                 What&rsquo;s included <span className="text-sm font-normal text-brand-grey-400">({pkg.inclusions.length} tests &amp; services)</span>
               </h2>
               <AnimatedChecklist items={pkg.inclusions} itemsLocal={pkg.inclusionsLocal} className="mt-4" />
             </div>
             {pkg.idealFor.length > 0 && (
               <div>
-                <h2 className="mb-4 text-xl font-bold text-brand-teal-900">Ideal for</h2>
+                <h2 className="mb-4 text-xl font-bold text-brand-teal-900 dark:text-white">Ideal for</h2>
                 <ul className="flex flex-col gap-2">
                   {pkg.idealFor.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-brand-grey-500">
-                      <Users className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange-500" />
+                    <li key={item} className="flex items-start gap-2 text-sm text-brand-grey-500 dark:text-brand-grey-400">
+                      <Users className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange-500 dark:text-brand-orange-300" />
                       {item}
                     </li>
                   ))}
@@ -114,21 +114,21 @@ export default async function PackageDetailPage({ params }: PageProps) {
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.1} className="flex flex-col gap-6">
-            <div className="rounded-2xl bg-brand-grey-50 p-6 text-center">
+            <div className="rounded-2xl bg-brand-grey-50 p-6 text-center dark:bg-brand-grey-900">
               {pkg.discountedPrice ? (
                 <div className="flex items-end justify-center gap-2">
-                  <span className="text-3xl font-bold text-brand-teal-900">
+                  <span className="text-3xl font-bold text-brand-teal-900 dark:text-white">
                     {formatCurrencyINR(pkg.discountedPrice)}
                   </span>
                   <span className="text-lg text-brand-grey-400 line-through">{formatCurrencyINR(pkg.price)}</span>
                 </div>
               ) : (
-                <span className="text-3xl font-bold text-brand-teal-900">{formatCurrencyINR(pkg.price)}</span>
+                <span className="text-3xl font-bold text-brand-teal-900 dark:text-white">{formatCurrencyINR(pkg.price)}</span>
               )}
-              <p className="mt-1 text-xs text-brand-grey-500">Inclusive of consultation</p>
+              <p className="mt-1 text-xs text-brand-grey-500 dark:text-brand-grey-400">Inclusive of consultation</p>
               <a
                 href={`tel:${siteConfig.appointmentNumber}`}
-                className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-brand-teal-700"
+                className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-brand-teal-700 dark:text-brand-teal-200"
               >
                 <PhoneCall className="h-3.5 w-3.5" /> Or call {siteConfig.appointmentNumber}
               </a>

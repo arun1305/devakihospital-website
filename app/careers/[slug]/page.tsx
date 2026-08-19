@@ -51,7 +51,7 @@ export default async function JobDetailPage({ params }: PageProps) {
   return (
     <>
       <JsonLd data={breadcrumbJsonLd(breadcrumb)} />
-      <section className="bg-brand-teal-900 py-20">
+      <section className="bg-brand-teal-900 py-20 dark:bg-brand-teal-950">
         <Container>
           <RevealOnScroll className="max-w-3xl">
             <h1 className="text-3xl font-bold text-white sm:text-4xl">{job.title}</h1>
@@ -67,20 +67,20 @@ export default async function JobDetailPage({ params }: PageProps) {
         </Container>
       </section>
 
-      <section className="bg-white py-16">
+      <section className="bg-white py-16 dark:bg-brand-teal-950">
         <Container className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <RevealOnScroll className="flex flex-col gap-8">
             <div>
-              <h2 className="mb-3 text-xl font-bold text-brand-teal-900">About this role</h2>
-              <p className="whitespace-pre-line leading-relaxed text-brand-grey-600">{job.description}</p>
+              <h2 className="mb-3 text-xl font-bold text-brand-teal-900 dark:text-white">About this role</h2>
+              <p className="whitespace-pre-line leading-relaxed text-brand-grey-600 dark:text-brand-grey-400">{job.description}</p>
             </div>
             {job.requirements.length > 0 && (
               <div>
-                <h2 className="mb-3 text-xl font-bold text-brand-teal-900">Requirements</h2>
+                <h2 className="mb-3 text-xl font-bold text-brand-teal-900 dark:text-white">Requirements</h2>
                 <ul className="flex flex-col gap-2">
                   {job.requirements.map((req) => (
-                    <li key={req} className="flex items-start gap-2 text-sm text-brand-grey-500">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600" />
+                    <li key={req} className="flex items-start gap-2 text-sm text-brand-grey-500 dark:text-brand-grey-400">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600 dark:text-brand-teal-200" />
                       {req}
                     </li>
                   ))}

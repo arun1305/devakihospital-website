@@ -41,7 +41,7 @@ export function InsightsPreview({ blogs, news }: { blogs: BlogPost[]; news: News
   if (!items.length) return null;
 
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-20 lg:py-28 dark:bg-brand-teal-950">
       <Container className="flex flex-col gap-14">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading
@@ -50,7 +50,7 @@ export function InsightsPreview({ blogs, news }: { blogs: BlogPost[]; news: News
             title="Latest from our clinical team"
             className="mx-0"
           />
-          <Link href="/blog" className="text-sm font-semibold text-brand-teal-700 hover:text-brand-orange-600">
+          <Link href="/blog" className="text-sm font-semibold text-brand-teal-700 hover:text-brand-orange-600 dark:text-brand-teal-200 dark:hover:text-brand-orange-400">
             View all articles →
           </Link>
         </div>
@@ -59,14 +59,14 @@ export function InsightsPreview({ blogs, news }: { blogs: BlogPost[]; news: News
           {items.map((item, index) => (
             <RevealOnScroll as="li" key={item.id} delay={index * 0.06} className="list-none">
               <Link href={item.href} className="group block h-full">
-                <Card className="flex h-full flex-col gap-4 p-7">
-                  <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-brand-orange-600">
+                <Card className="flex h-full flex-col gap-4 p-7 dark:bg-brand-teal-900 dark:ring-1 dark:ring-white/10">
+                  <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-brand-orange-600 dark:text-brand-orange-300">
                     <span>{item.kind}</span>
                     <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
                   </div>
-                  <h3 className="text-lg font-bold text-brand-teal-900">{item.title}</h3>
-                  <p className="line-clamp-3 flex-1 text-sm leading-relaxed text-brand-grey-500">{item.excerpt}</p>
-                  <div className="flex items-center gap-3 text-xs text-brand-grey-400">
+                  <h3 className="text-lg font-bold text-brand-teal-900 dark:text-white">{item.title}</h3>
+                  <p className="line-clamp-3 flex-1 text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{item.excerpt}</p>
+                  <div className="flex items-center gap-3 text-xs text-brand-grey-400 dark:text-brand-grey-500">
                     {item.date && <span>{formatDate(item.date)}</span>}
                     {item.readingTimeMinutes && (
                       <span className="inline-flex items-center gap-1">

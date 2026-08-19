@@ -21,7 +21,7 @@ export default async function BlogListPage() {
   const list = blogs.length ? blogs : fallbackBlogs;
 
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-20 lg:py-28 dark:bg-brand-teal-950">
       <Container className="flex flex-col gap-14">
         <SectionHeading
           align="left"
@@ -37,13 +37,13 @@ export default async function BlogListPage() {
               <RevealOnScroll as="li" key={post._id} delay={index * 0.05} className="list-none">
                 <Link href={`/blog/${post.slug}`} className="group block h-full">
                   <Card className="flex h-full flex-col gap-4 p-7">
-                    <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-brand-orange-600">
+                    <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-brand-orange-600 dark:text-brand-orange-400">
                       <span>{categoryLabel}</span>
                       <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
                     </div>
-                    <h2 className="text-lg font-bold text-brand-teal-900">{post.title}</h2>
-                    <p className="line-clamp-3 flex-1 text-sm leading-relaxed text-brand-grey-500">{post.excerpt}</p>
-                    <div className="flex items-center gap-3 text-xs text-brand-grey-400">
+                    <h2 className="text-lg font-bold text-brand-teal-900 dark:text-white">{post.title}</h2>
+                    <p className="line-clamp-3 flex-1 text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{post.excerpt}</p>
+                    <div className="flex items-center gap-3 text-xs text-brand-grey-400 dark:text-brand-grey-500">
                       {post.publishedAt && <span>{formatDate(post.publishedAt)}</span>}
                       <span className="inline-flex items-center gap-1">
                         <Clock className="h-3.5 w-3.5" /> {post.readingTimeMinutes} min read

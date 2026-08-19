@@ -24,8 +24,8 @@ export function PackageTierCard({ pkg, index }: { pkg: HealthPackage; index: num
       transition={{ duration: 0.55, delay: Math.min(index, 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -6 }}
       className={cn(
-        "relative flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-brand-soft ring-1 transition-shadow duration-300 hover:shadow-lg",
-        pkg.popular ? `${style.ring} ring-2` : "ring-brand-grey-200/70"
+        "relative flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-brand-soft ring-1 transition-shadow duration-300 hover:shadow-lg dark:bg-brand-teal-900",
+        pkg.popular ? `${style.ring} ring-2` : "ring-brand-grey-200/70 dark:ring-white/10"
       )}
     >
       {pkg.popular && (
@@ -67,18 +67,18 @@ export function PackageTierCard({ pkg, index }: { pkg: HealthPackage; index: num
               key={item}
               variants={{ hidden: { opacity: 0, x: -8 }, visible: { opacity: 1, x: 0 } }}
               transition={{ duration: 0.35 }}
-              className="flex items-start gap-2 text-sm text-brand-grey-600"
+              className="flex items-start gap-2 text-sm text-brand-grey-600 dark:text-brand-grey-400"
             >
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600" />
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600 dark:text-brand-teal-300" />
               <span>
                 {item}
-                {visibleLocal?.[i] && <span className="block text-xs text-brand-grey-400">{visibleLocal[i]}</span>}
+                {visibleLocal?.[i] && <span className="block text-xs text-brand-grey-400 dark:text-brand-grey-500">{visibleLocal[i]}</span>}
               </span>
             </motion.li>
           ))}
         </motion.ul>
         {remaining > 0 && (
-          <p className="text-xs font-semibold text-brand-teal-600">+ {remaining} more tests included</p>
+          <p className="text-xs font-semibold text-brand-teal-600 dark:text-brand-teal-300">+ {remaining} more tests included</p>
         )}
 
         <Link

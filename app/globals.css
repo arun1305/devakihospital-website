@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #10302e;
@@ -15,6 +17,7 @@
   --color-teal-700: #17504a;
   --color-teal-800: #0f3934;
   --color-teal-900: #0a2624;
+  --color-teal-950: #071a18;
 
   --color-orange-50: #fff4ea;
   --color-orange-100: #ffe3c7;
@@ -33,9 +36,19 @@
   --color-grey-300: #ccd6d4;
   --color-grey-400: #9fb0ad;
   --color-grey-500: #708885;
+  --color-grey-800: #1b2f2d;
+  --color-grey-900: #12201f;
 
   --shadow-soft: 0 10px 40px -12px rgba(15, 57, 52, 0.18);
   --shadow-glow: 0 0 0 1px rgba(255, 255, 255, 0.4) inset, 0 20px 60px -20px rgba(15, 57, 52, 0.35);
+}
+
+.dark {
+  --background: #0a1615;
+  --foreground: #eef6f5;
+
+  --shadow-soft: 0 10px 40px -12px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 0 1px rgba(255, 255, 255, 0.08) inset, 0 20px 60px -20px rgba(0, 0, 0, 0.6);
 }
 
 @theme inline {
@@ -70,6 +83,10 @@
   --color-brand-grey-300: var(--color-grey-300);
   --color-brand-grey-400: var(--color-grey-400);
   --color-brand-grey-500: var(--color-grey-500);
+  --color-brand-grey-800: var(--color-grey-800);
+  --color-brand-grey-900: var(--color-grey-900);
+
+  --color-brand-teal-950: var(--color-teal-950);
 
   --font-display: var(--font-plus-jakarta);
   --font-sans: var(--font-inter);
@@ -132,11 +149,21 @@ h4 {
   color: var(--color-teal-900);
 }
 
+.dark ::selection {
+  background: var(--color-teal-700);
+  color: var(--color-teal-50);
+}
+
 .glass-panel {
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dark .glass-panel {
+  background: rgba(10, 22, 21, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .glass-panel-dark {

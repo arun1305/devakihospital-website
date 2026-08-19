@@ -38,19 +38,19 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <PageHero eyebrow="Patient Resources" title="Privacy policy" description="Last updated: August 2026" />
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex max-w-3xl flex-col gap-10">
           {sections.map((section, index) => (
             <RevealOnScroll key={section.title} delay={index * 0.05}>
-              <h2 className="mb-2 text-lg font-bold text-brand-teal-900">{section.title}</h2>
-              <p className="leading-relaxed text-brand-grey-500">{section.body}</p>
+              <h2 className="mb-2 text-lg font-bold text-brand-teal-900 dark:text-white">{section.title}</h2>
+              <p className="leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{section.body}</p>
             </RevealOnScroll>
           ))}
           <RevealOnScroll delay={sections.length * 0.05}>
-            <h2 className="mb-2 text-lg font-bold text-brand-teal-900">Contact Us</h2>
-            <p className="leading-relaxed text-brand-grey-500">
+            <h2 className="mb-2 text-lg font-bold text-brand-teal-900 dark:text-white">Contact Us</h2>
+            <p className="leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">
               For any privacy-related questions or requests, contact us at{" "}
-              <a href={`mailto:${siteConfig.email}`} className="font-semibold text-brand-teal-700">
+              <a href={`mailto:${siteConfig.email}`} className="font-semibold text-brand-teal-700 dark:text-brand-teal-200">
                 {siteConfig.email}
               </a>
               .

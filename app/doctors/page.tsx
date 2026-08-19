@@ -21,7 +21,7 @@ export default async function DoctorsPage() {
   const departmentList = departments.length ? departments : fallbackDepartments;
 
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-20 lg:py-28 dark:bg-brand-teal-950">
       <Container className="flex flex-col gap-14">
         <SectionHeading
           align="left"

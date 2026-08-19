@@ -74,11 +74,11 @@ export default async function NewsDetailPage({ params }: PageProps) {
         </Container>
       </section>
 
-      <section className="bg-white py-16">
+      <section className="bg-white py-16 dark:bg-brand-teal-950">
         <Container className="max-w-3xl">
           <RichContent
             content={post.content}
-            className="prose prose-teal max-w-none flex flex-col gap-4 text-brand-grey-600 [&_p]:leading-relaxed"
+            className="prose prose-teal max-w-none flex flex-col gap-4 text-brand-grey-600 dark:text-brand-grey-300 dark:prose-invert [&_p]:leading-relaxed"
           />
         </Container>
       </section>

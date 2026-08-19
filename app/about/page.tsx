@@ -49,7 +49,7 @@ export default async function AboutPage() {
 
   return (
     <>
-      <section className="bg-brand-teal-900 py-20">
+      <section className="bg-brand-teal-900 py-20 dark:bg-brand-teal-950">
         <Container>
           <SectionHeading
             tone="dark"
@@ -62,12 +62,12 @@ export default async function AboutPage() {
         </Container>
       </section>
 
-      <section id="mission" className="bg-white py-20">
+      <section id="mission" className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="grid gap-8 sm:grid-cols-2">
           <RevealOnScroll>
             <Card className="h-full p-8">
-              <h2 className="mb-3 text-xl font-bold text-brand-teal-900">Our Mission</h2>
-              <p className="text-sm leading-relaxed text-brand-grey-500">
+              <h2 className="mb-3 text-xl font-bold text-brand-teal-900 dark:text-white">Our Mission</h2>
+              <p className="text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">
                 To deliver accessible, technologically advanced healthcare that treats every patient as
                 family — combining clinical rigor with genuine human warmth.
               </p>
@@ -75,8 +75,8 @@ export default async function AboutPage() {
           </RevealOnScroll>
           <RevealOnScroll delay={0.1}>
             <Card className="h-full p-8">
-              <h2 className="mb-3 text-xl font-bold text-brand-teal-900">Our Vision</h2>
-              <p className="text-sm leading-relaxed text-brand-grey-500">
+              <h2 className="mb-3 text-xl font-bold text-brand-teal-900 dark:text-white">Our Vision</h2>
+              <p className="text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">
                 To be the region&rsquo;s most trusted multi-speciality hospital, recognised equally for
                 clinical outcomes and patient experience.
               </p>
@@ -85,37 +85,37 @@ export default async function AboutPage() {
         </Container>
       </section>
 
-      <section id="chairman" className="bg-brand-grey-50 py-20">
+      <section id="chairman" className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
         <Container>
           <RevealOnScroll className="mx-auto max-w-3xl text-center">
             <Quote className="mx-auto mb-4 h-10 w-10 text-brand-orange-500" />
-            <p className="text-xl font-medium leading-relaxed text-brand-teal-900">
+            <p className="text-xl font-medium leading-relaxed text-brand-teal-900 dark:text-white">
               &ldquo;We built Devaki Speciality Hospital on the belief that a patient&rsquo;s recovery depends as much
               on how they&rsquo;re treated as on what treatment they receive. Every investment we make — in
               technology, in training, in infrastructure — is measured against that standard.&rdquo;
             </p>
-            <p className="mt-6 font-bold text-brand-teal-900">Dr. Devaki Sundaram</p>
-            <p className="text-sm text-brand-grey-500">Founder &amp; Chairperson</p>
+            <p className="mt-6 font-bold text-brand-teal-900 dark:text-white">Dr. Devaki Sundaram</p>
+            <p className="text-sm text-brand-grey-500 dark:text-brand-grey-400">Founder &amp; Chairperson</p>
           </RevealOnScroll>
         </Container>
       </section>
 
-      <section id="journey" className="bg-white py-20">
+      <section id="journey" className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-12">
           <SectionHeading eyebrow="Our Journey" title="Nearly three decades of growth" />
-          <div className="relative mx-auto flex max-w-3xl flex-col gap-8 border-l border-brand-grey-200 pl-8">
+          <div className="relative mx-auto flex max-w-3xl flex-col gap-8 border-l border-brand-grey-200 pl-8 dark:border-white/10">
             {journey.map((item, index) => (
               <RevealOnScroll key={item.year} delay={index * 0.06} className="relative">
-                <span className="absolute -left-[2.35rem] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-brand-orange-500 ring-4 ring-white" />
-                <p className="text-sm font-bold text-brand-orange-600">{item.year}</p>
-                <p className="mt-1 text-sm leading-relaxed text-brand-grey-600">{item.milestone}</p>
+                <span className="absolute -left-[2.35rem] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-brand-orange-500 ring-4 ring-white dark:ring-brand-teal-950" />
+                <p className="text-sm font-bold text-brand-orange-600 dark:text-brand-orange-300">{item.year}</p>
+                <p className="mt-1 text-sm leading-relaxed text-brand-grey-600 dark:text-brand-grey-400">{item.milestone}</p>
               </RevealOnScroll>
             ))}
           </div>
         </Container>
       </section>
 
-      <section id="infrastructure" className="bg-brand-grey-50 py-20">
+      <section id="infrastructure" className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
         <Container className="flex flex-col gap-12">
           <SectionHeading eyebrow="Infrastructure & Technology" title="Built for advanced, coordinated care" />
           <StaggerGroup className="grid gap-6 lg:grid-cols-3">
@@ -125,8 +125,8 @@ export default async function AboutPage() {
                   <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-teal-500 to-brand-teal-700 text-white">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <h3 className="font-bold text-brand-teal-900">{title}</h3>
-                  <p className="text-sm leading-relaxed text-brand-grey-500">{description}</p>
+                  <h3 className="font-bold text-brand-teal-900 dark:text-white">{title}</h3>
+                  <p className="text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{description}</p>
                 </Card>
               </RevealOnScroll>
             ))}
@@ -134,22 +134,22 @@ export default async function AboutPage() {
         </Container>
       </section>
 
-      <section id="awards" className="bg-white py-20">
+      <section id="awards" className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-12">
           <SectionHeading eyebrow="Recognition" title="Achievements & accreditations" />
           <div className="grid gap-10 lg:grid-cols-2">
             <div>
-              <h3 className="mb-5 text-lg font-bold text-brand-teal-900">Awards</h3>
+              <h3 className="mb-5 text-lg font-bold text-brand-teal-900 dark:text-white">Awards</h3>
               <StaggerGroup className="flex flex-col gap-4">
                 {awardList.map((award, index) => (
                   <RevealOnScroll as="li" key={award._id} delay={index * 0.06} className="list-none">
-                    <div className="flex items-start gap-3 rounded-2xl border border-brand-grey-200 p-4">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-orange-50 text-brand-orange-600">
+                    <div className="flex items-start gap-3 rounded-2xl border border-brand-grey-200 p-4 dark:border-white/10">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-orange-50 text-brand-orange-600 dark:bg-brand-orange-900/40 dark:text-brand-orange-300">
                         <AwardIcon className="h-5 w-5" />
                       </span>
                       <div>
-                        <p className="font-semibold text-brand-teal-900">{award.title}</p>
-                        <p className="text-xs text-brand-grey-500">
+                        <p className="font-semibold text-brand-teal-900 dark:text-white">{award.title}</p>
+                        <p className="text-xs text-brand-grey-500 dark:text-brand-grey-400">
                           {award.year}
                           {award.description ? ` · ${award.description}` : ""}
                         </p>
@@ -160,18 +160,18 @@ export default async function AboutPage() {
               </StaggerGroup>
             </div>
             <div>
-              <h3 className="mb-5 text-lg font-bold text-brand-teal-900">Accreditations</h3>
+              <h3 className="mb-5 text-lg font-bold text-brand-teal-900 dark:text-white">Accreditations</h3>
               <StaggerGroup className="flex flex-col gap-4">
                 {accreditationList.map((accreditation, index) => (
                   <RevealOnScroll as="li" key={accreditation._id} delay={index * 0.06} className="list-none">
-                    <div className="flex items-start gap-3 rounded-2xl border border-brand-grey-200 p-4">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-700">
+                    <div className="flex items-start gap-3 rounded-2xl border border-brand-grey-200 p-4 dark:border-white/10">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-700 dark:bg-brand-teal-800 dark:text-brand-teal-100">
                         <AwardIcon className="h-5 w-5" />
                       </span>
                       <div>
-                        <p className="font-semibold text-brand-teal-900">{accreditation.name}</p>
+                        <p className="font-semibold text-brand-teal-900 dark:text-white">{accreditation.name}</p>
                         {accreditation.description && (
-                          <p className="text-xs text-brand-grey-500">{accreditation.description}</p>
+                          <p className="text-xs text-brand-grey-500 dark:text-brand-grey-400">{accreditation.description}</p>
                         )}
                       </div>
                     </div>
@@ -183,7 +183,7 @@ export default async function AboutPage() {
         </Container>
       </section>
 
-      <section id="management" className="bg-brand-grey-50 py-20">
+      <section id="management" className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
         <Container className="flex flex-col gap-12">
           <SectionHeading eyebrow="Leadership" title="Management team" />
           <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -197,9 +197,9 @@ export default async function AboutPage() {
                       .slice(0, 2)
                       .join("")}
                   </span>
-                  <h3 className="font-bold text-brand-teal-900">{member.name}</h3>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-brand-orange-600">{member.role}</p>
-                  <p className="text-sm leading-relaxed text-brand-grey-500">{member.bio}</p>
+                  <h3 className="font-bold text-brand-teal-900 dark:text-white">{member.name}</h3>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-brand-orange-600 dark:text-brand-orange-300">{member.role}</p>
+                  <p className="text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{member.bio}</p>
                 </Card>
               </RevealOnScroll>
             ))}
@@ -207,15 +207,15 @@ export default async function AboutPage() {
         </Container>
       </section>
 
-      <section id="csr" className="bg-white py-20">
+      <section id="csr" className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-12">
           <SectionHeading eyebrow="What Drives Us" title="Our core values" />
           <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {coreValues.map((value, index) => (
               <RevealOnScroll as="li" key={value.title} delay={index * 0.06} className="list-none">
                 <Card className="h-full p-7">
-                  <h3 className="mb-2 text-lg font-bold text-brand-teal-900">{value.title}</h3>
-                  <p className="text-sm text-brand-grey-500">{value.description}</p>
+                  <h3 className="mb-2 text-lg font-bold text-brand-teal-900 dark:text-white">{value.title}</h3>
+                  <p className="text-sm text-brand-grey-500 dark:text-brand-grey-400">{value.description}</p>
                 </Card>
               </RevealOnScroll>
             ))}

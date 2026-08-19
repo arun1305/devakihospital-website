@@ -32,7 +32,7 @@ export default async function HealthPackagesPage() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-brand-teal-900 py-20">
+      <section className="relative isolate overflow-hidden bg-brand-teal-900 py-20 dark:bg-brand-teal-950">
         <div className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-brand-teal-900 via-brand-teal-800 to-brand-teal-700" />
           <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-brand-orange-500/20 blur-3xl animate-blob" />
@@ -64,7 +64,7 @@ export default async function HealthPackagesPage() {
         </Container>
       </section>
 
-      <section className="bg-white py-16 lg:py-20">
+      <section className="bg-white py-16 lg:py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-16">
           <PackageCategoryNav categories={groups.map((g) => g.category)} />
           <div className="flex flex-col gap-20">
@@ -77,9 +77,9 @@ export default async function HealthPackagesPage() {
 
       <CheckupGuidelines />
 
-      <section className="bg-white py-10">
+      <section className="bg-white py-10 dark:bg-brand-teal-950">
         <Container>
-          <RevealOnScroll className="text-center text-xs text-brand-grey-400">
+          <RevealOnScroll className="text-center text-xs text-brand-grey-400 dark:text-brand-grey-400">
             * Included where clinically indicated by age, gender, or your consultation with the doctor. Speak
             to our coordinator at {siteConfig.appointmentNumber} for details on any package.
           </RevealOnScroll>

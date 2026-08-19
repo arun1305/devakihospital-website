@@ -14,7 +14,7 @@ const experienceBuckets = [
 ];
 
 const selectClasses =
-  "w-full rounded-xl border border-brand-grey-200 bg-white px-4 py-2.5 text-sm text-brand-teal-900 outline-none transition-colors focus:border-brand-teal-500 focus:ring-2 focus:ring-brand-teal-100";
+  "w-full rounded-xl border border-brand-grey-200 bg-white px-4 py-2.5 text-sm text-brand-teal-900 outline-none transition-colors focus:border-brand-teal-500 focus:ring-2 focus:ring-brand-teal-100 dark:border-white/15 dark:bg-brand-teal-900 dark:text-white dark:focus:border-brand-teal-400 dark:focus:ring-brand-teal-400/20";
 
 function departmentId(department: Department | string): string {
   return typeof department === "string" ? department : department._id;
@@ -56,15 +56,15 @@ export function DoctorsDirectory({ doctors, departments }: { doctors: Doctor[]; 
 
   return (
     <div className="flex flex-col gap-10">
-      <div className="flex flex-col gap-4 rounded-3xl bg-brand-grey-50 p-6">
+      <div className="flex flex-col gap-4 rounded-3xl bg-brand-grey-50 p-6 dark:bg-brand-grey-900">
         <div className="flex items-center justify-between">
-          <span className="inline-flex items-center gap-2 text-sm font-semibold text-brand-teal-900">
+          <span className="inline-flex items-center gap-2 text-sm font-semibold text-brand-teal-900 dark:text-white">
             <SlidersHorizontal className="h-4 w-4" /> Filter Doctors
           </span>
           {hasActiveFilters && (
             <button
               onClick={clearFilters}
-              className="inline-flex items-center gap-1 text-xs font-semibold text-brand-orange-600 hover:text-brand-orange-700"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-brand-orange-600 hover:text-brand-orange-700 dark:text-brand-orange-300 dark:hover:text-brand-orange-200"
             >
               <X className="h-3.5 w-3.5" /> Clear filters
             </button>
@@ -126,7 +126,7 @@ export function DoctorsDirectory({ doctors, departments }: { doctors: Doctor[]; 
         </div>
       </div>
 
-      <p className="text-sm text-brand-grey-500">
+      <p className="text-sm text-brand-grey-500 dark:text-brand-grey-400">
         Showing {filteredDoctors.length} of {doctors.length} doctors
       </p>
 
@@ -139,7 +139,7 @@ export function DoctorsDirectory({ doctors, departments }: { doctors: Doctor[]; 
           ))}
         </StaggerGroup>
       ) : (
-        <div className="rounded-3xl bg-brand-grey-50 py-16 text-center text-sm text-brand-grey-400">
+        <div className="rounded-3xl bg-brand-grey-50 py-16 text-center text-sm text-brand-grey-400 dark:bg-brand-grey-900 dark:text-brand-grey-500">
           No doctors match these filters. Try broadening your search.
         </div>
       )}

@@ -56,7 +56,7 @@ export default async function DoctorDetailPage({ params }: PageProps) {
       <JsonLd data={doctorJsonLd(doctor)} />
       <JsonLd data={breadcrumbJsonLd(breadcrumb)} />
 
-      <section className="bg-brand-teal-900 py-20">
+      <section className="bg-brand-teal-900 py-20 dark:bg-brand-teal-950">
         <Container className="grid gap-10 lg:grid-cols-[0.4fr_0.6fr] lg:items-center">
           <RevealOnScroll className="flex justify-center">
             <span className="flex h-40 w-40 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal-500 to-brand-orange-500 text-4xl font-bold text-white shadow-brand-soft">
@@ -77,27 +77,27 @@ export default async function DoctorDetailPage({ params }: PageProps) {
         </Container>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="grid gap-12 lg:grid-cols-[1fr_1fr]">
           <RevealOnScroll className="flex flex-col gap-6">
             <Card className="flex flex-col gap-4 p-7">
-              <h2 className="text-lg font-bold text-brand-teal-900">Qualifications & Expertise</h2>
-              <ul className="flex flex-col gap-3 text-sm text-brand-grey-500">
+              <h2 className="text-lg font-bold text-brand-teal-900 dark:text-white">Qualifications & Expertise</h2>
+              <ul className="flex flex-col gap-3 text-sm text-brand-grey-500 dark:text-brand-grey-400">
                 <li className="flex items-start gap-2">
-                  <GraduationCap className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600" />
+                  <GraduationCap className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600 dark:text-brand-teal-300" />
                   {doctor.qualifications.join(", ")}
                 </li>
                 <li className="flex items-start gap-2">
-                  <Languages className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600" />
+                  <Languages className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600 dark:text-brand-teal-300" />
                   Speaks {doctor.languages.join(", ")}
                 </li>
                 <li className="flex items-start gap-2">
-                  <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600" />
+                  <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600 dark:text-brand-teal-300" />
                   {doctor.experienceYears}+ years of clinical experience
                 </li>
                 {doctor.specializations.length > 0 && (
                   <li className="flex items-start gap-2">
-                    <Award className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600" />
+                    <Award className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600 dark:text-brand-teal-300" />
                     {doctor.specializations.join(", ")}
                   </li>
                 )}
@@ -106,7 +106,7 @@ export default async function DoctorDetailPage({ params }: PageProps) {
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.1}>
-            <h2 className="mb-4 text-lg font-bold text-brand-teal-900">Book a consultation with {doctor.name}</h2>
+            <h2 className="mb-4 text-lg font-bold text-brand-teal-900 dark:text-white">Book a consultation with {doctor.name}</h2>
             <AppointmentForm departments={departmentList} />
           </RevealOnScroll>
         </Container>

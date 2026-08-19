@@ -21,7 +21,7 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
 
   return (
     <Card className="group flex h-full flex-col overflow-hidden">
-      <div className="relative flex h-56 items-center justify-center bg-gradient-to-br from-brand-teal-100 to-brand-orange-50">
+      <div className="relative flex h-56 items-center justify-center bg-gradient-to-br from-brand-teal-100 to-brand-orange-50 dark:from-brand-teal-800 dark:to-brand-teal-900">
         <span className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal-600 to-brand-teal-800 text-2xl font-bold text-white shadow-brand-soft">
           {initials(doctor.name)}
         </span>
@@ -33,16 +33,16 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
       </div>
       <div className="flex flex-1 flex-col gap-3 p-6">
         <div>
-          <h3 className="text-lg font-bold text-brand-teal-900">{doctor.name}</h3>
-          <p className="text-sm font-medium text-brand-orange-600">{doctor.designation}</p>
+          <h3 className="text-lg font-bold text-brand-teal-900 dark:text-white">{doctor.name}</h3>
+          <p className="text-sm font-medium text-brand-orange-600 dark:text-brand-orange-300">{doctor.designation}</p>
         </div>
         {departmentName && (
-          <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-teal-50 px-3 py-1 text-xs font-semibold text-brand-teal-700">
+          <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-teal-50 px-3 py-1 text-xs font-semibold text-brand-teal-700 dark:bg-brand-teal-800 dark:text-brand-teal-100">
             <Stethoscope className="h-3.5 w-3.5" />
             {departmentName}
           </span>
         )}
-        <div className="mt-auto flex flex-col gap-1.5 text-xs text-brand-grey-500">
+        <div className="mt-auto flex flex-col gap-1.5 text-xs text-brand-grey-500 dark:text-brand-grey-400">
           <span className="inline-flex items-center gap-1.5">
             <GraduationCap className="h-3.5 w-3.5" /> {doctor.qualifications.join(", ")}
           </span>
@@ -52,7 +52,7 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
         </div>
         <Link
           href={`/doctors/${doctor.slug}`}
-          className="mt-2 inline-flex w-fit items-center text-sm font-semibold text-brand-teal-700 transition-colors group-hover:text-brand-orange-600"
+          className="mt-2 inline-flex w-fit items-center text-sm font-semibold text-brand-teal-700 transition-colors group-hover:text-brand-orange-600 dark:text-brand-teal-200 dark:group-hover:text-brand-orange-300"
         >
           View Profile &amp; Book →
         </Link>

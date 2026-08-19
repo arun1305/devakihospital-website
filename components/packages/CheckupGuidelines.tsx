@@ -50,7 +50,7 @@ const guidelines = [
 
 export function CheckupGuidelines() {
   return (
-    <section className="bg-brand-grey-50 py-20 lg:py-28">
+    <section className="bg-brand-grey-50 py-20 dark:bg-brand-teal-950 lg:py-28">
       <Container className="flex flex-col gap-12">
         <SectionHeading
           eyebrow="Before Your Visit"
@@ -61,11 +61,11 @@ export function CheckupGuidelines() {
           {guidelines.map(({ icon: Icon, title, description }, index) => (
             <RevealOnScroll as="li" key={title} delay={index * 0.05} className="list-none">
               <Card className="flex h-full flex-col gap-3 p-6">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-700">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-700 dark:bg-brand-teal-800 dark:text-brand-teal-100">
                   <Icon className="h-5 w-5" />
                 </span>
-                <h3 className="font-bold text-brand-teal-900">{title}</h3>
-                <p className="text-sm leading-relaxed text-brand-grey-500">{description}</p>
+                <h3 className="font-bold text-brand-teal-900 dark:text-white">{title}</h3>
+                <p className="text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{description}</p>
               </Card>
             </RevealOnScroll>
           ))}

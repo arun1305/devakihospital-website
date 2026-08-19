@@ -26,7 +26,7 @@ export default async function HealthLibraryPage() {
         title="Health library"
         description="Clear, specialist-reviewed guidance on common conditions, prevention, and recovery — written for patients, not textbooks."
       />
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container>
           <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {list.map((post, index) => {
@@ -35,12 +35,12 @@ export default async function HealthLibraryPage() {
                 <RevealOnScroll as="li" key={post._id} delay={index * 0.05} className="list-none">
                   <Link href={`/blog/${post.slug}`} className="group block h-full">
                     <Card className="flex h-full flex-col gap-4 p-7">
-                      <span className="w-fit rounded-full bg-brand-teal-50 px-3 py-1 text-xs font-semibold text-brand-teal-700">
+                      <span className="w-fit rounded-full bg-brand-teal-50 px-3 py-1 text-xs font-semibold text-brand-teal-700 dark:bg-brand-teal-800 dark:text-brand-teal-100">
                         {categoryLabel}
                       </span>
-                      <h2 className="text-lg font-bold text-brand-teal-900">{post.title}</h2>
-                      <p className="line-clamp-3 flex-1 text-sm leading-relaxed text-brand-grey-500">{post.excerpt}</p>
-                      <div className="flex items-center justify-between text-xs text-brand-grey-400">
+                      <h2 className="text-lg font-bold text-brand-teal-900 dark:text-white">{post.title}</h2>
+                      <p className="line-clamp-3 flex-1 text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{post.excerpt}</p>
+                      <div className="flex items-center justify-between text-xs text-brand-grey-400 dark:text-brand-grey-500">
                         <span className="inline-flex items-center gap-1">
                           <Clock className="h-3.5 w-3.5" /> {post.readingTimeMinutes} min read
                         </span>

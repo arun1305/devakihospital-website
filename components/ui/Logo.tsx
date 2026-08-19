@@ -20,9 +20,10 @@ const MARK_ASPECT_RATIO = devakiMark.width / devakiMark.height;
  * public/brand/devaki-logo-full.png for hero/print contexts.
  */
 export function Logo({ className, markOnly = false, tone = "dark", compact = false }: LogoProps) {
-  const textColor = tone === "dark" ? "text-brand-teal-800" : "text-white";
-  const subColor = tone === "dark" ? "text-brand-teal-600" : "text-white/80";
-  const markHeight = compact ? 36 : 44;
+  const textColor = tone === "dark" ? "text-brand-teal-800 dark:text-brand-teal-50" : "text-white";
+  const accentColor = tone === "dark" ? "text-brand-orange-500 dark:text-brand-orange-400" : "text-brand-orange-300";
+  const subColor = tone === "dark" ? "text-brand-teal-600 dark:text-brand-teal-300" : "text-white/80";
+  const markHeight = compact ? 40 : 44;
   const markWidth = Math.round(markHeight * MARK_ASPECT_RATIO);
 
   return (
@@ -44,7 +45,7 @@ export function Logo({ className, markOnly = false, tone = "dark", compact = fal
               textColor
             )}
           >
-            DEVAKI <span className="font-light">SPECIALITY</span> HOSPITAL
+            DEVAKI <span className={accentColor}>SPECIALITY</span> HOSPITAL
           </p>
           {!compact && (
             <p

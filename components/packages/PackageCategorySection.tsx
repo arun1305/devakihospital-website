@@ -10,8 +10,8 @@ export function PackageCategorySection({ group }: { group: PackageCategoryGroup 
   return (
     <section id={slugifyId(group.category)} className="scroll-mt-28">
       <RevealOnScroll className="mb-8 flex flex-col gap-2">
-        <h2 className="text-2xl font-bold text-brand-teal-900 sm:text-3xl">{group.category}</h2>
-        {group.localName && <p className="text-sm text-brand-grey-500">{group.localName}</p>}
+        <h2 className="text-2xl font-bold text-brand-teal-900 dark:text-white sm:text-3xl">{group.category}</h2>
+        {group.localName && <p className="text-sm text-brand-grey-500 dark:text-brand-grey-400">{group.localName}</p>}
       </RevealOnScroll>
 
       <div className={`grid gap-6 ${gridCols}`}>

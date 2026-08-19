@@ -24,7 +24,7 @@ export default async function EventsListPage() {
   const past = list.filter((e) => new Date(e.startDate).getTime() < now);
 
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-20 lg:py-28 dark:bg-brand-teal-950">
       <Container className="flex flex-col gap-16">
         <SectionHeading
           align="left"
@@ -34,19 +34,19 @@ export default async function EventsListPage() {
         />
 
         <div className="flex flex-col gap-6">
-          <h2 className="text-lg font-bold text-brand-teal-900">Upcoming</h2>
+          <h2 className="text-lg font-bold text-brand-teal-900 dark:text-white">Upcoming</h2>
           <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {upcoming.map((event, index) => (
               <RevealOnScroll as="li" key={event._id} delay={index * 0.05} className="list-none">
                 <Link href={`/events/${event.slug}`} className="group block h-full">
                   <Card className="flex h-full flex-col gap-4 p-7">
-                    <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-brand-orange-600">
+                    <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-brand-orange-600 dark:text-brand-orange-400">
                       <span>{event.registrationEnabled ? "Registration Open" : "Event"}</span>
                       <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
                     </div>
-                    <h3 className="text-lg font-bold text-brand-teal-900">{event.title}</h3>
-                    <p className="line-clamp-2 flex-1 text-sm leading-relaxed text-brand-grey-500">{event.description}</p>
-                    <div className="flex flex-col gap-1.5 text-xs text-brand-grey-500">
+                    <h3 className="text-lg font-bold text-brand-teal-900 dark:text-white">{event.title}</h3>
+                    <p className="line-clamp-2 flex-1 text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{event.description}</p>
+                    <div className="flex flex-col gap-1.5 text-xs text-brand-grey-500 dark:text-brand-grey-400">
                       <span className="inline-flex items-center gap-1.5">
                         <Calendar className="h-3.5 w-3.5" /> {formatDate(event.startDate)}
                       </span>
@@ -59,21 +59,21 @@ export default async function EventsListPage() {
               </RevealOnScroll>
             ))}
             {upcoming.length === 0 && (
-              <p className="text-sm text-brand-grey-400">No upcoming events scheduled right now — check back soon.</p>
+              <p className="text-sm text-brand-grey-400 dark:text-brand-grey-500">No upcoming events scheduled right now — check back soon.</p>
             )}
           </StaggerGroup>
         </div>
 
         {past.length > 0 && (
           <div className="flex flex-col gap-6">
-            <h2 className="text-lg font-bold text-brand-teal-900">Past Events</h2>
+            <h2 className="text-lg font-bold text-brand-teal-900 dark:text-white">Past Events</h2>
             <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {past.map((event, index) => (
                 <RevealOnScroll as="li" key={event._id} delay={index * 0.05} className="list-none">
                   <Link href={`/events/${event.slug}`} className="group block h-full opacity-75">
                     <Card className="flex h-full flex-col gap-3 p-6">
-                      <h3 className="font-bold text-brand-teal-900">{event.title}</h3>
-                      <span className="inline-flex items-center gap-1.5 text-xs text-brand-grey-400">
+                      <h3 className="font-bold text-brand-teal-900 dark:text-white">{event.title}</h3>
+                      <span className="inline-flex items-center gap-1.5 text-xs text-brand-grey-400 dark:text-brand-grey-500">
                         <Calendar className="h-3.5 w-3.5" /> {formatDate(event.startDate)}
                       </span>
                     </Card>

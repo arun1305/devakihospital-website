@@ -78,11 +78,11 @@ export default function FaqPage() {
     <>
       <JsonLd data={faqJsonLd(allFaqs)} />
       <PageHero eyebrow="Support" title="Frequently asked questions" description="Browse by category, or contact our patient care team for anything else." />
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex max-w-3xl flex-col gap-14">
           {categories.map((category) => (
             <div key={category.title} className="flex flex-col gap-5">
-              <h2 className="text-xl font-bold text-brand-teal-900">{category.title}</h2>
+              <h2 className="text-xl font-bold text-brand-teal-900 dark:text-white">{category.title}</h2>
               <Accordion items={category.faqs} />
             </div>
           ))}

@@ -27,7 +27,7 @@ export default function VirtualTourPage() {
         title="Virtual tour"
         description="Explore Devaki Speciality Hospital's facilities from wherever you are."
       />
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-14">
           <RevealOnScroll className="relative flex aspect-video items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-brand-teal-700 via-brand-teal-800 to-brand-teal-900">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(242,121,27,0.25),transparent_50%)]" />
@@ -47,20 +47,20 @@ export default function VirtualTourPage() {
             {stops.map(({ icon: Icon, title, description }, index) => (
               <RevealOnScroll as="li" key={title} delay={index * 0.06} className="list-none">
                 <Card className="flex h-full flex-col gap-3 p-6">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-700">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-700 dark:bg-brand-teal-900 dark:text-brand-teal-200">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <h3 className="font-bold text-brand-teal-900">{title}</h3>
-                  <p className="text-sm leading-relaxed text-brand-grey-500">{description}</p>
+                  <h3 className="font-bold text-brand-teal-900 dark:text-white">{title}</h3>
+                  <p className="text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{description}</p>
                 </Card>
               </RevealOnScroll>
             ))}
           </StaggerGroup>
 
-          <RevealOnScroll className="flex flex-col items-center gap-4 rounded-3xl bg-brand-grey-50 p-10 text-center">
-            <Compass className="h-8 w-8 text-brand-orange-500" />
-            <h2 className="text-lg font-bold text-brand-teal-900">Prefer to see it in person?</h2>
-            <p className="max-w-md text-sm text-brand-grey-500">
+          <RevealOnScroll className="flex flex-col items-center gap-4 rounded-3xl bg-brand-grey-50 p-10 text-center dark:bg-brand-grey-900">
+            <Compass className="h-8 w-8 text-brand-orange-500 dark:text-brand-orange-400" />
+            <h2 className="text-lg font-bold text-brand-teal-900 dark:text-white">Prefer to see it in person?</h2>
+            <p className="max-w-md text-sm text-brand-grey-500 dark:text-brand-grey-400">
               Schedule a guided tour of our facility ahead of a planned procedure or admission.
             </p>
             <Button href="/contact">Request a Tour</Button>
