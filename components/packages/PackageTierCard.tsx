@@ -13,6 +13,7 @@ const VISIBLE_TESTS = 6;
 export function PackageTierCard({ pkg, index }: { pkg: HealthPackage; index: number }) {
   const style = getTierStyle(pkg.tier);
   const visibleInclusions = pkg.inclusions.slice(0, VISIBLE_TESTS);
+  const visibleLocal = pkg.inclusionsLocal?.slice(0, VISIBLE_TESTS);
   const remaining = pkg.inclusions.length - visibleInclusions.length;
 
   return (
@@ -40,6 +41,7 @@ export function PackageTierCard({ pkg, index }: { pkg: HealthPackage; index: num
           <span className="relative mb-3 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur">
             <Award className="h-3.5 w-3.5" />
             {pkg.tier}
+            {pkg.tierLocal && <span className="font-normal normal-case text-white/75">· {pkg.tierLocal}</span>}
           </span>
         )}
         <div className="relative flex items-baseline gap-1">
@@ -54,13 +56,13 @@ export function PackageTierCard({ pkg, index }: { pkg: HealthPackage; index: num
 
       <div className="flex flex-1 flex-col gap-4 p-6">
         <motion.ul
-          className="flex flex-col gap-2.5"
+          className="flex flex-col gap-3"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={{ visible: { transition: { staggerChildren: 0.06 } } }}
         >
-          {visibleInclusions.map((item) => (
+          {visibleInclusions.map((item, i) => (
             <motion.li
               key={item}
               variants={{ hidden: { opacity: 0, x: -8 }, visible: { opacity: 1, x: 0 } }}
@@ -68,7 +70,10 @@ export function PackageTierCard({ pkg, index }: { pkg: HealthPackage; index: num
               className="flex items-start gap-2 text-sm text-brand-grey-600"
             >
               <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600" />
-              {item}
+              <span>
+                {item}
+                {visibleLocal?.[i] && <span className="block text-xs text-brand-grey-400">{visibleLocal[i]}</span>}
+              </span>
             </motion.li>
           ))}
         </motion.ul>

@@ -68,6 +68,12 @@ export default async function PackageDetailPage({ params }: PageProps) {
             <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur">
               {pkg.tier && <Award className="h-3.5 w-3.5" />}
               {pkg.category}
+              {pkg.tier && (
+                <span className="font-normal normal-case text-white/70">
+                  · {pkg.tier}
+                  {pkg.tierLocal && ` (${pkg.tierLocal})`}
+                </span>
+              )}
             </span>
             <h1 className="text-3xl font-bold text-white sm:text-4xl">{pkg.name}</h1>
             {pkg.localName && <p className="mt-1 text-white/70">{pkg.localName}</p>}
@@ -86,7 +92,7 @@ export default async function PackageDetailPage({ params }: PageProps) {
               <h2 className="mb-1 text-xl font-bold text-brand-teal-900">
                 What&rsquo;s included <span className="text-sm font-normal text-brand-grey-400">({pkg.inclusions.length} tests &amp; services)</span>
               </h2>
-              <AnimatedChecklist items={pkg.inclusions} className="mt-4" />
+              <AnimatedChecklist items={pkg.inclusions} itemsLocal={pkg.inclusionsLocal} className="mt-4" />
             </div>
             {pkg.idealFor.length > 0 && (
               <div>

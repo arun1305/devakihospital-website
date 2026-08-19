@@ -116,12 +116,14 @@ export interface HealthPackage {
   categoryOrder: number;
   localName?: string;
   tier?: string;
+  tierLocal?: string;
   tierOrder: number;
   popular: boolean;
   price: number;
   discountedPrice?: number;
   description: string;
   inclusions: string[];
+  inclusionsLocal?: string[];
   idealFor: string[];
   image?: string;
 }

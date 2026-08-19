@@ -24,7 +24,9 @@ export function TierSwitcher({ siblings, activeSlug }: { siblings: HealthPackage
             )}
           >
             <Award className="h-3.5 w-3.5" />
-            {sibling.tier ?? sibling.name} · ₹{(sibling.discountedPrice ?? sibling.price).toLocaleString("en-IN")}
+            {sibling.tier ?? sibling.name}
+            {sibling.tierLocal && ` (${sibling.tierLocal})`} · ₹
+            {(sibling.discountedPrice ?? sibling.price).toLocaleString("en-IN")}
           </Link>
         );
       })}

@@ -4,16 +4,24 @@ import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export function AnimatedChecklist({ items, className }: { items: string[]; className?: string }) {
+export function AnimatedChecklist({
+  items,
+  itemsLocal,
+  className,
+}: {
+  items: string[];
+  itemsLocal?: string[];
+  className?: string;
+}) {
   return (
     <motion.ul
-      className={cn("grid gap-3 sm:grid-cols-2", className)}
+      className={cn("grid gap-3.5 sm:grid-cols-2", className)}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
       variants={{ visible: { transition: { staggerChildren: 0.035 } } }}
     >
-      {items.map((item) => (
+      {items.map((item, index) => (
         <motion.li
           key={item}
           variants={{
@@ -23,7 +31,10 @@ export function AnimatedChecklist({ items, className }: { items: string[]; class
           className="flex items-start gap-2 text-sm text-brand-grey-600"
         >
           <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600" />
-          {item}
+          <span>
+            {item}
+            {itemsLocal?.[index] && <span className="block text-xs text-brand-grey-400">{itemsLocal[index]}</span>}
+          </span>
         </motion.li>
       ))}
     </motion.ul>
