@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Award as AwardIcon,
   Building2,
@@ -13,12 +14,23 @@ import {
   ShieldCheck,
   Pill,
   Stethoscope,
+  MapPin,
+  BedDouble,
+  ScanLine,
+  Stethoscope as StethoscopeIcon,
+  HeartHandshake,
+  Sun,
+  Newspaper,
+  Rocket,
+  ShieldPlus,
+  ClipboardCheck,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { RevealOnScroll, StaggerGroup } from "@/components/ui/RevealOnScroll";
 import { PortraitMockup } from "@/components/ui/PortraitMockup";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { AppointmentCTA } from "@/components/sections/AppointmentCTA";
 import { HighlightsCounter } from "@/components/sections/HighlightsCounter";
 import { buildMetadata } from "@/lib/seo";
@@ -27,7 +39,7 @@ import { fallbackAwards, fallbackAccreditations } from "@/lib/fallback-content";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Us",
-  description: "The story, founders, awards, and infrastructure behind Devaki Speciality Hospital, Madurai.",
+  description: "The story, milestones, awards, and infrastructure behind Devaki Speciality Hospital, Madurai.",
   path: "/about",
 });
 
@@ -44,34 +56,115 @@ const infrastructure = [
   { icon: Pill, title: "In-House Pharmacy & Lab", description: "An attached pharmacy alongside ECG and clinical laboratory facilities, all under one roof." },
 ];
 
-const awards = [
-  {
-    icon: Trophy,
-    title: "The Best Doctor Award",
-    description: "Conferred to Dr. P. S. Nagendiran by The Tamil Nadu Dr. M.G.R. Medical University, Chennai.",
-  },
-  {
-    icon: Landmark,
-    title: "Government Honours",
-    description: "District, State, and Central Government awards recognising the performance of Devaki Cancer Institute.",
-  },
-  {
-    icon: Medal,
-    title: "Presidential Recognition",
-    description: "An appreciation award presented by Dr. A. P. J. Abdul Kalam, then President of India, at Rashtrapati Bhavan, New Delhi.",
-  },
-  {
-    icon: Sparkles,
-    title: "100+ Awards & Honours",
-    description: "Including recognition from Dr. Manmohan Singh, former Prime Minister of India, alongside over a hundred awards from various organisations for service and performance.",
-  },
+const leadership = [
+  { name: "Dr. P. S. Nagendiran, MBBS", role: "Chairman, Devaki Hospitals", initials: "PN" },
+  { name: "Dr. K. Devaki, MBBS, DMRD", role: "Managing Director, Devaki Hospitals", initials: "KD" },
+  { name: "Dr. N. Naveen, MBBS, MD(RD)", role: "Managing Director — Interventional Radiologist", initials: "NN" },
+  { name: "Dr. N. Jai Praveen, MBBS, MD", role: "Managing Director — General Physician", initials: "NJ" },
 ];
 
-const leadership = [
-  { name: "Dr. P. S. Nagendiran, M.B.B.S", role: "Founder & Chairman — Family Physician", initials: "PN" },
-  { name: "Dr. N. Jaipraveen, M.D.", role: "Associate Managing Director — Consultant General Medicine", initials: "NJ" },
-  { name: "Dr. Manoj Prabhakar, M.D.", role: "Consultant General Medicine", initials: "MP" },
-  { name: "Dr. K. Devaki, DMRD", role: "Consultant Radiologist & Director, Devaki Scans", initials: "KD" },
+const milestones = [
+  { year: "1991", text: "Dr. P. S. Nagendiran starts a general practice in Arasaradi, Madurai." },
+  { year: "1992", text: "Jebam Hospital opens its doors as a 10-bed facility." },
+  { year: "1995", text: "The hospital expands to 25 beds to meet growing demand." },
+  { year: "1998", text: "Devaki Scans launches with a black-and-white ultrasound machine imported from Italy." },
+  { year: "2000", text: "Whole-body CT scanning is introduced with a Siemens ART machine." },
+  { year: "2002", text: "India's first Mammomat 1000 mammography unit is installed." },
+  { year: "2003", text: "Asia's first Acuson Aspen ultrasound scanner is introduced." },
+  { year: "2007", text: "Devaki Cancer Institute is inaugurated by Dr. A. P. J. Abdul Kalam, then President of India." },
+  { year: "2010", text: "Tamil Nadu's first Siemens S2000 system is imported from the USA." },
+  { year: "2011", text: "South Tamil Nadu's first 128-slice Spiral Heart CT Scanner goes live." },
+  { year: "2014", text: "The Cath Lab and Coronary Care Unit are inaugurated by Dr. A. P. J. Abdul Kalam." },
+  { year: "2020", text: "Devaki Speciality Hospital is formally inaugurated." },
+  { year: "2021", text: "Tamil Nadu's first Varian Halcyon Linear Accelerator is installed." },
+  { year: "2024", text: "Devaki celebrates its Silver Jubilee — 25 years of service to Madurai." },
+];
+
+const awards = [
+  { icon: Trophy, title: "National Medical Excellence Award", by: "Ministry of Health & Family Welfare, New Delhi, 1999" },
+  { icon: Medal, title: "Presidential Appreciation", by: "Dr. A. P. J. Abdul Kalam, Former President of India" },
+  { icon: Medal, title: "Prime Ministerial Appreciation", by: "Dr. Manmohan Singh, Former Prime Minister of India" },
+  { icon: Landmark, title: "Best Medical Service Award", by: "Former Chief Minister Dr. Karunanidhi, Govt. of Tamil Nadu" },
+  { icon: HeartHandshake, title: "“Can-Serve Children” Project", by: "Launched by Dr. A. P. J. Abdul Kalam at Devaki Speciality Hospital" },
+  { icon: Medal, title: "Presidential Appreciation", by: "Dr. Ram Nath Kovind, Former President of India" },
+  { icon: Trophy, title: "Best Doctor Award", by: "Former Governor of Tamil Nadu, Mr. Banwarilal Purohit" },
+  { icon: Sparkles, title: "Outstanding Medical Service", by: "Indian Medical Association, Madurai Branch, 2016" },
+  { icon: Landmark, title: "Best Social Service Award", by: "Former Governor Mr. C. Vidyasagar Rao, 2017" },
+  { icon: AwardIcon, title: "District Collector Honours", by: "For 15+ years of continuous community contribution" },
+  { icon: Trophy, title: "Rotary Award", by: "Rotary Club, in recognition of service" },
+];
+
+const bedStats = [
+  { value: 150, label: "Sanctioned Beds" },
+  { value: 80, label: "Operational Beds" },
+  { value: 20, label: "ICU Beds" },
+  { value: 5, label: "Operation Theatres" },
+];
+
+const monthlyActivity = [
+  { value: 4000, label: "Outpatients" },
+  { value: 618, label: "Inpatients" },
+  { value: 950, label: "Dialysis Sessions" },
+  { value: 220, label: "Chemotherapy Sessions" },
+  { value: 200, label: "CT & MRI Scans" },
+  { value: 50, label: "Surgeries" },
+];
+
+const clinicalServices = [
+  "Cardiology",
+  "Cardiothoracic Surgery",
+  "Cardiac Anaesthesiology",
+  "Neurology",
+  "Neurosurgery",
+  "Nephrology (incl. Dialysis)",
+  "Medical & Surgical Oncology",
+  "Radiation Oncology",
+  "Medical & Surgical Gastroenterology",
+  "General Surgery (incl. Laparoscopic)",
+  "General Medicine",
+  "Orthopaedics (incl. Joint Replacement)",
+  "Urology",
+  "Vascular Surgery",
+  "Respiratory Medicine",
+  "Endocrinology",
+  "Dermatology & Venereology",
+  "Otorhinolaryngology",
+  "Plastic & Reconstructive Surgery",
+  "Anaesthesiology",
+];
+
+const diagnosticServices = [
+  "2D Echo",
+  "CT Scanning",
+  "MRI",
+  "Mammography",
+  "Ultrasound",
+  "EEG / EMG / EP",
+  "Holter Monitoring",
+  "Treadmill Testing",
+  "Spirometry",
+  "Urodynamic Studies",
+  "X-Ray",
+  "Clinical Bio-Chemistry",
+  "Clinical Pathology",
+  "Haematology",
+  "Physiotherapy",
+];
+
+const facilityGallery = [
+  { src: "/about/reception.jpg", width: 1400, height: 934, title: "Reception", description: "The welcome desk at Devaki Speciality Hospital." },
+  { src: "/about/modular-ot.jpg", width: 1400, height: 933, title: "Modular Operation Theatre", description: "Fully equipped for complex surgical procedures." },
+  { src: "/about/ambulance.jpg", width: 1400, height: 933, title: "24×7 Ambulance", description: "Round-the-clock emergency cardiac care on the road." },
+  { src: "/about/cath-lab-equipment.jpg", width: 619, height: 497, title: "Cath Lab", description: "Philips Allura Xper FD10, inaugurated by Dr. A. P. J. Abdul Kalam." },
+];
+
+const csrInitiatives = [
+  { icon: Sun, text: "Green, solar-lit toilets installed in Achampatti village, Madurai district." },
+  { icon: ShieldPlus, text: "Corona relief contributions delivered to underprivileged village communities." },
+  { icon: HeartHandshake, text: "Family Health Card scheme benefiting 1,000+ underprivileged families." },
+  { icon: Users, text: "Self-help groups formed among women through the D. N. Charitable Trust." },
+  { icon: ClipboardCheck, text: "Regular medical and training camps held across the region." },
+  { icon: Newspaper, text: "Health awareness talks for school students, led by Dr. P. S. Nagendiran." },
 ];
 
 export default async function AboutPage() {
@@ -92,10 +185,27 @@ export default async function AboutPage() {
             align="left"
             eyebrow="About Devaki"
             title="Quality healthcare with humanity, since 1991"
-            description="What began as a single-doctor practice in Arasaradi has grown into a 150+ bed multi-speciality hospital trusted across Madurai — built on a family's three-decade commitment to medicine."
+            description="What began as a single-doctor practice in Arasaradi has grown into a 150-bed multi-speciality hospital trusted across Madurai — built on a family's three-decade commitment to medicine."
             className="mx-0"
           />
+          <RevealOnScroll delay={0.15} className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white">
+            <MapPin className="h-3.5 w-3.5 text-brand-orange-300" /> Located at Madurai, Tamil Nadu
+          </RevealOnScroll>
         </Container>
+      </section>
+
+      <section id="building" className="relative">
+        <RevealOnScroll direction="none">
+          <div className="relative h-[240px] w-full overflow-hidden sm:h-[340px] lg:h-[420px]">
+            <Image
+              src="/about/building-exterior.jpg"
+              alt="Devaki Speciality Hospital building"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+          </div>
+        </RevealOnScroll>
       </section>
 
       <section id="founder" className="bg-white py-20 lg:py-28 dark:bg-brand-teal-950">
@@ -115,8 +225,8 @@ export default async function AboutPage() {
               Dr. Nagendiran graduated from Stanley Medical College, Chennai, in 1985, and trained further at
               University College London Hospital in the United Kingdom before returning to his hometown of
               Madurai. In 1991, he started a general practice in Arasaradi — the seed from which Devaki
-              Speciality Hospital would grow. That same year, he married Dr. K. Devaki, MBBS, DMRD, now Senior
-              Consultant Radiologist and Director of Devaki Scans. Their family&rsquo;s commitment to medicine
+              Speciality Hospital would grow. That same year, he married Dr. K. Devaki, MBBS, DMRD, now
+              Managing Director and Senior Consultant Radiologist. Their family&rsquo;s commitment to medicine
               continues through their sons, Dr. Naveen and Dr. Jai Praveen, and daughter-in-law Dr. Karthika
               Nandhini.
             </p>
@@ -164,26 +274,131 @@ export default async function AboutPage() {
         </Container>
       </section>
 
-      <section id="awards" className="bg-white py-20 dark:bg-brand-teal-950">
+      <section id="milestones" className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-12">
-          <SectionHeading
-            eyebrow="Recognition"
-            title="Awards & appreciation"
-            description="Three decades of service, recognised at the district, state, and national level."
-          />
-          <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {awards.map(({ icon: Icon, title, description }, index) => (
-              <RevealOnScroll as="li" key={title} delay={index * 0.06} className="list-none">
-                <Card className="flex h-full flex-col gap-4 p-7 transition-transform duration-300 hover:-translate-y-1">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-teal-500 to-brand-teal-700 text-white shadow-brand-soft">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <h3 className="font-bold text-brand-teal-900 dark:text-white">{title}</h3>
-                  <p className="text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{description}</p>
-                </Card>
+          <SectionHeading eyebrow="Our Journey" title="Three decades of milestones" description="From a single-doctor practice to a landmark multi-speciality hospital." />
+          <div className="relative mx-auto flex max-w-3xl flex-col gap-8 border-l border-brand-grey-200 pl-8 dark:border-white/10">
+            {milestones.map((item, index) => (
+              <RevealOnScroll key={item.year} delay={index * 0.04} className="relative">
+                <span className="absolute -left-[2.35rem] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-brand-orange-500 ring-4 ring-white dark:ring-brand-teal-950" />
+                <p className="text-sm font-bold text-brand-orange-600 dark:text-brand-orange-300">{item.year}</p>
+                <p className="mt-1 text-sm leading-relaxed text-brand-grey-600 dark:text-brand-grey-400">{item.text}</p>
+              </RevealOnScroll>
+            ))}
+          </div>
+          <RevealOnScroll className="mx-auto w-full max-w-3xl overflow-hidden rounded-3xl">
+            <Image
+              src="/about/silver-jubilee.jpg"
+              alt="Devaki Speciality Hospital Silver Jubilee — 25th Anniversary"
+              width={1014}
+              height={676}
+              className="w-full object-cover"
+            />
+          </RevealOnScroll>
+        </Container>
+      </section>
+
+      <section id="awards" className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
+        <Container className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <RevealOnScroll direction="left" className="overflow-hidden rounded-3xl shadow-brand-soft">
+            <Image
+              src="/about/founder-kalam.jpg"
+              alt="Dr. P. S. Nagendiran with His Excellency Dr. A. P. J. Abdul Kalam, Former President of India"
+              width={597}
+              height={415}
+              className="w-full object-cover"
+            />
+          </RevealOnScroll>
+          <RevealOnScroll delay={0.1} className="flex flex-col gap-6">
+            <SectionHeading
+              align="left"
+              eyebrow="Recognition"
+              title="Awards & appreciation"
+              description="Three decades of service, recognised at the district, state, and national level."
+              className="mx-0"
+            />
+            <StaggerGroup className="grid gap-3 sm:grid-cols-2">
+              {awards.map(({ icon: Icon, title, by }, index) => (
+                <RevealOnScroll as="li" key={title + by} delay={index * 0.04} className="list-none">
+                  <div className="flex h-full items-start gap-3 rounded-2xl bg-white p-4 shadow-brand-soft dark:bg-brand-teal-900">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-orange-50 text-brand-orange-600 dark:bg-brand-orange-900/40 dark:text-brand-orange-300">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-brand-teal-900 dark:text-white">{title}</p>
+                      <p className="text-xs text-brand-grey-500 dark:text-brand-grey-400">{by}</p>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </StaggerGroup>
+          </RevealOnScroll>
+        </Container>
+      </section>
+
+      <section id="by-the-numbers" className="relative overflow-hidden bg-gradient-to-br from-brand-teal-800 to-brand-teal-900 py-20">
+        <Container className="flex flex-col gap-14">
+          <SectionHeading tone="dark" eyebrow="By The Numbers" title="Our facility at a glance" />
+          <StaggerGroup className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+            {bedStats.map((item, index) => (
+              <RevealOnScroll key={item.label} delay={index * 0.06} className="text-center">
+                <BedDouble className="mx-auto mb-2 h-6 w-6 text-brand-orange-300" />
+                <AnimatedCounter value={item.value} className="block text-4xl font-bold text-white sm:text-5xl" />
+                <p className="mt-2 text-sm font-medium uppercase tracking-wider text-white/70">{item.label}</p>
               </RevealOnScroll>
             ))}
           </StaggerGroup>
+          <div>
+            <p className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.18em] text-brand-orange-300">
+              Monthly patient activity
+            </p>
+            <StaggerGroup className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
+              {monthlyActivity.map((item, index) => (
+                <RevealOnScroll key={item.label} delay={index * 0.05} className="text-center">
+                  <AnimatedCounter value={item.value} suffix="+" className="block text-2xl font-bold text-white sm:text-3xl" />
+                  <p className="mt-1 text-xs font-medium text-white/60">{item.label}</p>
+                </RevealOnScroll>
+              ))}
+            </StaggerGroup>
+          </div>
+        </Container>
+      </section>
+
+      <section id="services" className="bg-white py-20 dark:bg-brand-teal-950">
+        <Container className="flex flex-col gap-12">
+          <SectionHeading eyebrow="Scope of Services" title="Specialities and diagnostics under one roof" />
+          <div className="grid gap-10 lg:grid-cols-2">
+            <RevealOnScroll>
+              <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-brand-teal-900 dark:text-white">
+                <StethoscopeIcon className="h-5 w-5 text-brand-teal-600 dark:text-brand-teal-300" /> Clinical Services
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {clinicalServices.map((service) => (
+                  <span
+                    key={service}
+                    className="rounded-full border border-brand-grey-200 px-4 py-1.5 text-xs font-medium text-brand-teal-700 dark:border-white/10 dark:text-brand-teal-200"
+                  >
+                    {service}
+                  </span>
+                ))}
+              </div>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.1}>
+              <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-brand-teal-900 dark:text-white">
+                <ScanLine className="h-5 w-5 text-brand-orange-600 dark:text-brand-orange-300" /> Diagnostic & Lab Services
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {diagnosticServices.map((service) => (
+                  <span
+                    key={service}
+                    className="rounded-full border border-brand-grey-200 px-4 py-1.5 text-xs font-medium text-brand-orange-700 dark:border-white/10 dark:text-brand-orange-200"
+                  >
+                    {service}
+                  </span>
+                ))}
+              </div>
+            </RevealOnScroll>
+          </div>
         </Container>
       </section>
 
@@ -203,12 +418,32 @@ export default async function AboutPage() {
               </RevealOnScroll>
             ))}
           </StaggerGroup>
+          <StaggerGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {facilityGallery.map((photo, index) => (
+              <RevealOnScroll as="li" key={photo.src} delay={index * 0.06} className="list-none">
+                <Card className="group h-full overflow-hidden p-0 transition-transform duration-300 hover:-translate-y-1">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Image
+                      src={photo.src}
+                      alt={photo.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-sm font-bold text-brand-teal-900 dark:text-white">{photo.title}</p>
+                    <p className="mt-1 text-xs text-brand-grey-500 dark:text-brand-grey-400">{photo.description}</p>
+                  </div>
+                </Card>
+              </RevealOnScroll>
+            ))}
+          </StaggerGroup>
         </Container>
       </section>
 
       <section id="management" className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-12">
-          <SectionHeading eyebrow="Leadership" title="The family behind the hospital" />
+          <SectionHeading eyebrow="Ownership" title="The family behind the hospital" />
           <StaggerGroup className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {leadership.map((member, index) => (
               <RevealOnScroll as="li" key={member.name} delay={index * 0.06} className="list-none">
@@ -227,7 +462,39 @@ export default async function AboutPage() {
         </Container>
       </section>
 
-      <section id="accreditations" className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
+      <section id="csr" className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
+        <Container className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <RevealOnScroll>
+            <SectionHeading
+              align="left"
+              eyebrow="Medico-Social Services"
+              title="Giving back to our community"
+              className="mx-0"
+            />
+            <StaggerGroup className="mt-8 flex flex-col gap-4">
+              {csrInitiatives.map(({ icon: Icon, text }, index) => (
+                <RevealOnScroll as="li" key={text} delay={index * 0.05} className="flex list-none items-start gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-600 dark:bg-brand-teal-800 dark:text-brand-teal-200">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <p className="text-sm leading-relaxed text-brand-grey-600 dark:text-brand-grey-400">{text}</p>
+                </RevealOnScroll>
+              ))}
+            </StaggerGroup>
+          </RevealOnScroll>
+          <RevealOnScroll delay={0.1} className="overflow-hidden rounded-3xl shadow-brand-soft">
+            <Image
+              src="/about/marathon.jpg"
+              alt="Community marathon organised by Devaki Speciality Hospital"
+              width={963}
+              height={642}
+              className="w-full object-cover"
+            />
+          </RevealOnScroll>
+        </Container>
+      </section>
+
+      <section id="accreditations" className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-12">
           <SectionHeading eyebrow="Accreditations" title="Standards we hold ourselves to" />
           <div className="grid gap-10 lg:grid-cols-2">
@@ -278,7 +545,37 @@ export default async function AboutPage() {
         </Container>
       </section>
 
-      <section id="csr" className="bg-white py-20 dark:bg-brand-teal-950">
+      <section id="future" className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
+        <Container className="flex flex-col gap-12">
+          <SectionHeading eyebrow="Looking Ahead" title="Future plans" />
+          <StaggerGroup className="grid gap-6 sm:grid-cols-2">
+            <RevealOnScroll as="li" className="list-none">
+              <Card className="flex h-full flex-col gap-4 p-7 transition-transform duration-300 hover:-translate-y-1">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-teal-500 to-brand-teal-700 text-white">
+                  <Building2 className="h-5 w-5" />
+                </span>
+                <h3 className="font-bold text-brand-teal-900 dark:text-white">Expansion to 500 Beds</h3>
+                <p className="text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">
+                  Growing our facility to a 500-bed hospital to serve even more patients across the region.
+                </p>
+              </Card>
+            </RevealOnScroll>
+            <RevealOnScroll as="li" delay={0.06} className="list-none">
+              <Card className="flex h-full flex-col gap-4 p-7 transition-transform duration-300 hover:-translate-y-1">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-orange-500 to-brand-orange-600 text-white">
+                  <Rocket className="h-5 w-5" />
+                </span>
+                <h3 className="font-bold text-brand-teal-900 dark:text-white">Organ Transplant Services</h3>
+                <p className="text-sm leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">
+                  Introducing organ transplant surgery services as part of our continued clinical expansion.
+                </p>
+              </Card>
+            </RevealOnScroll>
+          </StaggerGroup>
+        </Container>
+      </section>
+
+      <section id="values" className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-12">
           <SectionHeading eyebrow="What Drives Us" title="Our core values" />
           <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
