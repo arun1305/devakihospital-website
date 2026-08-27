@@ -36,6 +36,7 @@ import { HighlightsCounter } from "@/components/sections/HighlightsCounter";
 import { buildMetadata } from "@/lib/seo";
 import { getAwards, getAccreditations } from "@/lib/api-server";
 import { fallbackAwards, fallbackAccreditations } from "@/lib/fallback-content";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Us",
@@ -65,18 +66,22 @@ const leadership = [
 
 const milestones = [
   { year: "1991", text: "Dr. P. S. Nagendiran starts a general practice in Arasaradi, Madurai." },
-  { year: "1992", text: "Jebam Hospital opens its doors as a 10-bed facility." },
+  { year: "1992", text: "Jebam Hospital opens its doors as a 10-bed facility.", image: "/about/milestone-1992-jebam.jpg" },
   { year: "1995", text: "The hospital expands to 25 beds to meet growing demand." },
-  { year: "1998", text: "Devaki Scans launches with a black-and-white ultrasound machine imported from Italy." },
-  { year: "2000", text: "Whole-body CT scanning is introduced with a Siemens ART machine." },
-  { year: "2002", text: "India's first Mammomat 1000 mammography unit is installed." },
-  { year: "2003", text: "Asia's first Acuson Aspen ultrasound scanner is introduced." },
-  { year: "2007", text: "Devaki Cancer Institute is inaugurated by Dr. A. P. J. Abdul Kalam, then President of India." },
-  { year: "2010", text: "Tamil Nadu's first Siemens S2000 system is imported from the USA." },
-  { year: "2011", text: "South Tamil Nadu's first 128-slice Spiral Heart CT Scanner goes live." },
-  { year: "2014", text: "The Cath Lab and Coronary Care Unit are inaugurated by Dr. A. P. J. Abdul Kalam." },
-  { year: "2020", text: "Devaki Speciality Hospital is formally inaugurated." },
-  { year: "2021", text: "Tamil Nadu's first Varian Halcyon Linear Accelerator is installed." },
+  { year: "1998", text: "Devaki Scans launches with a black-and-white ultrasound machine imported from Italy.", image: "/about/milestone-1998-devaki-scans.jpg" },
+  { year: "2000", text: "Whole-body CT scanning is introduced with a Siemens ART machine.", image: "/about/milestone-2000-ct-scan.jpg" },
+  { year: "2002", text: "India's first Mammomat 1000 mammography unit is installed.", image: "/about/milestone-2002-mammography.jpg" },
+  { year: "2003", text: "Asia's first Acuson Aspen ultrasound scanner is introduced.", image: "/about/milestone-2003-ultrasound.jpg" },
+  { year: "2004", text: "Devaki Scans opens its East Veli Street branch.", image: "/about/milestone-2004-eastveli.jpg" },
+  { year: "2005", text: "Seva Scans launches under the D. N. Public Charitable Trust.", image: "/about/milestone-2005-seva-scans.jpg" },
+  { year: "2007", text: "Devaki Cancer Institute is inaugurated by Dr. A. P. J. Abdul Kalam, then President of India.", image: "/about/award-cancer-institute-kalam.jpg" },
+  { year: "2010", text: "Tamil Nadu's first Siemens S2000 system is imported from the USA.", image: "/about/milestone-2010-s2000.jpg" },
+  { year: "2011", text: "South Tamil Nadu's first 128-slice Spiral Heart CT Scanner goes live.", image: "/about/milestone-2011-ct-scanner.jpg" },
+  { year: "2012", text: "Devaki Scans opens its Virudhunagar branch.", image: "/about/milestone-2012-virudhunagar.jpg" },
+  { year: "2014", text: "The Cath Lab and Coronary Care Unit are inaugurated by Dr. A. P. J. Abdul Kalam.", image: "/about/cath-lab-equipment.jpg" },
+  { year: "2020", text: "Devaki Speciality Hospital is formally inaugurated.", image: "/about/milestone-2020-ward.jpg" },
+  { year: "2021", text: "Tamil Nadu's first Varian Halcyon Linear Accelerator is installed.", image: "/about/milestone-2021-halcyon.jpg" },
+  { year: "2022", text: "The fully equipped CTVS Operation Theatre department is completed.", image: "/about/milestone-2022-ctvs-ot.jpg" },
   { year: "2024", text: "Devaki celebrates its Silver Jubilee — 25 years of service to Madurai." },
 ];
 
@@ -284,8 +289,17 @@ export default async function AboutPage() {
             {milestones.map((item, index) => (
               <RevealOnScroll key={item.year} delay={index * 0.04} className="relative">
                 <span className="absolute -left-[2.35rem] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-brand-orange-500 ring-4 ring-white dark:ring-brand-teal-950" />
-                <p className="text-sm font-bold text-brand-orange-600 dark:text-brand-orange-300">{item.year}</p>
-                <p className="mt-1 text-sm leading-relaxed text-brand-grey-600 dark:text-brand-grey-400">{item.text}</p>
+                <div className={cn("flex gap-4", item.image ? "items-center" : "flex-col")}>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold text-brand-orange-600 dark:text-brand-orange-300">{item.year}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-brand-grey-600 dark:text-brand-grey-400">{item.text}</p>
+                  </div>
+                  {item.image && (
+                    <div className="relative h-20 w-28 shrink-0 overflow-hidden rounded-xl shadow-brand-soft">
+                      <Image src={item.image} alt={item.text} fill className="object-cover" />
+                    </div>
+                  )}
+                </div>
               </RevealOnScroll>
             ))}
           </div>
