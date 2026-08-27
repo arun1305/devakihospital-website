@@ -57,9 +57,9 @@ const infrastructure = [
 ];
 
 const leadership = [
-  { name: "Dr. P. S. Nagendiran, MBBS", role: "Chairman, Devaki Hospitals", initials: "PN" },
-  { name: "Dr. K. Devaki, MBBS, DMRD", role: "Managing Director, Devaki Hospitals", initials: "KD" },
-  { name: "Dr. N. Naveen, MBBS, MD(RD)", role: "Managing Director — Interventional Radiologist", initials: "NN" },
+  { name: "Dr. P. S. Nagendiran, MBBS", role: "Chairman, Devaki Hospitals", initials: "PN", photoSrc: "/about/leader-nagendiran.jpg" },
+  { name: "Dr. K. Devaki, MBBS, DMRD", role: "Managing Director, Devaki Hospitals", initials: "KD", photoSrc: "/about/leader-devaki.jpg" },
+  { name: "Dr. N. Naveen, MBBS, MD(RD)", role: "Managing Director — Interventional Radiologist", initials: "NN", photoSrc: "/about/leader-son.jpg" },
   { name: "Dr. N. Jai Praveen, MBBS, MD", role: "Managing Director — General Physician", initials: "NJ" },
 ];
 
@@ -81,17 +81,19 @@ const milestones = [
 ];
 
 const awards = [
-  { icon: Trophy, title: "National Medical Excellence Award", by: "Ministry of Health & Family Welfare, New Delhi, 1999" },
-  { icon: Medal, title: "Presidential Appreciation", by: "Dr. A. P. J. Abdul Kalam, Former President of India" },
-  { icon: Medal, title: "Prime Ministerial Appreciation", by: "Dr. Manmohan Singh, Former Prime Minister of India" },
-  { icon: Landmark, title: "Best Medical Service Award", by: "Former Chief Minister Dr. Karunanidhi, Govt. of Tamil Nadu" },
-  { icon: HeartHandshake, title: "“Can-Serve Children” Project", by: "Launched by Dr. A. P. J. Abdul Kalam at Devaki Speciality Hospital" },
-  { icon: Medal, title: "Presidential Appreciation", by: "Dr. Ram Nath Kovind, Former President of India" },
-  { icon: Trophy, title: "Best Doctor Award", by: "Former Governor of Tamil Nadu, Mr. Banwarilal Purohit" },
-  { icon: Sparkles, title: "Outstanding Medical Service", by: "Indian Medical Association, Madurai Branch, 2016" },
-  { icon: Landmark, title: "Best Social Service Award", by: "Former Governor Mr. C. Vidyasagar Rao, 2017" },
-  { icon: AwardIcon, title: "District Collector Honours", by: "For 15+ years of continuous community contribution" },
-  { icon: Trophy, title: "Rotary Award", by: "Rotary Club, in recognition of service" },
+  { icon: Trophy, title: "National Medical Excellence Award", by: "Ministry of Health & Family Welfare, New Delhi, 1999", photo: "/about/award-national-excellence.jpg" },
+  { icon: Sparkles, title: "Devaki Cancer Institute Inaugurated", by: "By Dr. A. P. J. Abdul Kalam, Former President of India, 2007", photo: "/about/award-cancer-institute-kalam.jpg" },
+  { icon: Medal, title: "Prime Ministerial Appreciation", by: "Dr. Manmohan Singh, Former Prime Minister of India", photo: "/about/award-manmohan-singh.jpg" },
+  { icon: Landmark, title: "Best Medical Service Award", by: "Former Chief Minister Dr. Karunanidhi, Govt. of Tamil Nadu", photo: "/about/award-karunanidhi.jpg" },
+  { icon: HeartHandshake, title: "“Can-Serve Children” Project", by: "Launched by Dr. A. P. J. Abdul Kalam at Devaki Speciality Hospital", photo: "/about/award-canserve-kalam.jpg" },
+  { icon: Medal, title: "Presidential Appreciation", by: "Dr. Ram Nath Kovind, Former President of India", photo: "/about/award-kovind.jpg" },
+  { icon: Trophy, title: "Best Doctor Award", by: "Former Governor of Tamil Nadu, Mr. Banwarilal Purohit", photo: "/about/award-purohit.jpg" },
+  { icon: Sparkles, title: "Outstanding Medical Service", by: "Indian Medical Association, Madurai Branch, 2016", photo: "/about/award-ima-2016.jpg" },
+  { icon: Landmark, title: "Best Social Service Award", by: "Former Governor Mr. C. Vidyasagar Rao, 2017", photo: "/about/award-vidyasagar-rao.jpg" },
+  { icon: AwardIcon, title: "District Collector Honours", by: "For 15+ years of continuous community contribution", photo: "/about/award-collector-1.jpg" },
+  { icon: AwardIcon, title: "District Collector Honours", by: "Recognised again for sustained community service", photo: "/about/award-collector-2.jpg" },
+  { icon: Landmark, title: "Governor with Senate Members", by: "Hon'ble Governor of Tamil Nadu, felicitation ceremony", photo: "/about/award-governor-senate.jpg" },
+  { icon: Trophy, title: "Rotary Award", by: "Rotary Club, for Best Diagnostic Service in Madurai", photo: "/about/award-rotary.jpg" },
 ];
 
 const bedStats = [
@@ -213,6 +215,7 @@ export default async function AboutPage() {
           <RevealOnScroll direction="left">
             <PortraitMockup
               initials="PN"
+              photoSrc="/about/leader-nagendiran.jpg"
               accentIcons={[<Stethoscope key="steth" className="h-5 w-5" />, <HeartPulse key="heart" className="h-5 w-5" />]}
             />
           </RevealOnScroll>
@@ -286,21 +289,23 @@ export default async function AboutPage() {
               </RevealOnScroll>
             ))}
           </div>
-          <RevealOnScroll className="mx-auto w-full max-w-3xl overflow-hidden rounded-3xl">
-            <Image
-              src="/about/silver-jubilee.jpg"
-              alt="Devaki Speciality Hospital Silver Jubilee — 25th Anniversary"
-              width={1014}
-              height={676}
-              className="w-full object-cover"
-            />
-          </RevealOnScroll>
+          <StaggerGroup className="mx-auto grid w-full max-w-4xl gap-4 sm:grid-cols-3">
+            {[
+              { src: "/about/silver-jubilee.jpg", alt: "Silver Jubilee — 25th Anniversary backdrop" },
+              { src: "/about/jubilee-group.jpg", alt: "Staff celebrating the Silver Jubilee on stage" },
+              { src: "/about/family-jubilee.jpg", alt: "The Nagendiran family at the Silver Jubilee celebration" },
+            ].map((photo, index) => (
+              <RevealOnScroll as="li" key={photo.src} delay={index * 0.06} className="list-none overflow-hidden rounded-2xl">
+                <Image src={photo.src} alt={photo.alt} width={1014} height={676} className="w-full object-cover" />
+              </RevealOnScroll>
+            ))}
+          </StaggerGroup>
         </Container>
       </section>
 
       <section id="awards" className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
-        <Container className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <RevealOnScroll direction="left" className="overflow-hidden rounded-3xl shadow-brand-soft">
+        <Container className="flex flex-col gap-12">
+          <RevealOnScroll direction="left" className="mx-auto w-full max-w-2xl overflow-hidden rounded-3xl shadow-brand-soft">
             <Image
               src="/about/founder-kalam.jpg"
               alt="Dr. P. S. Nagendiran with His Excellency Dr. A. P. J. Abdul Kalam, Former President of India"
@@ -309,30 +314,34 @@ export default async function AboutPage() {
               className="w-full object-cover"
             />
           </RevealOnScroll>
-          <RevealOnScroll delay={0.1} className="flex flex-col gap-6">
-            <SectionHeading
-              align="left"
-              eyebrow="Recognition"
-              title="Awards & appreciation"
-              description="Three decades of service, recognised at the district, state, and national level."
-              className="mx-0"
-            />
-            <StaggerGroup className="grid gap-3 sm:grid-cols-2">
-              {awards.map(({ icon: Icon, title, by }, index) => (
-                <RevealOnScroll as="li" key={title + by} delay={index * 0.04} className="list-none">
-                  <div className="flex h-full items-start gap-3 rounded-2xl bg-white p-4 shadow-brand-soft dark:bg-brand-teal-900">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-orange-50 text-brand-orange-600 dark:bg-brand-orange-900/40 dark:text-brand-orange-300">
+          <SectionHeading
+            eyebrow="Recognition"
+            title="Awards & appreciation"
+            description="Three decades of service, recognised at the district, state, and national level."
+          />
+          <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {awards.map(({ icon: Icon, title, by, photo }, index) => (
+              <RevealOnScroll as="li" key={title + by} delay={index * 0.04} className="list-none">
+                <Card className="group h-full overflow-hidden p-0 transition-transform duration-300 hover:-translate-y-1">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Image
+                      src={photo}
+                      alt={title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span className="absolute left-3 top-3 flex h-9 w-9 items-center justify-center rounded-xl bg-white/90 text-brand-orange-600 shadow-brand-soft backdrop-blur-sm dark:bg-brand-teal-950/90 dark:text-brand-orange-300">
                       <Icon className="h-4 w-4" />
                     </span>
-                    <div>
-                      <p className="text-sm font-semibold text-brand-teal-900 dark:text-white">{title}</p>
-                      <p className="text-xs text-brand-grey-500 dark:text-brand-grey-400">{by}</p>
-                    </div>
                   </div>
-                </RevealOnScroll>
-              ))}
-            </StaggerGroup>
-          </RevealOnScroll>
+                  <div className="p-4">
+                    <p className="text-sm font-semibold text-brand-teal-900 dark:text-white">{title}</p>
+                    <p className="mt-1 text-xs text-brand-grey-500 dark:text-brand-grey-400">{by}</p>
+                  </div>
+                </Card>
+              </RevealOnScroll>
+            ))}
+          </StaggerGroup>
         </Container>
       </section>
 
@@ -448,7 +457,7 @@ export default async function AboutPage() {
             {leadership.map((member, index) => (
               <RevealOnScroll as="li" key={member.name} delay={index * 0.06} className="list-none">
                 <div className="flex flex-col items-center gap-4 text-center">
-                  <PortraitMockup initials={member.initials} className="max-w-[9.5rem]" />
+                  <PortraitMockup initials={member.initials} photoSrc={member.photoSrc} className="max-w-[9.5rem]" />
                   <div>
                     <h3 className="font-bold text-brand-teal-900 dark:text-white">{member.name}</h3>
                     <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-brand-orange-600 dark:text-brand-orange-300">
@@ -463,7 +472,7 @@ export default async function AboutPage() {
       </section>
 
       <section id="csr" className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
-        <Container className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <Container className="flex flex-col gap-12">
           <RevealOnScroll>
             <SectionHeading
               align="left"
@@ -471,7 +480,7 @@ export default async function AboutPage() {
               title="Giving back to our community"
               className="mx-0"
             />
-            <StaggerGroup className="mt-8 flex flex-col gap-4">
+            <StaggerGroup className="mt-8 grid gap-4 sm:grid-cols-2">
               {csrInitiatives.map(({ icon: Icon, text }, index) => (
                 <RevealOnScroll as="li" key={text} delay={index * 0.05} className="flex list-none items-start gap-3">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-600 dark:bg-brand-teal-800 dark:text-brand-teal-200">
@@ -482,12 +491,42 @@ export default async function AboutPage() {
               ))}
             </StaggerGroup>
           </RevealOnScroll>
-          <RevealOnScroll delay={0.1} className="overflow-hidden rounded-3xl shadow-brand-soft">
+          <StaggerGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { src: "/about/marathon.jpg", alt: "Community marathon organised by Devaki Speciality Hospital", caption: "Community Marathon" },
+              { src: "/about/marathon-2.jpg", alt: "Marathon event with community partners", caption: "Health Awareness Marathon" },
+              { src: "/about/csr-school-camp.jpg", alt: "Health awareness camp for school students", caption: "School Health Camp" },
+              { src: "/about/csr-solar-toilet-1.jpg", alt: "Green solar-lit toilet inauguration in Achampatti village", caption: "Solar-Lit Toilet Inauguration" },
+              { src: "/about/csr-solar-toilet-2.jpg", alt: "Community facility inauguration in a Madurai village", caption: "Village Facility Inauguration" },
+              { src: "/about/csr-staff-training.jpg", alt: "Staff training session at Devaki Speciality Hospital", caption: "Staff Training" },
+            ].map((photo, index) => (
+              <RevealOnScroll as="li" key={photo.src} delay={index * 0.05} className="list-none">
+                <Card className="group h-full overflow-hidden p-0 transition-transform duration-300 hover:-translate-y-1">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <p className="p-3 text-xs font-semibold text-brand-teal-900 dark:text-white">{photo.caption}</p>
+                </Card>
+              </RevealOnScroll>
+            ))}
+          </StaggerGroup>
+        </Container>
+      </section>
+
+      <section id="insurance" className="bg-white py-20 dark:bg-brand-teal-950">
+        <Container className="flex flex-col gap-10">
+          <SectionHeading eyebrow="Insurance & TPA" title="Approved private insurance & TPA partners" description="Cashless treatment is also available for ESI, BSNL, and Tamil Nadu Government employees and pensioners." />
+          <RevealOnScroll className="mx-auto w-full max-w-3xl overflow-hidden rounded-3xl shadow-brand-soft">
             <Image
-              src="/about/marathon.jpg"
-              alt="Community marathon organised by Devaki Speciality Hospital"
-              width={963}
-              height={642}
+              src="/about/insurance-tpa-list.jpg"
+              alt="Approved private insurance and TPA partner list at Devaki Speciality Hospital"
+              width={1066}
+              height={914}
               className="w-full object-cover"
             />
           </RevealOnScroll>

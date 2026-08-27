@@ -1,16 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface PortraitMockupProps {
   initials: string;
+  photoSrc?: string;
   className?: string;
   accentIcons?: ReactNode[];
 }
 
-export function PortraitMockup({ initials, className, accentIcons = [] }: PortraitMockupProps) {
+export function PortraitMockup({ initials, photoSrc, className, accentIcons = [] }: PortraitMockupProps) {
   return (
     <div className={cn("relative mx-auto aspect-square w-full max-w-xs", className)}>
       <motion.div
@@ -25,9 +27,15 @@ export function PortraitMockup({ initials, className, accentIcons = [] }: Portra
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden
       />
-      <div className="absolute inset-7 flex items-center justify-center rounded-full bg-gradient-to-br from-brand-teal-600 to-brand-teal-800 text-5xl font-bold text-white shadow-brand-glow ring-4 ring-white dark:ring-brand-teal-950">
-        {initials}
-      </div>
+      {photoSrc ? (
+        <div className="absolute inset-7 overflow-hidden rounded-full shadow-brand-glow ring-4 ring-white dark:ring-brand-teal-950">
+          <Image src={photoSrc} alt={initials} fill className="object-cover" />
+        </div>
+      ) : (
+        <div className="absolute inset-7 flex items-center justify-center rounded-full bg-gradient-to-br from-brand-teal-600 to-brand-teal-800 text-5xl font-bold text-white shadow-brand-glow ring-4 ring-white dark:ring-brand-teal-950">
+          {initials}
+        </div>
+      )}
       {accentIcons.map((icon, i) => (
         <motion.span
           key={i}
