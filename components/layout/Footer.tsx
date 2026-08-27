@@ -11,7 +11,6 @@ const footerColumns = [
     title: "Hospital",
     links: [
       { label: "About Us", href: "/about" },
-      { label: "Doctors", href: "/doctors" },
       { label: "Departments", href: "/departments" },
       { label: "Careers", href: "/careers" },
       { label: "Blog", href: "/blog" },

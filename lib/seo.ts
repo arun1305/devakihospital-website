@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "./site-config";
-import type { Department, Doctor, FaqItem } from "@/types";
+import type { Department, FaqItem } from "@/types";
 
 interface BuildMetadataArgs {
   title: string;
@@ -68,23 +68,6 @@ export function departmentJsonLd(department: Department) {
     url: `${siteConfig.url}/departments/${department.slug}`,
     description: department.shortDescription,
     parentOrganization: {
-      "@type": "Hospital",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-  };
-}
-
-export function doctorJsonLd(doctor: Doctor) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Physician",
-    name: doctor.name,
-    url: `${siteConfig.url}/doctors/${doctor.slug}`,
-    image: doctor.photo,
-    jobTitle: doctor.designation,
-    medicalSpecialty: doctor.specializations,
-    worksFor: {
       "@type": "Hospital",
       name: siteConfig.name,
       url: siteConfig.url,

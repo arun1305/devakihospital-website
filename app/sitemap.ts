@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 import {
   getDepartments,
-  getDoctors,
   getBlogs,
   getNewsList,
   getEvents,
@@ -12,7 +11,6 @@ import {
 } from "@/lib/api-server";
 import {
   fallbackDepartments,
-  fallbackDoctors,
   fallbackBlogs,
   fallbackNews,
   fallbackEvents,
@@ -25,7 +23,6 @@ const staticRoutes = [
   "",
   "/about",
   "/departments",
-  "/doctors",
   "/appointment",
   "/health-packages",
   "/blog",
@@ -62,9 +59,8 @@ function entries(paths: string[], changeFrequency: MetadataRoute.Sitemap[number]
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [departments, doctors, blogs, news, events, packages, jobs, gallery] = await Promise.all([
+  const [departments, blogs, news, events, packages, jobs, gallery] = await Promise.all([
     getDepartments("?status=published&limit=100"),
-    getDoctors("?status=published&limit=200"),
     getBlogs("&limit=200"),
     getNewsList("&limit=200"),
     getEvents("&limit=200"),
@@ -74,7 +70,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
 
   const departmentList = departments.length ? departments : fallbackDepartments;
-  const doctorList = doctors.length ? doctors : fallbackDoctors;
   const blogList = blogs.length ? blogs : fallbackBlogs;
   const newsList = news.length ? news : fallbackNews;
   const eventList = events.length ? events : fallbackEvents;
@@ -85,7 +80,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...entries(staticRoutes, "weekly", 0.7).map((e) => (e.url === siteConfig.url ? { ...e, changeFrequency: "daily" as const, priority: 1 } : e)),
     ...entries(departmentList.map((d) => `/departments/${d.slug}`), "monthly", 0.8),
-    ...entries(doctorList.map((d) => `/doctors/${d.slug}`), "monthly", 0.6),
     ...entries(blogList.map((b) => `/blog/${b.slug}`), "monthly", 0.6),
     ...entries(newsList.map((n) => `/news/${n.slug}`), "monthly", 0.5),
     ...entries(eventList.map((e) => `/events/${e.slug}`), "weekly", 0.5),

@@ -2,7 +2,6 @@ import type {
   ApiItemResponse,
   ApiListResponse,
   Department,
-  Doctor,
   Testimonial,
   BlogPost,
   NewsPost,
@@ -44,18 +43,6 @@ export async function getDepartments(params = ""): Promise<Department[]> {
 export async function getDepartmentBySlug(slug: string): Promise<Department | null> {
   const res = await fetchJson<ApiItemResponse<Department>>(`/departments/${slug}`, {
     tags: [`department:${slug}`],
-  });
-  return res?.data ?? null;
-}
-
-export async function getDoctors(params = ""): Promise<Doctor[]> {
-  const res = await fetchJson<ApiListResponse<Doctor>>(`/doctors${params}`, { tags: ["doctors"] });
-  return res?.data ?? [];
-}
-
-export async function getDoctorBySlug(slug: string): Promise<Doctor | null> {
-  const res = await fetchJson<ApiItemResponse<Doctor>>(`/doctors/${slug}`, {
-    tags: [`doctor:${slug}`],
   });
   return res?.data ?? null;
 }

@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/Button";
 import { AnimatedIconBadge } from "@/components/ui/AnimatedIconBadge";
 import { Accordion } from "@/components/ui/Accordion";
 import { RevealOnScroll, StaggerGroup } from "@/components/ui/RevealOnScroll";
-import { DoctorCard } from "@/components/doctors/DoctorCard";
 import { AppointmentCTA } from "@/components/sections/AppointmentCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata, departmentJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/seo";
@@ -159,26 +158,6 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
           </StaggerGroup>
         </Container>
       </section>
-
-      {department.doctors.length > 0 && (
-        <section className="bg-white py-20 dark:bg-brand-teal-950">
-          <Container className="flex flex-col gap-12">
-            <SectionHeading
-              align="left"
-              eyebrow="Meet the Team"
-              title={`${department.name} specialists`}
-              className="mx-0"
-            />
-            <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {department.doctors.map((doctor, index) => (
-                <RevealOnScroll as="li" key={doctor._id} delay={index * 0.06} className="list-none">
-                  <DoctorCard doctor={doctor} />
-                </RevealOnScroll>
-              ))}
-            </StaggerGroup>
-          </Container>
-        </section>
-      )}
 
       {department.faqs.length > 0 && (
         <section className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">

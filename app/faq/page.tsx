@@ -22,7 +22,7 @@ const categories = [
       },
       {
         question: "Can I choose a specific doctor?",
-        answer: "Yes — search by department or browse our Doctors page to select a specialist directly.",
+        answer: "Yes — let us know your preference when booking an appointment or contact our care team directly.",
       },
       {
         question: "What if I need to reschedule?",

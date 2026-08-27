@@ -4,7 +4,6 @@ import { QuickAccess } from "@/components/sections/QuickAccess";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { HighlightsCounter } from "@/components/sections/HighlightsCounter";
 import { DepartmentsPreview } from "@/components/sections/DepartmentsPreview";
-import { DoctorsPreview } from "@/components/sections/DoctorsPreview";
 import { TestimonialsCarousel } from "@/components/sections/TestimonialsCarousel";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { InsightsPreview } from "@/components/sections/InsightsPreview";
@@ -13,7 +12,6 @@ import { AppointmentCTA } from "@/components/sections/AppointmentCTA";
 import { buildMetadata } from "@/lib/seo";
 import {
   getDepartments,
-  getDoctors,
   getFeaturedTestimonials,
   getLatestBlogs,
   getLatestNews,
@@ -22,7 +20,6 @@ import {
 } from "@/lib/api-server";
 import {
   fallbackDepartments,
-  fallbackDoctors,
   fallbackTestimonials,
   fallbackInsurancePartners,
   fallbackAccreditations,
@@ -36,10 +33,9 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default async function HomePage() {
-  const [departments, doctors, testimonials, blogs, news, insurancePartners, accreditations] =
+  const [departments, testimonials, blogs, news, insurancePartners, accreditations] =
     await Promise.all([
       getDepartments("?status=published&sort=order"),
-      getDoctors("?status=published&featured=true&limit=6"),
       getFeaturedTestimonials(),
       getLatestBlogs(3),
       getLatestNews(3),
@@ -54,7 +50,6 @@ export default async function HomePage() {
       <WhyChooseUs />
       <HighlightsCounter />
       <DepartmentsPreview departments={departments.length ? departments : fallbackDepartments} />
-      <DoctorsPreview doctors={doctors.length ? doctors : fallbackDoctors} />
       <TestimonialsCarousel testimonials={testimonials.length ? testimonials : fallbackTestimonials} />
       <TrustBar
         insurancePartners={insurancePartners.length ? insurancePartners : fallbackInsurancePartners}

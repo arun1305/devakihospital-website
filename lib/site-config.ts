@@ -62,7 +62,6 @@ export const mainNav: NavItem[] = [
     ],
   },
   { label: "Departments", href: "/departments", children: departmentNavLinks },
-  { label: "Doctors", href: "/doctors" },
   { label: "Health Packages", href: "/health-packages" },
   {
     label: "Patient Care",
