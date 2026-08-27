@@ -30,13 +30,13 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { RevealOnScroll, StaggerGroup } from "@/components/ui/RevealOnScroll";
 import { PortraitMockup } from "@/components/ui/PortraitMockup";
+import { JourneyTimeline } from "@/components/about/JourneyTimeline";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { AppointmentCTA } from "@/components/sections/AppointmentCTA";
 import { HighlightsCounter } from "@/components/sections/HighlightsCounter";
 import { buildMetadata } from "@/lib/seo";
 import { getAwards, getAccreditations } from "@/lib/api-server";
 import { fallbackAwards, fallbackAccreditations } from "@/lib/fallback-content";
-import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Us",
@@ -285,24 +285,7 @@ export default async function AboutPage() {
       <section id="milestones" className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-12">
           <SectionHeading eyebrow="Our Journey" title="Three decades of milestones" description="From a single-doctor practice to a landmark multi-speciality hospital." />
-          <div className="relative mx-auto flex max-w-3xl flex-col gap-8 border-l border-brand-grey-200 pl-8 dark:border-white/10">
-            {milestones.map((item, index) => (
-              <RevealOnScroll key={item.year} delay={index * 0.04} className="relative">
-                <span className="absolute -left-[2.35rem] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-brand-orange-500 ring-4 ring-white dark:ring-brand-teal-950" />
-                <div className={cn("flex gap-4", item.image ? "items-center" : "flex-col")}>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-bold text-brand-orange-600 dark:text-brand-orange-300">{item.year}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-brand-grey-600 dark:text-brand-grey-400">{item.text}</p>
-                  </div>
-                  {item.image && (
-                    <div className="relative h-20 w-28 shrink-0 overflow-hidden rounded-xl shadow-brand-soft">
-                      <Image src={item.image} alt={item.text} fill className="object-cover" />
-                    </div>
-                  )}
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
+          <JourneyTimeline milestones={milestones} />
           <StaggerGroup className="mx-auto grid w-full max-w-4xl gap-4 sm:grid-cols-3">
             {[
               { src: "/about/silver-jubilee.jpg", alt: "Silver Jubilee — 25th Anniversary backdrop" },
