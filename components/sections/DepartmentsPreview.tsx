@@ -16,7 +16,7 @@ export function DepartmentsPreview({ departments }: { departments: Department[] 
         <SectionHeading
           eyebrow="Centres of Excellence"
           title="Specialised departments, unified care"
-          description="Sixteen clinical departments working from one shared patient record, so nothing gets lost between specialists."
+          description="31 clinical specialities working from one shared patient record, so nothing gets lost between specialists."
         />
 
         <StaggerGroup className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

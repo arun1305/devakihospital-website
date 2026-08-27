@@ -10,7 +10,7 @@ import { fallbackDepartments } from "@/lib/fallback-content";
 export const metadata: Metadata = buildMetadata({
   title: "Departments",
   description:
-    "Explore Devaki Speciality Hospital's clinical departments — from Cardiology and Neurology to Oncology and Pediatrics.",
+    "Explore Devaki Speciality Hospital's 31 clinical specialities — from Cardiology and Neurology to Oncology and Vascular Surgery.",
   path: "/departments",
 });
 
@@ -26,7 +26,7 @@ export default async function DepartmentsPage() {
             tone="dark"
             align="left"
             eyebrow="Our Departments"
-            title="Sixteen specialities. One coordinated care team."
+            title="31 specialities. One coordinated care team."
             description="Every department combines dedicated consultants, modern diagnostic technology, and a single shared patient record."
             className="mx-0"
           />

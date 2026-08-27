@@ -55,7 +55,7 @@ export function organizationJsonLd() {
       addressCountry: siteConfig.address.country,
     },
     sameAs: Object.values(siteConfig.social),
-    medicalSpecialty: ["Cardiology", "Neurology", "Orthopaedics", "Oncology", "Pediatrics"],
+    medicalSpecialty: ["Cardiology", "Neurology", "Orthopaedics", "Gastroenterology", "Medical Oncology", "Obstetrics & Gynaecology"],
   };
 }
 

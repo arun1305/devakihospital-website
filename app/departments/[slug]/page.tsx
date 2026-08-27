@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { AnimatedIconBadge } from "@/components/ui/AnimatedIconBadge";
+import { DepartmentMockup } from "@/components/ui/DepartmentMockup";
 import { Accordion } from "@/components/ui/Accordion";
 import { RevealOnScroll, StaggerGroup } from "@/components/ui/RevealOnScroll";
 import { AppointmentCTA } from "@/components/sections/AppointmentCTA";
@@ -72,35 +72,41 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
       {department.faqs.length > 0 && <JsonLd data={faqJsonLd(department.faqs)} />}
 
       <section className="relative overflow-hidden bg-brand-teal-900 py-20 dark:bg-brand-teal-950">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(242,121,27,0.2),transparent_45%)]" />
-        <Container className="relative flex flex-col gap-6">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-white/60">
-            {breadcrumb.map((crumb, index) => (
-              <span key={crumb.path} className="flex items-center gap-2">
-                {index > 0 && <span>/</span>}
-                {index === breadcrumb.length - 1 ? (
-                  <span className="text-white">{crumb.name}</span>
-                ) : (
-                  <Link href={crumb.path} className="hover:text-white">
-                    {crumb.name}
-                  </Link>
-                )}
-              </span>
-            ))}
-          </nav>
-          <RevealOnScroll className="flex max-w-3xl items-start gap-5">
-            <AnimatedIconBadge className="mt-1 h-16 w-16 shadow-brand-glow">
-              <DeptIcon className="h-7 w-7" />
-            </AnimatedIconBadge>
-            <div>
+        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(242,121,27,0.2),transparent_45%)]" />
+          <div className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-brand-orange-500/20 blur-3xl" />
+          <div className="absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-brand-teal-400/20 blur-3xl" />
+        </div>
+        <Container className="relative grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="flex flex-col gap-6">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-white/60">
+              {breadcrumb.map((crumb, index) => (
+                <span key={crumb.path} className="flex items-center gap-2">
+                  {index > 0 && <span>/</span>}
+                  {index === breadcrumb.length - 1 ? (
+                    <span className="text-white">{crumb.name}</span>
+                  ) : (
+                    <Link href={crumb.path} className="hover:text-white">
+                      {crumb.name}
+                    </Link>
+                  )}
+                </span>
+              ))}
+            </nav>
+            <RevealOnScroll>
               <h1 className="text-4xl font-bold text-white sm:text-5xl">{department.name}</h1>
-              <p className="mt-4 text-lg text-white/75">{department.shortDescription}</p>
-            </div>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.1}>
-            <Button href="/appointment" variant="secondary" size="lg">
-              Book a {department.name} Consultation
-            </Button>
+              <p className="mt-4 max-w-xl text-lg text-white/75">{department.shortDescription}</p>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.1}>
+              <Button href="/appointment" variant="secondary" size="lg">
+                Book a {department.name} Consultation
+              </Button>
+            </RevealOnScroll>
+          </div>
+          <RevealOnScroll direction="left" delay={0.15}>
+            <DepartmentMockup>
+              <DeptIcon className="h-20 w-20 text-white" strokeWidth={1.5} />
+            </DepartmentMockup>
           </RevealOnScroll>
         </Container>
       </section>

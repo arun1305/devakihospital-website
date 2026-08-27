@@ -8,7 +8,7 @@ import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { mainNav } from "@/lib/site-config";
+import { mainNav, allDepartmentsLink } from "@/lib/site-config";
 import { siteConfig } from "@/lib/site-config";
 import { getDepartmentIcon } from "@/lib/department-icons";
 import { cn } from "@/lib/utils";
@@ -85,6 +85,14 @@ export function Navbar() {
                         </Link>
                       );
                     })}
+                    {item.label === "Departments" && (
+                      <Link
+                        href={allDepartmentsLink.href}
+                        className="mt-1 flex items-center justify-center rounded-xl border border-dashed border-brand-teal-200 px-3 py-2.5 text-sm font-semibold text-brand-teal-700 transition-colors hover:bg-brand-teal-50 dark:border-brand-teal-700 dark:text-brand-teal-200 dark:hover:bg-brand-teal-800"
+                      >
+                        {allDepartmentsLink.label} →
+                      </Link>
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -150,6 +158,15 @@ export function Navbar() {
                           {child.label}
                         </Link>
                       ))}
+                      {item.label === "Departments" && (
+                        <Link
+                          href={allDepartmentsLink.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="rounded-lg px-3 py-2 text-sm font-semibold text-brand-teal-700 dark:text-brand-teal-200"
+                        >
+                          {allDepartmentsLink.label} →
+                        </Link>
+                      )}
                     </div>
                   )}
                 </div>

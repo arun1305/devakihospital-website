@@ -42,9 +42,12 @@ export const departmentNavLinks: NavChild[] = [
   { label: "Neurology", href: "/departments/neurology", description: "Brain, spine & nerves" },
   { label: "Orthopaedics", href: "/departments/orthopaedics", description: "Joints, bones & sports injury" },
   { label: "Gastroenterology", href: "/departments/gastroenterology", description: "Digestive health" },
-  { label: "Oncology", href: "/departments/oncology", description: "Cancer care" },
-  { label: "Pediatrics", href: "/departments/pediatrics", description: "Child & newborn care" },
+  { label: "Medical Oncology", href: "/departments/medical-oncology", description: "Cancer care" },
+  { label: "Obstetrics & Gynaecology", href: "/departments/obstetrics-gynaecology", description: "Women's health" },
 ];
+
+/** All 31 specialities live at /departments — this is only the curated nav/footer subset above. */
+export const allDepartmentsLink = { label: "View All Specialities", href: "/departments" };
 
 export const mainNav: NavItem[] = [
   { label: "Home", href: "/" },
