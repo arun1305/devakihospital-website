@@ -112,7 +112,7 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
       </section>
 
       <section className="bg-white py-20 dark:bg-brand-teal-950">
-        <Container className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+        <Container className="flex flex-col gap-12">
           <RevealOnScroll className="flex flex-col gap-6">
             <h2 className="text-2xl font-bold text-brand-teal-900 dark:text-white">Overview</h2>
             <p className="leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{department.overview}</p>
@@ -121,7 +121,7 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
           <RevealOnScroll delay={0.1}>
             <Card className="flex flex-col gap-4 p-7">
               <h3 className="text-lg font-bold text-brand-teal-900 dark:text-white">Why choose our {department.name} team</h3>
-              <ul className="flex flex-col gap-3 text-sm text-brand-grey-500 dark:text-brand-grey-400">
+              <ul className="grid gap-3 text-sm text-brand-grey-500 dark:text-brand-grey-400 sm:grid-cols-2">
                 {["Board-certified specialists", "24/7 clinical support", "Shared patient records across departments", "Structured recovery & follow-up plans"].map(
                   (point) => (
                     <li key={point} className="flex items-start gap-2">

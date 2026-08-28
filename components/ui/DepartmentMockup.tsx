@@ -37,7 +37,7 @@ function RingsDecoration() {
         <motion.span
           key={i}
           className="absolute inset-0 rounded-full border-2 border-brand-orange-300/70"
-          animate={{ scale: [1, 1.9], opacity: [0.6, 0] }}
+          animate={{ scale: [1, 1.45], opacity: [0.6, 0] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut", delay: i * 0.6 }}
           aria-hidden
         />
@@ -95,7 +95,7 @@ export function DepartmentMockup({ children, name, slug }: DepartmentMockupProps
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="flex flex-col items-center gap-6 rounded-[2rem] bg-white/10 p-10 ring-1 ring-white/20 backdrop-blur-md"
+        className="flex flex-col items-center gap-6 overflow-hidden rounded-[2rem] bg-white/10 p-10 ring-1 ring-white/20 backdrop-blur-md"
       >
         <div className="relative flex h-40 w-40 items-center justify-center">
           {(behavior === "rings" || behavior === "heartbeat") && <RingsDecoration />}
