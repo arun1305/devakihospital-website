@@ -104,8 +104,8 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
             </RevealOnScroll>
           </div>
           <RevealOnScroll direction="left" delay={0.15}>
-            <DepartmentMockup>
-              <DeptIcon className="h-20 w-20 text-white" strokeWidth={1.5} />
+            <DepartmentMockup name={department.name} slug={department.slug}>
+              <DeptIcon className="h-6 w-6" strokeWidth={2} />
             </DepartmentMockup>
           </RevealOnScroll>
         </Container>
