@@ -36,15 +36,15 @@ export function InsuranceGrid({ providers }: { providers: Provider[] }) {
           <motion.div
             whileHover={{ y: -8, scale: 1.04 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="relative flex h-40 flex-col items-center justify-center gap-3 overflow-hidden rounded-3xl border border-brand-grey-200 bg-white p-6 shadow-brand-soft transition-shadow duration-300 group-hover:border-transparent group-hover:shadow-brand-glow dark:border-white/10"
+            className="relative flex h-56 flex-col items-center justify-center gap-3 overflow-hidden rounded-3xl border border-brand-grey-200 bg-white p-5 shadow-brand-soft transition-shadow duration-300 group-hover:border-transparent group-hover:shadow-brand-glow dark:border-white/10"
           >
-            <div className="relative flex h-16 w-full items-center justify-center">
+            <div className="relative flex h-40 w-full items-center justify-center">
               <Image
                 src={`/patient-care/insurance/${provider.logo}.png`}
                 alt={provider.name}
                 width={200}
                 height={200}
-                className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-full w-full scale-125 object-contain transition-transform duration-300 group-hover:scale-[1.35]"
               />
             </div>
             <motion.p
