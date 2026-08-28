@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { CheckCircle2, Cpu, Building2, Stethoscope, ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -15,7 +16,17 @@ import { buildMetadata, departmentJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/
 import { getDepartmentBySlug, getDepartments } from "@/lib/api-server";
 import { fallbackDepartments } from "@/lib/fallback-content";
 import { getDepartmentIcon } from "@/lib/department-icons";
+import { cn } from "@/lib/utils";
 import type { Department } from "@/types";
+
+function SectionKicker({ label, className }: { label: string; className?: string }) {
+  return (
+    <div className={cn("flex items-center gap-3", className)}>
+      <span className="h-7 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-brand-orange-500 to-brand-teal-600" />
+      <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange-600 dark:text-brand-orange-300">{label}</span>
+    </div>
+  );
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -113,14 +124,32 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
 
       <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-12">
-          <RevealOnScroll className="flex flex-col gap-6">
-            <h2 className="text-2xl font-bold text-brand-teal-900 dark:text-white">Overview</h2>
-            <p className="leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{department.overview}</p>
-          </RevealOnScroll>
+          <div className={cn("grid gap-10", department.heroImage && "lg:grid-cols-[1.05fr_0.95fr] lg:items-start")}>
+            <RevealOnScroll className="flex flex-col gap-6">
+              <SectionKicker label="About This Department" />
+              <h2 className="text-3xl font-bold tracking-tight text-brand-teal-900 dark:text-white">Overview</h2>
+              <p className="leading-relaxed text-brand-grey-500 dark:text-brand-grey-400">{department.overview}</p>
+            </RevealOnScroll>
+
+            {department.heroImage && (
+              <RevealOnScroll direction="left" delay={0.1}>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-brand-soft ring-1 ring-brand-grey-200 dark:ring-white/10">
+                  <Image
+                    src={department.heroImage}
+                    alt={`${department.name} care team at Devaki Speciality Hospital`}
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              </RevealOnScroll>
+            )}
+          </div>
 
           <RevealOnScroll delay={0.1}>
             <Card className="flex flex-col gap-4 p-7">
-              <h3 className="text-lg font-bold text-brand-teal-900 dark:text-white">Why choose our {department.name} team</h3>
+              <SectionKicker label="Why Choose Us" />
+              <h3 className="text-xl font-bold text-brand-teal-900 dark:text-white">Why choose our {department.name} team</h3>
               <ul className="grid gap-3 text-sm text-brand-grey-500 dark:text-brand-grey-400 sm:grid-cols-2">
                 {["Board-certified specialists", "24/7 clinical support", "Shared patient records across departments", "Structured recovery & follow-up plans"].map(
                   (point) => (
@@ -148,7 +177,10 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-teal-500 to-brand-teal-700 text-white">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <h3 className="text-lg font-bold text-brand-teal-900 dark:text-white">{title}</h3>
+                    <div className="flex items-center gap-2.5">
+                      <span className="h-5 w-1 shrink-0 rounded-full bg-brand-orange-500" />
+                      <h3 className="text-lg font-bold text-brand-teal-900 dark:text-white">{title}</h3>
+                    </div>
                     <ul className="flex flex-col gap-2 text-sm text-brand-grey-500 dark:text-brand-grey-400">
                       {list.map((item) => (
                         <li key={item} className="flex items-start gap-2">
