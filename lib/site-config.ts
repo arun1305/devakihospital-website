@@ -37,16 +37,41 @@ export interface NavItem {
   children?: NavChild[];
 }
 
+/** The full real "Specialities" list from devakihospital.com — all 31 shown directly in the nav dropdown. */
 export const departmentNavLinks: NavChild[] = [
-  { label: "Cardiology", href: "/departments/cardiology", description: "Heart & vascular care" },
-  { label: "Neurology", href: "/departments/neurology", description: "Brain, spine & nerves" },
-  { label: "Orthopaedics", href: "/departments/orthopaedics", description: "Joints, bones & sports injury" },
-  { label: "Gastroenterology", href: "/departments/gastroenterology", description: "Digestive health" },
-  { label: "Medical Oncology", href: "/departments/medical-oncology", description: "Cancer care" },
-  { label: "Obstetrics & Gynaecology", href: "/departments/obstetrics-gynaecology", description: "Women's health" },
+  { label: "Accident & Emergency", href: "/departments/accident-emergency" },
+  { label: "Anaesthesiology", href: "/departments/anaesthesiology" },
+  { label: "Bariatric Surgery", href: "/departments/bariatric-surgery" },
+  { label: "Cardiology", href: "/departments/cardiology" },
+  { label: "Cardiothoracic and Vascular Surgery", href: "/departments/cardiothoracic-vascular-surgery" },
+  { label: "Critical Care & Toxicology", href: "/departments/critical-care-toxicology" },
+  { label: "Dental", href: "/departments/dental" },
+  { label: "Diabetology", href: "/departments/diabetology" },
+  { label: "ENT", href: "/departments/ent" },
+  { label: "Family Medicine", href: "/departments/family-medicine" },
+  { label: "Gastroenterology", href: "/departments/gastroenterology" },
+  { label: "General Medicine", href: "/departments/general-medicine" },
+  { label: "General Surgery", href: "/departments/general-surgery" },
+  { label: "Imaging Sciences & Interventional Radiology", href: "/departments/imaging-sciences-interventional-radiology" },
+  { label: "Medical Oncology", href: "/departments/medical-oncology" },
+  { label: "Nephrology", href: "/departments/nephrology" },
+  { label: "Neurology", href: "/departments/neurology" },
+  { label: "Neuro Surgery", href: "/departments/neuro-surgery" },
+  { label: "Obstetrics & Gynaecology", href: "/departments/obstetrics-gynaecology" },
+  { label: "Orthopaedics", href: "/departments/orthopaedics" },
+  { label: "Pediatric Surgery", href: "/departments/pediatric-surgery" },
+  { label: "Pharmacy", href: "/departments/pharmacy" },
+  { label: "Psychiatric & Counselling", href: "/departments/psychiatric-counselling" },
+  { label: "Physical Medicine & Rehabilitation", href: "/departments/physical-medicine-rehabilitation" },
+  { label: "Preventive Medicine", href: "/departments/preventive-medicine" },
+  { label: "Pulmonology", href: "/departments/pulmonology" },
+  { label: "Radiation Oncology", href: "/departments/radiation-oncology" },
+  { label: "Surgery & Surgical Gastroenterology", href: "/departments/surgical-gastroenterology" },
+  { label: "Surgical Oncology", href: "/departments/surgical-oncology" },
+  { label: "Urology", href: "/departments/urology" },
+  { label: "Vascular Surgery", href: "/departments/vascular-surgery" },
 ];
 
-/** All 31 specialities live at /departments — this is only the curated nav/footer subset above. */
 export const allDepartmentsLink = { label: "View All Specialities", href: "/departments" };
 
 export const mainNav: NavItem[] = [

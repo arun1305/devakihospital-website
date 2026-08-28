@@ -61,23 +61,44 @@ export function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.18 }}
-                    className="absolute left-0 top-full grid w-72 gap-1 rounded-2xl border border-brand-grey-200 bg-white p-3 shadow-brand-soft dark:border-white/10 dark:bg-brand-teal-900"
+                    className={cn(
+                      "absolute left-0 top-full rounded-2xl border border-brand-grey-200 bg-white shadow-brand-soft dark:border-white/10 dark:bg-brand-teal-900",
+                      item.label === "Departments"
+                        ? "grid max-h-[75vh] w-[min(760px,90vw)] grid-cols-3 gap-1 overflow-y-auto p-4"
+                        : "grid w-72 gap-1 p-3"
+                    )}
                   >
                     {item.children.map((child) => {
-                      const ChildIcon = item.label === "Departments" ? getDepartmentIcon(child.href.split("/").pop() ?? "") : null;
+                      const isDepartments = item.label === "Departments";
+                      const ChildIcon = isDepartments ? getDepartmentIcon(child.href.split("/").pop() ?? "") : null;
                       return (
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="flex items-start gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors hover:bg-brand-teal-50 dark:hover:bg-brand-teal-800"
+                          className={cn(
+                            "flex items-start gap-2.5 rounded-xl transition-colors hover:bg-brand-teal-50 dark:hover:bg-brand-teal-800",
+                            isDepartments ? "px-2.5 py-2" : "gap-3 px-3 py-2.5"
+                          )}
                         >
                           {ChildIcon && (
-                            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-teal-50 text-brand-teal-600 dark:bg-brand-teal-800 dark:text-brand-teal-200">
-                              <ChildIcon className="h-4 w-4" />
+                            <span
+                              className={cn(
+                                "mt-0.5 flex shrink-0 items-center justify-center rounded-lg bg-brand-teal-50 text-brand-teal-600 dark:bg-brand-teal-800 dark:text-brand-teal-200",
+                                isDepartments ? "h-7 w-7" : "h-8 w-8"
+                              )}
+                            >
+                              <ChildIcon className={isDepartments ? "h-3.5 w-3.5" : "h-4 w-4"} />
                             </span>
                           )}
-                          <span>
-                            <span className="block font-semibold text-brand-teal-900 dark:text-brand-teal-50">{child.label}</span>
+                          <span className="min-w-0">
+                            <span
+                              className={cn(
+                                "block text-brand-teal-900 dark:text-brand-teal-50",
+                                isDepartments ? "text-xs font-medium leading-snug" : "font-semibold text-sm"
+                              )}
+                            >
+                              {child.label}
+                            </span>
                             {child.description && (
                               <span className="block text-xs text-brand-grey-500 dark:text-brand-grey-400">{child.description}</span>
                             )}
@@ -88,7 +109,7 @@ export function Navbar() {
                     {item.label === "Departments" && (
                       <Link
                         href={allDepartmentsLink.href}
-                        className="mt-1 flex items-center justify-center rounded-xl border border-dashed border-brand-teal-200 px-3 py-2.5 text-sm font-semibold text-brand-teal-700 transition-colors hover:bg-brand-teal-50 dark:border-brand-teal-700 dark:text-brand-teal-200 dark:hover:bg-brand-teal-800"
+                        className="col-span-3 mt-1 flex items-center justify-center rounded-xl border border-dashed border-brand-teal-200 px-3 py-2.5 text-sm font-semibold text-brand-teal-700 transition-colors hover:bg-brand-teal-50 dark:border-brand-teal-700 dark:text-brand-teal-200 dark:hover:bg-brand-teal-800"
                       >
                         {allDepartmentsLink.label} →
                       </Link>
