@@ -21,11 +21,11 @@ const footerColumns = [
     title: "Patient Care",
     links: [
       { label: "Book Appointment", href: "/appointment" },
-      { label: "Health Packages", href: "/health-packages" },
-      { label: "International Patients", href: "/services/international-patients" },
-      { label: "Insurance & TPA", href: "/patient-resources/insurance" },
-      { label: "Visitor Guidelines", href: "/patient-resources/visitor-guidelines" },
-      { label: "Patient Rights", href: "/patient-resources/patient-rights" },
+      { label: "24×7 Services", href: "/patient-resources/24-7-services" },
+      { label: "Master Health Check-Up", href: "/patient-resources/master-health-checkup" },
+      { label: "Insurance Providers", href: "/patient-resources/insurance" },
+      { label: "Visitors & Care Takers Info", href: "/patient-resources/visitor-guidelines" },
+      { label: "Patient Guidelines", href: "/patient-resources/patient-rights" },
     ],
   },
   {
@@ -107,7 +107,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-5">
             <Link href="/patient-resources/privacy">Privacy Policy</Link>
-            <Link href="/patient-resources/patient-rights">Patient Rights</Link>
+            <Link href="/patient-resources/patient-rights">Patient Guidelines</Link>
             <Link href="/contact">Sitemap</Link>
             <ThemeToggle className="border-white/15 bg-white/10 text-white hover:bg-white/20 dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/20" />
           </div>

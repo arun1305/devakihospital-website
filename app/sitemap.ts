@@ -41,11 +41,15 @@ const staticRoutes = [
   "/services/telemedicine",
   "/services/international-patients",
   "/services/second-opinion",
-  "/patient-resources/visitor-guidelines",
-  "/patient-resources/admission-billing",
+  "/patient-resources/24-7-services",
+  "/patient-resources/master-health-checkup",
   "/patient-resources/insurance",
-  "/patient-resources/health-library",
   "/patient-resources/patient-rights",
+  "/patient-resources/categories-of-bed",
+  "/patient-resources/admission-policy",
+  "/patient-resources/billing-policy",
+  "/patient-resources/visitor-guidelines",
+  "/patient-resources/health-library",
   "/patient-resources/privacy",
 ];
 

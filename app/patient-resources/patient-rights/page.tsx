@@ -6,18 +6,21 @@ import { PageHero } from "@/components/layout/PageHero";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Patient Rights & Responsibilities",
-  description: "Understand your rights and responsibilities as a patient at Devaki Speciality Hospital.",
+  title: "Patient Guidelines",
+  description: "Your rights and responsibilities as a patient at Devaki Speciality Hospital.",
   path: "/patient-resources/patient-rights",
 });
 
 const rights = [
-  "Receive care with dignity, respect, and without discrimination.",
-  "Be informed about your diagnosis, treatment options, and associated costs in language you understand.",
-  "Give or withhold informed consent for any procedure or treatment.",
-  "Access your medical records and request a second opinion at any time.",
-  "Confidentiality of your medical information, disclosed only with your consent or as legally required.",
-  "Voice concerns or complaints without fear of it affecting the quality of your care.",
+  "Privacy — a female patient may be examined by a male doctor only in the presence of a female staff nurse or escort.",
+  "Treatment Refusal — accept or refuse any procedure, drug, or treatment, and be informed of the consequences of refusal.",
+  "Consent — receive enough information about a proposed treatment to make an informed decision about benefits, risks, and alternatives.",
+  "Freedom from Abuse — be free from mental, physical, sexual, and verbal abuse, neglect, or exploitation.",
+  "Confidentiality — your health information is protected and disclosed only with informed consent or as required by law.",
+  "Complaints or Suggestions — raise concerns about hospitality, treatment, or medication through the suggestion box or patient representative.",
+  "Cost of Treatment — understand and receive information on the cost of treatment provided.",
+  "Respectful Treatment — considerate, dignified care with recognition of personal, cultural, and spiritual beliefs.",
+  "Access to Medical Records — seek and receive all information necessary to understand your medical condition.",
 ];
 
 const responsibilities = [
@@ -32,8 +35,8 @@ export default function PatientRightsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Patient Resources"
-        title="Patient rights & responsibilities"
+        eyebrow="Patient Care Services"
+        title="Patient guidelines"
         description="A shared understanding between you and our care team helps us deliver the safest, most respectful care possible."
       />
       <section className="bg-white py-20 dark:bg-brand-teal-950">

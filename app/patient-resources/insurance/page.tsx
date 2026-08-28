@@ -1,44 +1,92 @@
 import type { Metadata } from "next";
-import { ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import { Mail, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { StaggerGroup, RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { PageHero } from "@/components/layout/PageHero";
 import { buildMetadata } from "@/lib/seo";
-import { getInsurancePartners } from "@/lib/api-server";
-import { fallbackInsurancePartners } from "@/lib/fallback-content";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Insurance & TPA",
+  title: "Insurance Providers",
   description: "Cashless insurance partners and TPA empanelment at Devaki Speciality Hospital.",
   path: "/patient-resources/insurance",
 });
 
-export default async function InsurancePage() {
-  const partners = await getInsurancePartners();
-  const list = partners.length ? partners : fallbackInsurancePartners;
+const providers = [
+  { name: "Apollo Munich Insurance", logo: "apollomunich" },
+  { name: "Bajaj Allianz General Insurance", logo: "bajaj" },
+  { name: "Chief Minister's Comprehensive Health Insurance Scheme", logo: "cmscheme" },
+  { name: "Care Insurance", logo: "carehealth" },
+  { name: "Cholamandalam General Insurance", logo: "cholamandalam" },
+  { name: "E-Meditek TPA", logo: "emedi" },
+  { name: "Ericson Insurance", logo: "ericson" },
+  { name: "Family Health Plan Insurance", logo: "familyhealth" },
+  { name: "Future Generali Insurance", logo: "futuregenral" },
+  { name: "Genins India TPA", logo: "genins" },
+  { name: "Good Health Plan TPA", logo: "goodhealth" },
+  { name: "Health India TPA", logo: "healthindia" },
+  { name: "Health Insurance TPA", logo: "healthinsurance" },
+  { name: "Heritage TPA", logo: "heritagehealth" },
+  { name: "Liberty General Insurance", logo: "liberty" },
+  { name: "MDI India Health Care TPA", logo: "mdi" },
+  { name: "Med Save Insurance", logo: "medsave" },
+  { name: "Medi Assist TPA", logo: "medi" },
+  { name: "Medicare Insurance TPA", logo: "medicare" },
+  { name: "Paramount Health Care TPA", logo: "paramount" },
+  { name: "Raksha TPA", logo: "raksha" },
+  { name: "Reliance Health Insurance", logo: "reliancehealth" },
+  { name: "Star Health TPA", logo: "starhealth" },
+  { name: "TATA AIG General Insurance", logo: "tataaig" },
+  { name: "United Health Care TPA", logo: "unitedhealthcare" },
+  { name: "Universal Sompo Insurance", logo: "universalsompo" },
+  { name: "Vidal Health TPA", logo: "vidal" },
+  { name: "Vipul Med Corp TPA", logo: "vipulmedcare" },
+];
 
+export default function InsurancePage() {
   return (
     <>
       <PageHero
-        eyebrow="Patient Resources"
-        title="Insurance & TPA"
-        description="We're empanelled with major insurers and third-party administrators for cashless treatment. Our insurance desk handles pre-authorisation and claims coordination on your behalf."
+        eyebrow="Patient Care Services"
+        title="Insurance providers"
+        description="Our Insurance Department has tie-ups with all major insurance companies and Third Party Administrators (TPA). The TPAs have rated us as a preferred provider network hospital."
       />
       <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-10">
-          <div className="rounded-2xl bg-brand-grey-50 p-6 text-sm leading-relaxed text-brand-grey-500 dark:bg-brand-grey-900 dark:text-brand-grey-400">
-            To use cashless insurance, please carry your insurance card and a valid photo ID at admission. Our
-            insurance desk will verify your policy and initiate pre-authorisation with your insurer or TPA. For
-            planned procedures, we recommend contacting the insurance desk at least 48 hours in advance.
+          <div className="grid gap-4 rounded-2xl bg-brand-grey-50 p-6 sm:grid-cols-2 dark:bg-brand-grey-900">
+            <div className="flex items-start gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-700 dark:bg-brand-teal-800 dark:text-brand-teal-100">
+                <Mail className="h-5 w-5" />
+              </span>
+              <div className="text-sm text-brand-grey-500 dark:text-brand-grey-400">
+                <p className="font-semibold text-brand-teal-900 dark:text-white">Email</p>
+                <p>claims@devakihospital.com</p>
+                <p>mail@devakihospital.com</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-orange-50 text-brand-orange-600 dark:bg-brand-orange-900/40 dark:text-brand-orange-300">
+                <Phone className="h-5 w-5" />
+              </span>
+              <div className="text-sm text-brand-grey-500 dark:text-brand-grey-400">
+                <p className="font-semibold text-brand-teal-900 dark:text-white">Phone</p>
+                <p>0452-2288830</p>
+                <p>+91 97863 23915</p>
+              </div>
+            </div>
           </div>
-          <StaggerGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {list.map((partner, index) => (
-              <RevealOnScroll as="li" key={partner._id} delay={index * 0.05} className="list-none">
-                <div className="flex items-center gap-3 rounded-2xl border border-brand-grey-200 bg-white p-5 dark:border-white/10 dark:bg-brand-teal-900">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-teal-50 text-brand-teal-700 dark:bg-brand-teal-800 dark:text-brand-teal-100">
-                    <ShieldCheck className="h-5 w-5" />
-                  </span>
-                  <span className="text-sm font-semibold text-brand-teal-900 dark:text-white">{partner.name}</span>
+
+          <StaggerGroup className="grid gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {providers.map((provider, index) => (
+              <RevealOnScroll as="li" key={provider.name} delay={index * 0.02} className="list-none">
+                <div className="flex h-24 items-center justify-center rounded-2xl border border-brand-grey-200 bg-white p-4 transition-transform duration-300 hover:-translate-y-1 dark:border-white/10">
+                  <Image
+                    src={`/patient-care/insurance/${provider.logo}.png`}
+                    alt={provider.name}
+                    width={200}
+                    height={200}
+                    className="h-full w-full object-contain"
+                  />
                 </div>
               </RevealOnScroll>
             ))}
