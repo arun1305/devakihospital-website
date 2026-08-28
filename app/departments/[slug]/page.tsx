@@ -124,7 +124,7 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
 
       <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-12">
-          <div className={cn("grid gap-10", department.heroImage && "lg:grid-cols-[1.05fr_0.95fr] lg:items-start")}>
+          <div className={cn("grid gap-10", department.heroImage && "lg:grid-cols-[1.05fr_0.95fr] lg:items-center")}>
             <RevealOnScroll className="flex flex-col gap-6">
               <SectionKicker label="About This Department" />
               <h2 className="text-3xl font-bold tracking-tight text-brand-teal-900 dark:text-white">Overview</h2>
@@ -133,7 +133,7 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
 
             {department.heroImage && (
               <RevealOnScroll direction="left" delay={0.1}>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-brand-soft ring-1 ring-brand-grey-200 dark:ring-white/10">
+                <div className="relative aspect-[16/11] overflow-hidden rounded-3xl shadow-brand-soft ring-1 ring-brand-grey-200 dark:ring-white/10">
                   <Image
                     src={department.heroImage}
                     alt={`${department.name} care team at Devaki Speciality Hospital`}
