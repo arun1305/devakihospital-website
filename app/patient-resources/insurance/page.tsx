@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Mail, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { StaggerGroup, RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { PageHero } from "@/components/layout/PageHero";
+import { InsuranceGrid } from "@/components/patient-care/InsuranceGrid";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -76,21 +75,7 @@ export default function InsurancePage() {
             </div>
           </div>
 
-          <StaggerGroup className="grid gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {providers.map((provider, index) => (
-              <RevealOnScroll as="li" key={provider.name} delay={index * 0.02} className="list-none">
-                <div className="flex h-24 items-center justify-center rounded-2xl border border-brand-grey-200 bg-white p-4 transition-transform duration-300 hover:-translate-y-1 dark:border-white/10">
-                  <Image
-                    src={`/patient-care/insurance/${provider.logo}.png`}
-                    alt={provider.name}
-                    width={200}
-                    height={200}
-                    className="h-full w-full object-contain"
-                  />
-                </div>
-              </RevealOnScroll>
-            ))}
-          </StaggerGroup>
+          <InsuranceGrid providers={providers} />
         </Container>
       </section>
     </>
