@@ -145,27 +145,26 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
               </RevealOnScroll>
             )}
           </div>
-
-          <RevealOnScroll delay={0.1}>
-            <Card className="flex flex-col gap-4 p-7">
-              <SectionKicker label="Why Choose Us" />
-              <h3 className="text-xl font-bold text-brand-teal-900 dark:text-white">Why choose our {department.name} team</h3>
-              <ul className="grid gap-3 text-sm text-brand-grey-500 dark:text-brand-grey-400 sm:grid-cols-2">
-                {["Board-certified specialists", "24/7 clinical support", "Shared patient records across departments", "Structured recovery & follow-up plans"].map(
-                  (point) => (
-                    <li key={point} className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600 dark:text-brand-teal-300" />
-                      {point}
-                    </li>
-                  )
-                )}
-              </ul>
-            </Card>
-          </RevealOnScroll>
         </Container>
       </section>
 
       <section className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
+        <Container className="flex flex-col items-center gap-10">
+          <SectionHeading eyebrow="Why Choose Us" title={`Why choose our ${department.name} team`} />
+          <ul className="grid w-full max-w-3xl gap-4 text-sm text-brand-grey-500 sm:grid-cols-2 dark:text-brand-grey-400">
+            {["Board-certified specialists", "24/7 clinical support", "Shared patient records across departments", "Structured recovery & follow-up plans"].map(
+              (point) => (
+                <li key={point} className="flex items-start gap-2 rounded-2xl bg-white p-4 shadow-brand-soft dark:bg-brand-grey-800">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal-600 dark:text-brand-teal-300" />
+                  {point}
+                </li>
+              )
+            )}
+          </ul>
+        </Container>
+      </section>
+
+      <section className="bg-white py-20 dark:bg-brand-teal-950">
         <Container className="flex flex-col gap-10">
           <StaggerGroup className="grid gap-6 lg:grid-cols-3">
             {infoBlocks.map(({ key, title, icon: Icon }, index) => {
@@ -199,14 +198,9 @@ export default async function DepartmentDetailPage({ params }: PageProps) {
 
       {department.faqs.length > 0 && (
         <section className="bg-brand-grey-50 py-20 dark:bg-brand-grey-900">
-          <Container className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <SectionHeading
-              align="left"
-              eyebrow="FAQs"
-              title={`Common questions about ${department.name}`}
-              className="mx-0 lg:sticky lg:top-28"
-            />
-            <Accordion items={department.faqs} />
+          <Container className="flex flex-col items-center gap-12">
+            <SectionHeading eyebrow="FAQs" title={`Common questions about ${department.name}`} />
+            <Accordion items={department.faqs} className="w-full max-w-3xl" />
           </Container>
         </section>
       )}
