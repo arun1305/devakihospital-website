@@ -16,6 +16,11 @@ import type {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000/api";
 
+// During `next build` a failed fetch must not pass silently: pages would render
+// their placeholder fallbacks and we would ship demo content as if it were real.
+// At runtime we stay resilient and let callers fall back.
+const isProductionBuild = process.env.NEXT_PHASE === "phase-production-build";
+
 interface FetchOptions {
   revalidate?: number;
   tags?: string[];
@@ -26,9 +31,20 @@ async function fetchJson<T>(path: string, options: FetchOptions = {}): Promise<T
     const res = await fetch(`${API_URL}${path}`, {
       next: { revalidate: options.revalidate ?? 300, tags: options.tags },
     });
-    if (!res.ok) return null;
+    if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
     return (await res.json()) as T;
-  } catch {
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error);
+    const summary = `[api] GET ${API_URL}${path} failed: ${reason}`;
+
+    if (isProductionBuild) {
+      throw new Error(
+        `${summary}
+Refusing to build against an unreachable API — the site would ship placeholder content.`
+      );
+    }
+
+    console.error(summary);
     return null;
   }
 }

@@ -15,7 +15,7 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default async function DepartmentsPage() {
-  const departments = await getDepartments("?status=published&sort=order");
+  const departments = await getDepartments("?status=published&sort=order&limit=100");
   const list = departments.length ? departments : fallbackDepartments;
 
   return (

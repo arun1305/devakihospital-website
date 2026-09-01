@@ -35,7 +35,7 @@ export const metadata: Metadata = buildMetadata({
 export default async function HomePage() {
   const [departments, testimonials, blogs, news, insurancePartners, accreditations] =
     await Promise.all([
-      getDepartments("?status=published&sort=order"),
+      getDepartments("?status=published&sort=order&limit=100"),
       getFeaturedTestimonials(),
       getLatestBlogs(3),
       getLatestNews(3),

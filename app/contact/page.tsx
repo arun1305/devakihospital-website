@@ -26,7 +26,7 @@ const contactDetails = [
 ];
 
 export default async function ContactPage() {
-  const departments = await getDepartments("?status=published&sort=order");
+  const departments = await getDepartments("?status=published&sort=order&limit=100");
   const departmentList = departments.length ? departments : fallbackDepartments;
   const departmentsWithContact = departmentList.filter((d) => d.contactPhone || d.contactEmail);
 
