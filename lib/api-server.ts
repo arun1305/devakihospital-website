@@ -31,6 +31,9 @@ async function fetchJson<T>(path: string, options: FetchOptions = {}): Promise<T
     const res = await fetch(`${API_URL}${path}`, {
       next: { revalidate: options.revalidate ?? 300, tags: options.tags },
     });
+    // A 404 is a real answer: the API is up, the resource simply is not there.
+    // Only outages -- 5xx and transport failures -- should ever stop a build.
+    if (res.status === 404) return null;
     if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
     return (await res.json()) as T;
   } catch (error) {
